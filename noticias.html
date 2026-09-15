@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notícias | Só Pode PRO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071426;
+            color: white;
+        }
+
+        header {
+            background: #050d1a;
+            border-bottom: 1px solid #c9a227;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #d4af37;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .hero {
+            padding: 70px 7% 45px;
+            background: linear-gradient(180deg, #0b1d35, #071426);
+        }
+
+        .hero span {
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #b9c2cf;
+            font-size: 17px;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .news-section {
+            padding: 50px 7% 80px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .news-card {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.2s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+
+        .news-image {
+            height: 160px;
+            background: linear-gradient(135deg, #122d4d, #081525);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d4af37;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .news-content {
+            padding: 22px;
+        }
+
+        .news-date {
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .news-content h2 {
+            font-size: 21px;
+            margin: 10px 0;
+        }
+
+        .news-content p {
+            color: #b9c2cf;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 70px 20px;
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+        }
+
+        .empty h2 {
+            color: #d4af37;
+            margin-bottom: 12px;
+        }
+
+        .empty p {
+            color: #b9c2cf;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #050d1a;
+            border-top: 1px solid #1d3554;
+            padding: 30px 7%;
+            text-align: center;
+            color: #7f8a99;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #d4af37;
+        }
+
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SÓ PODE PRO</div>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="#">Calendário</a>
+        <a href="#">Sobre</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <span>COMUNICAÇÃO OFICIAL</span>
+    <h1>Notícias</h1>
+    <p>
+        Acompanhe as principais novidades, anúncios e acontecimentos
+        da temporada do Só Pode PRO.
+    </p>
+</section>
+
+<section class="news-section">
+
+    <div class="empty">
+        <h2>EM BREVE</h2>
+
+        <p>
+            As primeiras notícias do Só Pode PRO serão publicadas aqui.
+            Fique de olho para acompanhar tudo o que acontecer durante a temporada.
+        </p>
+    </div>
+
+</section>
+
+<footer>
+    <strong>SÓ PODE PRO</strong><br><br>
+    Temporada 2026 · Site oficial da competição
+</footer>
+
+</body>
+</html>
