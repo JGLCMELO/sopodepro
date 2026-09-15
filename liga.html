@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Liga | Só Pode PRO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071426;
+            color: white;
+        }
+
+        header {
+            background: #050d1a;
+            border-bottom: 1px solid #c9a227;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #d4af37;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .hero {
+            padding: 75px 7% 55px;
+            background: linear-gradient(180deg, #0b1d35, #071426);
+        }
+
+        .hero span {
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #b9c2cf;
+            font-size: 17px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 55px 7%;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title span {
+            color: #d4af37;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .info-card h3 {
+            color: #d4af37;
+            font-size: 15px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #dce3eb;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .format-box {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 25px;
+        }
+
+        .format-box p {
+            color: #c6d0dc;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .format-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .points {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .point-card {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .point-card strong {
+            display: block;
+            color: #d4af37;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .point-card span {
+            color: #c6d0dc;
+            font-size: 14px;
+        }
+
+        .button-area {
+            text-align: center;
+            padding: 10px 7% 70px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 28px;
+            background: #d4af37;
+            color: #071426;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: #f0cf62;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #050d1a;
+            border-top: 1px solid #1d3554;
+            padding: 30px 7%;
+            text-align: center;
+            color: #7f8a99;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #d4af37;
+        }
+
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .points {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SÓ PODE PRO</div>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="#">Calendário</a>
+        <a href="#">Sobre</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <span>CAMPEONATO OFICIAL</span>
+
+    <h1>LIGA SÓ PODE PRO</h1>
+
+    <p>
+        A competição de pontos corridos do Só Pode PRO,
+        reunindo os participantes em uma temporada de confrontos
+        ao longo do ano.
+    </p>
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>INFORMAÇÕES</span> DA LIGA
+    </h2>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <h3>PRIMEIRA EDIÇÃO</h3>
+            <p>2027</p>
+        </div>
+
+        <div class="info-card">
+            <h3>JOGO DA LIGA</h3>
+            <p>Rocket League</p>
+        </div>
+
+        <div class="info-card">
+            <h3>DURAÇÃO</h3>
+            <p>Maio a dezembro</p>
+        </div>
+
+        <div class="info-card">
+            <h3>DATAS</h3>
+            <p>Feriados selecionados, definidos em consenso entre os participantes.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>PARTICIPANTES</h3>
+            <p>14 participantes</p>
+        </div>
+
+        <div class="info-card">
+            <h3>FORMATO</h3>
+            <p>Todos contra todos, uma vez.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>FORMATO</span> DA COMPETIÇÃO
+    </h2>
+
+    <div class="format-box">
+
+        <p>
+            Cada participante enfrentará todos os outros participantes
+            uma única vez durante a temporada.
+        </p>
+
+        <p>
+            Cada confronto será disputado em uma partida de Rocket League.
+            O empate é permitido.
+        </p>
+
+        <p>
+            As partidas serão realizadas nos feriados selecionados
+            para a Liga, de acordo com a agenda dos participantes.
+        </p>
+
+        <p>
+            Os feriados utilizados serão definidos em consenso entre
+            os participantes.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>PONTUAÇÃO</span>
+    </h2>
+
+    <div class="points">
+
+        <div class="point-card">
+            <strong>2</strong>
+            <span>pontos por vitória</span>
+        </div>
+
+        <div class="point-card">
+            <strong>1</strong>
+            <span>ponto por empate</span>
+        </div>
+
+        <div class="point-card">
+            <strong>0</strong>
+            <span>pontos por derrota</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>DESEMPATE</span>
+    </h2>
+
+    <div class="format-box">
+
+        <p>1º — Saldo de gols</p>
+
+        <p>2º — Gols marcados</p>
+
+        <p>3º — Outros critérios padrão</p>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>ADIAMENTOS</span> E W.O.
+    </h2>
+
+    <div class="format-box">
+
+        <p>
+            Uma partida poderá ser adiada caso os dois participantes
+            concordem com o adiamento.
+        </p>
+
+        <p>
+            A partida adiada deverá ser realizada o quanto antes.
+        </p>
+
+        <p>
+            Caso um participante não possa disputar a partida na data
+            inicial e não haja acordo para adiamento, será aplicado W.O.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>CAMPEÃO</span>
+    </h2>
+
+    <div class="format-box">
+
+        <p>
+            Ao final da Liga, o participante que tiver conquistado
+            mais pontos será declarado campeão.
+        </p>
+
+    </div>
+
+</section>
+
+<div class="button-area">
+
+    <a href="#" class="button">
+        CLASSIFICAÇÃO DA LIGA
+    </a>
+
+</div>
+
+<footer>
+    <strong>SÓ PODE PRO</strong><br><br>
+    Liga Só Pode PRO · Primeira edição em 2027
+</footer>
+
+</body>
+</html>
