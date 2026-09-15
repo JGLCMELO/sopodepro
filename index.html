@@ -1,30 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Só Pode PRO </title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Só Pode PRO | 2026</title>
     <style>
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================= */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
         }
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #07111f;
             color: white;
         }
+        a {
+            text-decoration: none;
+        }
         /* =========================
            MENU
         ========================= */
         header {
-            background: #050b14;
-            border-bottom: 1px solid #26364d;
             position: sticky;
             top: 0;
             z-index: 100;
+            background: #050b14;
+            border-bottom: 1px solid #26364d;
         }
         .navbar {
             max-width: 1200px;
@@ -48,9 +59,9 @@
         }
         nav a {
             color: #dce5f2;
-            text-decoration: none;
             font-size: 14px;
             font-weight: bold;
+            transition: 0.2s;
         }
         nav a:hover {
             color: #f5c542;
@@ -59,12 +70,12 @@
            HERO
         ========================= */
         .hero {
-            min-height: 560px;
+            min-height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 70px 20px;
+            padding: 80px 20px;
             background:
                 radial-gradient(
                     circle at center,
@@ -77,13 +88,13 @@
         }
         .season {
             color: #f5c542;
-            font-weight: bold;
-            letter-spacing: 3px;
             font-size: 14px;
-            margin-bottom: 18px;
+            font-weight: bold;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
         }
         .hero h1 {
-            font-size: clamp(48px, 9vw, 92px);
+            font-size: clamp(52px, 10vw, 100px);
             line-height: 0.95;
             margin-bottom: 25px;
         }
@@ -91,24 +102,24 @@
             color: #f5c542;
         }
         .hero p {
-            color: #b9c7d9;
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 700px;
+            max-width: 650px;
             margin: auto;
+            color: #b9c7d9;
+            font-size: 19px;
+            line-height: 1.6;
         }
         .hero-button {
             display: inline-block;
             margin-top: 35px;
-            padding: 15px 28px;
+            padding: 15px 30px;
+            border-radius: 8px;
             background: #f5c542;
             color: #07111f;
-            text-decoration: none;
             font-weight: 900;
-            border-radius: 8px;
+            transition: 0.2s;
         }
         .hero-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
         /* =========================
            SEÇÕES
@@ -119,82 +130,8 @@
             padding: 70px 25px;
         }
         .section-title {
-            font-size: 30px;
+            font-size: 32px;
             margin-bottom: 30px;
-        }
-        /* =========================
-           PRÓXIMOS EVENTOS
-        ========================= */
-        .events {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .event-card {
-            background: linear-gradient(
-                135deg,
-                #122641,
-                #0b1728
-            );
-            border: 1px solid #2c405c;
-            border-radius: 15px;
-            padding: 30px;
-        }
-        .event-label {
-            color: #f5c542;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-        .event-card h3 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        .event-card p {
-            color: #aebed1;
-            line-height: 1.6;
-        }
-        .event-date {
-            margin-top: 20px;
-            color: #f5c542;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        /* =========================
-           COMPETIÇÕES
-        ========================= */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .card {
-            background: #0d1b2e;
-            border: 1px solid #263b57;
-            border-radius: 14px;
-            padding: 30px;
-            transition:
-                transform 0.2s,
-                border-color 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: #f5c542;
-        }
-        .card-number {
-            color: #f5c542;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .card h3 {
-            font-size: 25px;
-            margin-bottom: 12px;
-        }
-        .card p {
-            color: #aebed1;
-            line-height: 1.6;
         }
         /* =========================
            CALENDÁRIO
@@ -207,10 +144,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 22px;
             background: #0d1b2e;
             border: 1px solid #263b57;
             border-radius: 10px;
+            transition: 0.2s;
+        }
+        .calendar-item:hover {
+            border-color: #f5c542;
+            transform: translateX(3px);
         }
         .calendar-date {
             color: #f5c542;
@@ -218,37 +160,89 @@
             text-align: right;
         }
         /* =========================
-           COMO FUNCIONAM
+           NOTÍCIAS
         ========================= */
-        .rules {
-            display: grid;
-            gap: 15px;
+        .news-placeholder {
+            padding: 35px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #122641,
+                    #0b1728
+                );
+            border: 1px solid #2c405c;
+            border-radius: 15px;
+            text-align: center;
         }
-        .rule {
-            background: #0d1b2e;
-            border-left: 4px solid #f5c542;
-            padding: 22px;
-            border-radius: 8px;
+        .news-placeholder h3 {
+            font-size: 25px;
+            margin-bottom: 12px;
         }
-        .rule h3 {
-            margin-bottom: 8px;
-        }
-        .rule p {
+        .news-placeholder p {
             color: #aebed1;
             line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .secondary-button {
+            display: inline-block;
+            padding: 12px 22px;
+            border: 1px solid #f5c542;
+            border-radius: 7px;
+            color: #f5c542;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+        .secondary-button:hover {
+            background: #f5c542;
+            color: #07111f;
+        }
+        /* =========================
+           NAVEGAÇÃO DO SITE
+        ========================= */
+        .site-sections {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .site-card {
+            padding: 30px;
+            background: #0d1b2e;
+            border: 1px solid #263b57;
+            border-radius: 14px;
+            transition: 0.2s;
+        }
+        .site-card:hover {
+            transform: translateY(-5px);
+            border-color: #f5c542;
+        }
+        .site-card-number {
+            color: #f5c542;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+        .site-card h3 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+        .site-card p {
+            color: #aebed1;
+            line-height: 1.5;
         }
         /* =========================
            SOBRE
         ========================= */
         .about {
-            background: linear-gradient(
-                135deg,
-                #122641,
-                #0b1728
-            );
+            padding: 35px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #122641,
+                    #0b1728
+                );
             border: 1px solid #2c405c;
             border-radius: 15px;
-            padding: 35px;
         }
         .about p {
             color: #b9c7d9;
@@ -268,20 +262,19 @@
             color: white;
         }
         /* =========================
-           CELULAR / IPAD
+           IPAD / CELULAR
         ========================= */
-        @media (max-width: 750px) {
+        @media (max-width: 800px) {
             nav {
                 display: none;
             }
+            .site-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 600px) {
             .hero {
-                min-height: 500px;
-            }
-            .events {
-                grid-template-columns: 1fr;
-            }
-            .cards {
-                grid-template-columns: 1fr;
+                min-height: 520px;
             }
             .calendar-item {
                 flex-direction: column;
@@ -296,7 +289,7 @@
 </head>
 <body>
 <!-- =========================
-     MENU
+     MENU PRINCIPAL
 ========================= -->
 <header>
     <div class="navbar">
@@ -307,8 +300,8 @@
             <a href="#inicio">
                 Início
             </a>
-            <a href="#competicoes">
-                Competições
+            <a href="#noticias">
+                Notícias
             </a>
             <a href="#calendario">
                 Calendário
@@ -321,7 +314,7 @@
 </header>
 <main id="inicio">
 <!-- =========================
-     HERO
+     APRESENTAÇÃO
 ========================= -->
 <section class="hero">
     <div class="hero-content">
@@ -332,155 +325,16 @@
             SÓ PODE <span>PRO</span>
         </h1>
         <p>
-            A competição oficial entre os membros.
-            Olimpíadas, Liga, Copa e Supercopa
-            em uma temporada cheia de desafios.
+            O campeonato oficial entre os membros.
+            Uma temporada de jogos, disputas,
+            títulos e momentos históricos.
         </p>
         <a
-            href="#competicoes"
+            href="#calendario"
             class="hero-button"
         >
-            EXPLORAR A TEMPORADA
+            VER TEMPORADA 2026
         </a>
-    </div>
-</section>
-<!-- =========================
-     PRÓXIMOS EVENTOS
-========================= -->
-<section class="section">
-    <h2 class="section-title">
-        Eventos da temporada
-    </h2>
-    <div class="events">
-        <div class="event-card">
-            <div class="event-label">
-                OLIMPÍADAS
-            </div>
-            <h3>
-                Olimpíadas Só Pode PRO
-            </h3>
-            <p>
-                Acontecem duas vezes por ano,
-                reunindo diferentes modalidades
-                em uma grande disputa.
-            </p>
-            <div class="event-date">
-                JANEIRO E JULHO
-            </div>
-        </div>
-        <div class="event-card">
-            <div class="event-label">
-                LIGA
-            </div>
-            <h3>
-                Liga Só Pode PRO
-            </h3>
-            <p>
-                A competição acontece de maio
-                a dezembro, somente em feriados
-                selecionados.
-            </p>
-            <div class="event-date">
-                MAIO — DEZEMBRO
-            </div>
-        </div>
-        <div class="event-card">
-            <div class="event-label">
-                COPA
-            </div>
-            <h3>
-                Copa Só Pode PRO
-            </h3>
-            <p>
-                Em dezembro, os campeões das
-                Olimpíadas realizadas naquele ano
-                se enfrentam em uma batalha de jogos.
-            </p>
-            <div class="event-date">
-                DEZEMBRO
-            </div>
-        </div>
-        <div class="event-card">
-            <div class="event-label">
-                SUPERCOPA
-            </div>
-            <h3>
-                Supercopa Só Pode PRO
-            </h3>
-            <p>
-                O campeão da Copa enfrenta o
-                campeão da Liga no jogo-tema
-                da Liga daquele ano.
-            </p>
-            <div class="event-date">
-                DEZEMBRO
-            </div>
-        </div>
-    </div>
-</section>
-<!-- =========================
-     COMPETIÇÕES
-========================= -->
-<section
-    class="section"
-    id="competicoes"
->
-    <h2 class="section-title">
-        Competições
-    </h2>
-    <div class="cards">
-        <div class="card">
-            <div class="card-number">
-                01
-            </div>
-            <h3>
-                Olimpíadas
-            </h3>
-            <p>
-                Disputadas em janeiro e julho,
-                com diversas modalidades e
-                medalhas em cada edição.
-            </p>
-        </div>
-        <div class="card">
-            <div class="card-number">
-                02
-            </div>
-            <h3>
-                Liga
-            </h3>
-            <p>
-                Disputada de maio a dezembro,
-                exclusivamente em feriados
-                selecionados.
-            </p>
-        </div>
-        <div class="card">
-            <div class="card-number">
-                03
-            </div>
-            <h3>
-                Copa
-            </h3>
-            <p>
-                Os campeões das Olimpíadas
-                daquele ano disputam uma
-                batalha de jogos em dezembro.
-            </p>
-        </div>
-        <div class="card">
-            <div class="card-number">
-                04
-            </div>
-            <h3>
-                Supercopa
-            </h3>
-            <p>
-                O campeão da Copa enfrenta
-                o campeão da Liga no
-                jogo-tema da Liga do ano.
-            </p>
-        </div>
     </div>
 </section>
 <!-- =========================
@@ -491,12 +345,12 @@
     id="calendario"
 >
     <h2 class="section-title">
-        Calendário anual
+        Temporada 2026
     </h2>
     <div class="calendar">
         <div class="calendar-item">
             <span>
-                Olimpíadas — 1ª edição
+                Olimpíadas
             </span>
             <span class="calendar-date">
                 JANEIRO
@@ -504,17 +358,15 @@
         </div>
         <div class="calendar-item">
             <span>
-                Liga Só Pode PRO
+                Liga
             </span>
             <span class="calendar-date">
                 MAIO — DEZEMBRO
-                <br>
-                FERIADOS SELECIONADOS
             </span>
         </div>
         <div class="calendar-item">
             <span>
-                Olimpíadas — 2ª edição
+                Olimpíadas
             </span>
             <span class="calendar-date">
                 JULHO
@@ -522,15 +374,7 @@
         </div>
         <div class="calendar-item">
             <span>
-                Copa Só Pode PRO
-            </span>
-            <span class="calendar-date">
-                DEZEMBRO
-            </span>
-        </div>
-        <div class="calendar-item">
-            <span>
-                Supercopa Só Pode PRO
+                Copa + Supercopa
             </span>
             <span class="calendar-date">
                 DEZEMBRO
@@ -539,56 +383,74 @@
     </div>
 </section>
 <!-- =========================
-     COMO FUNCIONAM
+     NOTÍCIAS
+========================= -->
+<section
+    class="section"
+    id="noticias"
+>
+    <h2 class="section-title">
+        Notícias
+    </h2>
+    <div class="news-placeholder">
+        <h3>
+            Em breve
+        </h3>
+        <p>
+            As principais notícias, resultados,
+            anúncios e acontecimentos do
+            Só Pode PRO aparecerão aqui.
+        </p>
+        <a
+            href="#"
+            class="secondary-button"
+        >
+            PÁGINA DE NOTÍCIAS
+        </a>
+    </div>
+</section>
+<!-- =========================
+     CONHEÇA O SITE
 ========================= -->
 <section class="section">
     <h2 class="section-title">
-        Como funcionam as competições
+        Só Pode PRO
     </h2>
-    <div class="rules">
-        <div class="rule">
+    <div class="site-sections">
+        <div class="site-card">
+            <div class="site-card-number">
+                01
+            </div>
             <h3>
-                Olimpíadas
+                Competições
             </h3>
             <p>
-                Duas edições acontecem todos os anos:
-                uma em janeiro e outra em julho.
-                Cada edição reúne diferentes jogos
-                e modalidades.
+                Conheça as competições
+                que fazem parte da temporada.
             </p>
         </div>
-        <div class="rule">
+        <div class="site-card">
+            <div class="site-card-number">
+                02
+            </div>
             <h3>
-                Liga
+                Participantes
             </h3>
             <p>
-                A Liga acontece entre maio e dezembro,
-                mas somente nos feriados selecionados
-                para as disputas.
+                Conheça os membros e
+                acompanhe suas trajetórias.
             </p>
         </div>
-        <div class="rule">
+        <div class="site-card">
+            <div class="site-card-number">
+                03
+            </div>
             <h3>
-                Copa
+                Notícias
             </h3>
             <p>
-                Os campeões das Olimpíadas realizadas
-                naquele ano se enfrentam em dezembro.
-                A competição funciona como uma batalha
-                de jogos: em uma série de 3 ou 5 jogos
-                diferentes, vence quem conquistar mais
-                partidas.
-            </p>
-        </div>
-        <div class="rule">
-            <h3>
-                Supercopa
-            </h3>
-            <p>
-                Em dezembro, o campeão da Copa enfrenta
-                o campeão da Liga. O confronto acontece
-                no jogo-tema escolhido para a Liga
-                daquele ano.
+                Acompanhe as novidades
+                e acontecimentos da temporada.
             </p>
         </div>
     </div>
@@ -605,20 +467,16 @@
     </h2>
     <div class="about">
         <p>
-            O Só Pode PRO é uma competição criada
-            para reunir os membros em diferentes
-            jogos e modalidades ao longo do ano.
+            O Só Pode PRO é uma competição
+            criada para reunir os membros
+            em diferentes jogos e modalidades
+            ao longo do ano.
         </p>
         <br>
         <p>
-            A temporada é formada por quatro grandes
-            competições: Olimpíadas, Liga, Copa e
-            Supercopa.
-        </p>
-        <br>
-        <p>
-            Cada competição possui seu próprio formato,
-            calendário e importância dentro da temporada.
+            A temporada reúne grandes eventos
+            e disputas que fazem parte da
+            história do grupo.
         </p>
     </div>
 </section>
