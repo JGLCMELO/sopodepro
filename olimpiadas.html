@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Olimpíadas | Só Pode PRO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071426;
+            color: white;
+        }
+
+        header {
+            background: #050d1a;
+            border-bottom: 1px solid #c9a227;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #d4af37;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .hero {
+            padding: 75px 7% 55px;
+            background: linear-gradient(180deg, #0b1d35, #071426);
+        }
+
+        .hero span {
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #b9c2cf;
+            font-size: 17px;
+            max-width: 720px;
+            line-height: 1.6;
+        }
+
+        .section {
+            padding: 55px 7%;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title span {
+            color: #d4af37;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .info-card h3 {
+            color: #d4af37;
+            font-size: 15px;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            color: #dce3eb;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .game-card {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .game-card h3 {
+            color: white;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        .format-box {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        .format-box p {
+            color: #c6d0dc;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .format-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .medals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .medal-card {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .medal-card strong {
+            display: block;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .medal-card span {
+            color: #c6d0dc;
+            font-size: 14px;
+        }
+
+        .history-box {
+            background: #0d2039;
+            border: 1px solid #1d3554;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .history-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #1d3554;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-item strong {
+            color: #d4af37;
+        }
+
+        .history-item p {
+            color: #b9c2cf;
+            margin-top: 6px;
+        }
+
+        .button-area {
+            text-align: center;
+            padding: 10px 7% 70px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 28px;
+            background: #d4af37;
+            color: #071426;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: #f0cf62;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #050d1a;
+            border-top: 1px solid #1d3554;
+            padding: 30px 7%;
+            text-align: center;
+            color: #7f8a99;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #d4af37;
+        }
+
+        @media (max-width: 900px) {
+            .games-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .medals {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SÓ PODE PRO</div>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="liga.html">Liga</a>
+        <a href="olimpiadas.html">Olimpíadas</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <span>COMPETIÇÃO MULTIESPORTIVA</span>
+
+    <h1>OLIMPÍADAS SÓ PODE PRO</h1>
+
+    <p>
+        A grande competição de modalidades do Só Pode PRO,
+        reunindo os participantes em diferentes jogos para disputar
+        medalhas e o título de campeão da edição.
+    </p>
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>INFORMAÇÕES</span> DA COMPETIÇÃO
+    </h2>
+
+    <div class="info-grid">
+
+        <div class="info-card">
+            <h3>EDIÇÕES</h3>
+            <p>Duas edições por ano: janeiro e julho.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>PARTICIPANTES</h3>
+            <p>14 participantes.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>DURAÇÃO</h3>
+            <p>Aproximadamente 3 dias por edição.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>FORMATO</h3>
+            <p>As modalidades são disputadas em formato mata-mata.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>MODALIDADES</span>
+    </h2>
+
+    <div class="games-grid">
+
+        <div class="game-card">
+            <h3>Rocket League<br>1x1</h3>
+        </div>
+
+        <div class="game-card">
+            <h3>Rocket League<br>2x2</h3>
+        </div>
+
+        <div class="game-card">
+            <h3>Stumble Guys</h3>
+        </div>
+
+        <div class="game-card">
+            <h3>Minecraft</h3>
+        </div>
+
+        <div class="game-card">
+            <h3>eFootball</h3>
+        </div>
+
+        <div class="game-card">
+            <h3>Madden</h3>
+        </div>
+
+        <div class="game-card">
+            <h3>F1</h3>
+        </div>
+
+        <div class="game-card">
+            <h3>Fortnite</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>FORMATO</span>
+    </h2>
+
+    <div class="format-box">
+
+        <p>
+            Cada modalidade é disputada em formato mata-mata.
+        </p>
+
+        <p>
+            Os participantes avançam pelas fases até a definição
+            dos medalhistas de cada modalidade.
+        </p>
+
+        <p>
+            Ao final de cada modalidade, são definidos os medalhistas
+            de ouro, prata e bronze.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>PONTUAÇÃO</span> DAS MEDALHAS
+    </h2>
+
+    <div class="medals">
+
+        <div class="medal-card">
+            <strong>OURO</strong>
+            <span>5 pontos</span>
+        </div>
+
+        <div class="medal-card">
+            <strong>PRATA</strong>
+            <span>3 pontos</span>
+        </div>
+
+        <div class="medal-card">
+            <strong>BRONZE</strong>
+            <span>2 pontos</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>CAMPEÃO</span> DA EDIÇÃO
+    </h2>
+
+    <div class="format-box">
+
+        <p>
+            Os pontos conquistados nas oito modalidades são somados
+            para determinar a classificação geral da edição.
+        </p>
+
+        <p>
+            O participante que terminar com a maior pontuação será
+            declarado campeão das Olimpíadas Só Pode PRO.
+        </p>
+
+        <p>
+            Além das medalhas das modalidades, o campeão geral recebe
+            o troféu da edição.
+        </p>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <h2 class="section-title">
+        <span>HISTÓRICO</span>
+    </h2>
+
+    <div class="history-box">
+
+        <div class="history-item">
+            <strong>Janeiro de 2027</strong>
+            <p>Campeão: A definir</p>
+        </div>
+
+        <div class="history-item">
+            <strong>Julho de 2027</strong>
+            <p>Campeão: A definir</p>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="button-area">
+
+    <a href="#" class="button">
+        CLASSIFICAÇÃO DAS OLIMPÍADAS
+    </a>
+
+</div>
+
+<footer>
+    <strong>SÓ PODE PRO</strong><br><br>
+    Olimpíadas Só Pode PRO · Duas edições por ano
+</footer>
+
+</body>
+</html>
