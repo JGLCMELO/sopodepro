@@ -314,6 +314,60 @@
         @media (max-width: 600px) {
             .hero {
                 min-height: 520px;
+                /* =========================
+   MENU MOBILE
+========================= */
+
+.menu-mobile {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    background: #050b14;
+    border-top: 1px solid #26364d;
+    padding: 15px 25px;
+}
+
+.mobile-nav a {
+    display: block;
+    color: #dce5f2;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 14px 0;
+    border-bottom: 1px solid #1d2b40;
+}
+
+.mobile-nav a:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+/* CELULAR */
+
+@media (max-width: 800px) {
+
+    nav {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+    .site-sections {
+        grid-template-columns: 1fr;
+    }
+
+}
             }
             .calendar-item {
                 flex-direction: column;
@@ -331,10 +385,40 @@
      MENU PRINCIPAL
 ========================= -->
 <header>
+
     <div class="navbar">
+
         <div class="logo">
             SÓ PODE <span>PRO</span>
         </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="liga.html">Liga</a>
+            <a href="olimpiadas.html">Olimpíadas</a>
+            <a href="copa.html">Copa</a>
+            <a href="supercopa.html">Supercopa</a>
+        </nav>
+
+        <button class="menu-mobile" onclick="abrirMenu()">
+            ☰
+        </button>
+
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="liga.html">Liga</a>
+        <a href="olimpiadas.html">Olimpíadas</a>
+        <a href="copa.html">Copa</a>
+        <a href="supercopa.html">Supercopa</a>
+
+    </div>
+
+</header>
         <nav>
             <a href="#inicio">
                 Início
@@ -547,5 +631,10 @@
     <br><br>
     Site oficial da competição
 </footer>
+ <script>
+function abrirMenu() {
+    document.getElementById("mobileNav").classList.toggle("active");
+}
+</script>                   
 </body>
 </html>
