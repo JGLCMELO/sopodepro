@@ -4,13 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Notícias | Só Pode PRO</title>
+    <title>Notícias — Só Pode PRO</title>
 
     <style>
-
-        /* =========================
-           CONFIGURAÇÕES GERAIS
-        ========================= */
 
         * {
             margin: 0;
@@ -24,25 +20,35 @@
             color: white;
         }
 
-
         /* =========================
-           MENU
+           HEADER
         ========================= */
 
         header {
-            background: #050d1a;
-            border-bottom: 1px solid #c9a227;
-            padding: 20px 7%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #050b14;
+            border-bottom: 1px solid #26364d;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
             font-size: 24px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #d4af37;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f5c542;
         }
 
         nav {
@@ -51,17 +57,16 @@
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
+            color: #dce5f2;
+            font-size: 14px;
             font-weight: bold;
-            transition: 0.2s;
+            text-decoration: none;
+            transition: .2s;
         }
 
         nav a:hover {
-            color: #d4af37;
+            color: #f5c542;
         }
-
 
         /* =========================
            MENU MOBILE
@@ -78,9 +83,9 @@
 
         .mobile-nav {
             display: none;
-            background: #050d1a;
-            border-top: 1px solid #1d3554;
-            padding: 15px 7%;
+            background: #050b14;
+            border-top: 1px solid #26364d;
+            padding: 15px 25px;
         }
 
         .mobile-nav.active {
@@ -89,172 +94,238 @@
 
         .mobile-nav a {
             display: block;
-            color: white;
-            text-decoration: none;
+            color: #dce5f2;
             font-weight: bold;
+            text-decoration: none;
             padding: 14px 0;
-            border-bottom: 1px solid #1d3554;
+            border-bottom: 1px solid #1d2b40;
         }
 
         .mobile-nav a:hover {
-            color: #d4af37;
+            color: #f5c542;
         }
 
         .mobile-nav a:last-child {
             border-bottom: none;
         }
 
-
         /* =========================
            HERO
         ========================= */
 
         .hero {
-            padding: 70px 7% 45px;
-            background: linear-gradient(
-                180deg,
-                #0b1d35,
-                #071426
-            );
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px 55px;
         }
 
-        .hero span {
-            color: #d4af37;
+        .hero-tag {
+            color: #f5c542;
             font-size: 13px;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            margin-bottom: 14px;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-top: 10px;
-            margin-bottom: 15px;
+            font-size: 64px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #f5c542;
         }
 
         .hero p {
-            color: #b9c2cf;
-            font-size: 17px;
-            max-width: 650px;
+            color: #b8c3d1;
+            font-size: 18px;
             line-height: 1.6;
+            max-width: 700px;
         }
-
 
         /* =========================
-           NOTÍCIAS
+           CONTEÚDO
         ========================= */
 
-        .news-section {
-            padding: 50px 7% 80px;
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 25px 25px 70px;
         }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 22px;
+        }
+
+        .section-title span {
+            color: #f5c542;
+        }
+
+        /* =========================
+           DESTAQUE
+        ========================= */
+
+        .featured {
+            background: linear-gradient(
+                135deg,
+                #102944,
+                #081525
+            );
+
+            border: 1px solid #f5c542;
+            border-radius: 16px;
+            padding: 38px;
+            margin-bottom: 35px;
+        }
+
+        .featured-label {
+            display: inline-block;
+            color: #071426;
+            background: #f5c542;
+            padding: 7px 11px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+
+        .featured-date {
+            color: #f5c542;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .featured h2 {
+            font-size: 36px;
+            line-height: 1.15;
+            margin-bottom: 15px;
+            max-width: 850px;
+        }
+
+        .featured p {
+            color: #b8c3d1;
+            font-size: 16px;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        /* =========================
+           GRID DE NOTÍCIAS
+        ========================= */
 
         .news-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         .news-card {
             background: #0d2039;
-            border: 1px solid #1d3554;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.2s;
+            border: 1px solid #26364d;
+            border-radius: 13px;
+            padding: 25px;
+            transition: .2s;
         }
 
         .news-card:hover {
-            transform: translateY(-4px);
-            border-color: #d4af37;
+            transform: translateY(-3px);
+            border-color: #f5c542;
         }
 
-        .news-image {
-            height: 160px;
-            background: linear-gradient(
-                135deg,
-                #122d4d,
-                #081525
-            );
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #d4af37;
-            font-size: 14px;
+        .news-category {
+            color: #f5c542;
+            font-size: 11px;
             font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .news-content {
-            padding: 22px;
+            letter-spacing: 1.5px;
         }
 
         .news-date {
-            color: #d4af37;
-            font-size: 12px;
+            color: #7f8a99;
+            font-size: 11px;
             font-weight: bold;
-            letter-spacing: 1px;
+            margin-top: 7px;
         }
 
-        .news-content h2 {
-            font-size: 21px;
-            margin: 10px 0;
+        .news-card h3 {
+            font-size: 22px;
+            line-height: 1.25;
+            margin: 13px 0;
         }
 
-        .news-content p {
-            color: #b9c2cf;
-            line-height: 1.5;
+        .news-card p {
+            color: #aeb9c8;
             font-size: 14px;
+            line-height: 1.55;
         }
 
+        .news-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: #f5c542;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .news-link:hover {
+            text-decoration: underline;
+        }
 
         /* =========================
-           VAZIO
+           BLOCO FINAL
         ========================= */
 
-        .empty {
-            text-align: center;
-            padding: 70px 20px;
+        .info-box {
+            margin-top: 10px;
             background: #0d2039;
-            border: 1px solid #1d3554;
-            border-radius: 12px;
+            border: 1px solid #26364d;
+            border-radius: 14px;
+            padding: 28px;
+            text-align: center;
         }
 
-        .empty h2 {
-            color: #d4af37;
-            margin-bottom: 12px;
+        .info-box h2 {
+            font-size: 25px;
+            margin-bottom: 10px;
         }
 
-        .empty p {
-            color: #b9c2cf;
+        .info-box h2 span {
+            color: #f5c542;
+        }
+
+        .info-box p {
+            color: #aeb9c8;
+            font-size: 14px;
             line-height: 1.5;
         }
-
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
-            background: #050d1a;
-            border-top: 1px solid #1d3554;
-            padding: 30px 7%;
+            background: #050b14;
+            border-top: 1px solid #26364d;
+            padding: 30px 25px;
             text-align: center;
             color: #7f8a99;
             font-size: 13px;
         }
 
         footer strong {
-            color: #d4af37;
+            color: #f5c542;
         }
 
-
         /* =========================
-           IPAD / CELULAR
+           RESPONSIVO
         ========================= */
 
         @media (max-width: 800px) {
-
-            header {
-                padding: 18px 7%;
-            }
 
             nav {
                 display: none;
@@ -264,12 +335,54 @@
                 display: block;
             }
 
+            .hero {
+                padding: 65px 25px 45px;
+            }
+
             .hero h1 {
-                font-size: 38px;
+                font-size: 50px;
+            }
+
+            .featured h2 {
+                font-size: 30px;
             }
 
             .news-grid {
                 grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .navbar {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .hero {
+                padding: 55px 20px 40px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .featured {
+                padding: 25px;
+            }
+
+            .featured h2 {
+                font-size: 26px;
             }
 
         }
@@ -279,92 +392,56 @@
 
 <body>
 
-
 <!-- =========================
-     MENU PRINCIPAL
+     HEADER
 ========================= -->
 
 <header>
 
-    <div class="logo">
-        SÓ PODE PRO
+    <div class="navbar">
+
+        <div class="logo">
+            SÓ PODE <span>PRO</span>
+        </div>
+
+        <nav>
+
+            <a href="index.html">Início</a>
+
+            <a href="noticias.html">Notícias</a>
+
+            <a href="olimpiadas.html">Olimpíadas</a>
+
+            <a href="copa.html">Copa</a>
+
+            <a href="participantes.html">Participantes</a>
+
+            <a href="hall.html">Hall dos Campeões</a>
+
+        </nav>
+
+        <button
+            class="menu-mobile"
+            onclick="abrirMenu()"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </button>
+
     </div>
 
+    <div class="mobile-nav" id="mobileNav">
 
-    <nav>
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="olimpiadas.html">Olimpíadas</a>
+        <a href="copa.html">Copa</a>
+        <a href="participantes.html">Participantes</a>
+        <a href="hall.html">Hall dos Campeões</a>
 
-        <a href="index.html">
-            Início
-        </a>
-
-        <a href="noticias.html">
-            Notícias
-        </a>
-
-        <a href="olimpiadas.html">
-            Olimpíadas
-        </a>
-
-        <a href="copa.html">
-            Copa
-        </a>
-
-        <a href="participantes.html">
-            Participantes
-        </a>
-
-        <a href="hall.html">
-            Hall dos Campeões
-        </a>
-
-    </nav>
-
-
-    <button
-        class="menu-mobile"
-        onclick="abrirMenu()"
-        aria-label="Abrir menu"
-    >
-        ☰
-    </button>
+    </div>
 
 </header>
-
-
-<!-- =========================
-     MENU MOBILE
-========================= -->
-
-<div
-    class="mobile-nav"
-    id="mobileNav"
->
-
-    <a href="index.html">
-        Início
-    </a>
-
-    <a href="noticias.html">
-        Notícias
-    </a>
-
-    <a href="olimpiadas.html">
-        Olimpíadas
-    </a>
-
-    <a href="copa.html">
-        Copa
-    </a>
-
-    <a href="participantes.html">
-        Participantes
-    </a>
-
-    <a href="hall.html">
-        Hall dos Campeões
-    </a>
-
-</div>
 
 
 <!-- =========================
@@ -373,67 +450,199 @@
 
 <section class="hero">
 
-    <span>
-        COMUNICAÇÃO OFICIAL
-    </span>
+    <div class="hero-tag">
+        SÓ PODE PRO
+    </div>
 
     <h1>
-        Notícias
+        NOTÍCIAS <span>DO GRUPO</span>
     </h1>
 
     <p>
-        Acompanhe as principais novidades,
-        anúncios e acontecimentos da temporada
-        do Só Pode PRO.
+        Fique por dentro das novidades, anúncios,
+        competições e acontecimentos do Só Pode PRO.
     </p>
 
 </section>
 
 
 <!-- =========================
-     NOTÍCIAS
+     NOTÍCIA EM DESTAQUE
 ========================= -->
 
-<section class="news-section">
+<section class="section">
+
+    <div class="featured">
+
+        <div class="featured-label">
+            DESTAQUE
+        </div>
+
+        <div class="featured-date">
+            15 DE SETEMBRO DE 2026
+        </div>
+
+        <h2>
+            O site oficial do Só Pode PRO está no ar!
+        </h2>
+
+        <p>
+            O Só Pode PRO agora tem seu próprio espaço na internet.
+            O site reúne informações sobre o grupo, participantes,
+            Olimpíadas, Copa, notícias e a história dos campeões.
+        </p>
+
+    </div>
+
+
+<!-- =========================
+     OUTRAS NOTÍCIAS
+========================= -->
+
+    <h2 class="section-title">
+        Mais <span>notícias</span>
+    </h2>
 
     <div class="news-grid">
 
+        <article class="news-card">
 
-        <!-- NOTÍCIA 1 -->
-
-        <div class="news-card">
-
-            <div class="news-image">
-                COMUNICADO OFICIAL
+            <div class="news-category">
+                OLIMPÍADAS
             </div>
 
-            <div class="news-content">
-
-                <div class="news-date">
-                    15 DE SETEMBRO DE 2026
-                </div>
-
-                <h2>
-                    O site oficial do Só Pode PRO está no ar!
-                </h2>
-
-                <p>
-                    O Só Pode PRO agora tem um site oficial.
-                    A partir de hoje, todas as notícias,
-                    competições, regulamentos, calendários e
-                    informações da temporada serão publicadas aqui.
-                </p>
-
-                <p style="margin-top:12px;">
-                    Este é o primeiro passo para transformar
-                    o Só Pode PRO em um grupo cada vez mais
-                    organizado e completo.
-                </p>
-
+            <div class="news-date">
+                SÓ PODE PRO
             </div>
 
-        </div>
+            <h3>
+                Próximas Olimpíadas serão em janeiro de 2027
+            </h3>
 
+            <p>
+                A próxima edição das Olimpíadas do Só Pode PRO
+                acontecerá em janeiro de 2027, reunindo os
+                participantes em diferentes modalidades.
+            </p>
+
+            <a
+                href="olimpiadas.html"
+                class="news-link"
+            >
+                VER OLIMPÍADAS →
+            </a>
+
+        </article>
+
+
+        <article class="news-card">
+
+            <div class="news-category">
+                HISTÓRIA
+            </div>
+
+            <div class="news-date">
+                PRIMEIRA EDIÇÃO
+            </div>
+
+            <h3>
+                Guga é o primeiro campeão
+            </h3>
+
+            <p>
+                Guga, conhecido como Guitlac, entrou para a história
+                como o primeiro campeão das Olimpíadas do
+                Só Pode PRO.
+            </p>
+
+            <a
+                href="hall.html"
+                class="news-link"
+            >
+                VER HALL DOS CAMPEÕES →
+            </a>
+
+        </article>
+
+
+        <article class="news-card">
+
+            <div class="news-category">
+                GRUPO
+            </div>
+
+            <div class="news-date">
+                SÓ PODE PRO
+            </div>
+
+            <h3>
+                Conheça os 14 participantes
+            </h3>
+
+            <p>
+                O Só Pode PRO reúne 14 participantes.
+                Conheça cada integrante, seu nome no grupo
+                e seu personagem.
+            </p>
+
+            <a
+                href="participantes.html"
+                class="news-link"
+            >
+                VER PARTICIPANTES →
+            </a>
+
+        </article>
+
+
+        <article class="news-card">
+
+            <div class="news-category">
+                COPA
+            </div>
+
+            <div class="news-date">
+                DEZEMBRO
+            </div>
+
+            <h3>
+                A Copa reúne os campeões das Olimpíadas
+            </h3>
+
+            <p>
+                Em dezembro, os campeões das duas edições das
+                Olimpíadas se enfrentam em uma série de jogos
+                para decidir quem conquista a Copa.
+            </p>
+
+            <a
+                href="copa.html"
+                class="news-link"
+            >
+                VER COPA →
+            </a>
+
+        </article>
+
+    </div>
+
+
+<!-- =========================
+     BLOCO FINAL
+========================= -->
+
+    <div class="info-box">
+
+        <h2>
+            Mais novidades do <span>Só Pode PRO</span>
+            em breve
+        </h2>
+
+        <p>
+            Esta página será atualizada sempre que houver
+            novos acontecimentos, anúncios ou informações
+            importantes sobre o grupo.
+        </p>
 
     </div>
 
@@ -441,7 +650,7 @@
 
 
 <!-- =========================
-     RODAPÉ
+     FOOTER
 ========================= -->
 
 <footer>
@@ -452,13 +661,13 @@
 
     <br><br>
 
-    Temporada 2026 · Site oficial da competição
+    Grupo oficial · Site do Só Pode PRO
 
 </footer>
 
 
 <!-- =========================
-     MENU MOBILE - JAVASCRIPT
+     JAVASCRIPT
 ========================= -->
 
 <script>
@@ -473,7 +682,6 @@ function abrirMenu() {
 }
 
 </script>
-
 
 </body>
 </html>
