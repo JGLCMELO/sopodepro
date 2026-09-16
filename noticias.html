@@ -7,6 +7,11 @@
     <title>Notícias | Só Pode PRO</title>
 
     <style>
+
+        /* =========================
+           CONFIGURAÇÕES GERAIS
+        ========================= */
+
         * {
             margin: 0;
             padding: 0;
@@ -18,6 +23,11 @@
             background: #071426;
             color: white;
         }
+
+
+        /* =========================
+           MENU
+        ========================= */
 
         header {
             background: #050d1a;
@@ -45,15 +55,67 @@
             text-decoration: none;
             font-size: 15px;
             font-weight: bold;
+            transition: 0.2s;
         }
 
         nav a:hover {
             color: #d4af37;
         }
 
+
+        /* =========================
+           MENU MOBILE
+        ========================= */
+
+        .menu-mobile {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            background: #050d1a;
+            border-top: 1px solid #1d3554;
+            padding: 15px 7%;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 14px 0;
+            border-bottom: 1px solid #1d3554;
+        }
+
+        .mobile-nav a:hover {
+            color: #d4af37;
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
         .hero {
             padding: 70px 7% 45px;
-            background: linear-gradient(180deg, #0b1d35, #071426);
+            background: linear-gradient(
+                180deg,
+                #0b1d35,
+                #071426
+            );
         }
 
         .hero span {
@@ -75,6 +137,11 @@
             max-width: 650px;
             line-height: 1.6;
         }
+
+
+        /* =========================
+           NOTÍCIAS
+        ========================= */
 
         .news-section {
             padding: 50px 7% 80px;
@@ -101,7 +168,11 @@
 
         .news-image {
             height: 160px;
-            background: linear-gradient(135deg, #122d4d, #081525);
+            background: linear-gradient(
+                135deg,
+                #122d4d,
+                #081525
+            );
             display: flex;
             align-items: center;
             justify-content: center;
@@ -133,6 +204,11 @@
             font-size: 14px;
         }
 
+
+        /* =========================
+           VAZIO
+        ========================= */
+
         .empty {
             text-align: center;
             padding: 70px 20px;
@@ -151,6 +227,11 @@
             line-height: 1.5;
         }
 
+
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
             background: #050d1a;
             border-top: 1px solid #1d3554;
@@ -164,16 +245,23 @@
             color: #d4af37;
         }
 
+
+        /* =========================
+           IPAD / CELULAR
+        ========================= */
+
         @media (max-width: 800px) {
+
             header {
-                flex-direction: column;
-                gap: 15px;
+                padding: 18px 7%;
             }
 
             nav {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
+                display: none;
+            }
+
+            .menu-mobile {
+                display: block;
             }
 
             .hero h1 {
@@ -183,74 +271,209 @@
             .news-grid {
                 grid-template-columns: 1fr;
             }
+
         }
+
     </style>
 </head>
 
 <body>
 
+
+<!-- =========================
+     MENU PRINCIPAL
+========================= -->
+
 <header>
-    <div class="logo">SÓ PODE PRO</div>
+
+    <div class="logo">
+        SÓ PODE PRO
+    </div>
+
 
     <nav>
-        <a href="index.html">Início</a>
-        <a href="noticias.html">Notícias</a>
-         <a href="olimpiadas.html">Olimpíadas</a>
-         <a href="copa.html">Copa</a>
-         <a href="participantes.html">Participantes</a>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="noticias.html">
+            Notícias
+        </a>
+
+        <a href="olimpiadas.html">
+            Olimpíadas
+        </a>
+
+        <a href="copa.html">
+            Copa
+        </a>
+
+        <a href="participantes.html">
+            Participantes
+        </a>
+
+        <a href="hall.html">
+            Hall dos Campeões
+        </a>
+
     </nav>
+
+
+    <button
+        class="menu-mobile"
+        onclick="abrirMenu()"
+        aria-label="Abrir menu"
+    >
+        ☰
+    </button>
+
 </header>
 
-<section class="hero">
-    <span>COMUNICAÇÃO OFICIAL</span>
-    <h1>Notícias</h1>
-    <p>
-        Acompanhe as principais novidades, anúncios e acontecimentos
-        da temporada do Só Pode PRO.
-    </p>
-</section>
 
-<section class="news-section">
+<!-- =========================
+     MENU MOBILE
+========================= -->
 
-<div class="news-grid">
+<div
+    class="mobile-nav"
+    id="mobileNav"
+>
 
-    <div class="news-card">
+    <a href="index.html">
+        Início
+    </a>
 
-        <div class="news-image">
-            COMUNICADO OFICIAL
-        </div>
+    <a href="noticias.html">
+        Notícias
+    </a>
 
-        <div class="news-content">
+    <a href="olimpiadas.html">
+        Olimpíadas
+    </a>
 
-            <div class="news-date">
-                15 DE SETEMBRO DE 2026
-            </div>
+    <a href="copa.html">
+        Copa
+    </a>
 
-            <h2>O site oficial do Só Pode PRO está no ar!</h2>
+    <a href="participantes.html">
+        Participantes
+    </a>
 
-            <p>
-                O Só Pode PRO agora tem um site oficial. A partir de hoje,
-                todas as notícias, competições, regulamentos, calendários e
-                informações da temporada serão publicadas aqui.
-            </p>
-
-            <p style="margin-top:12px;">
-                Este é o primeiro passo para transformar o Só Pode PRO em um
-                grupo cada vez mais organizado e completo.
-            </p>
-
-        </div>
-
-    </div>
+    <a href="hall.html">
+        Hall dos Campeões
+    </a>
 
 </div>
 
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <span>
+        COMUNICAÇÃO OFICIAL
+    </span>
+
+    <h1>
+        Notícias
+    </h1>
+
+    <p>
+        Acompanhe as principais novidades,
+        anúncios e acontecimentos da temporada
+        do Só Pode PRO.
+    </p>
+
 </section>
 
+
+<!-- =========================
+     NOTÍCIAS
+========================= -->
+
+<section class="news-section">
+
+    <div class="news-grid">
+
+
+        <!-- NOTÍCIA 1 -->
+
+        <div class="news-card">
+
+            <div class="news-image">
+                COMUNICADO OFICIAL
+            </div>
+
+            <div class="news-content">
+
+                <div class="news-date">
+                    15 DE SETEMBRO DE 2026
+                </div>
+
+                <h2>
+                    O site oficial do Só Pode PRO está no ar!
+                </h2>
+
+                <p>
+                    O Só Pode PRO agora tem um site oficial.
+                    A partir de hoje, todas as notícias,
+                    competições, regulamentos, calendários e
+                    informações da temporada serão publicadas aqui.
+                </p>
+
+                <p style="margin-top:12px;">
+                    Este é o primeiro passo para transformar
+                    o Só Pode PRO em um grupo cada vez mais
+                    organizado e completo.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
 <footer>
-    <strong>SÓ PODE PRO</strong><br><br>
+
+    <strong>
+        SÓ PODE PRO
+    </strong>
+
+    <br><br>
+
     Temporada 2026 · Site oficial da competição
+
 </footer>
+
+
+<!-- =========================
+     MENU MOBILE - JAVASCRIPT
+========================= -->
+
+<script>
+
+function abrirMenu() {
+
+    document
+        .getElementById("mobileNav")
+        .classList
+        .toggle("active");
+
+}
+
+</script>
+
 
 </body>
 </html>
