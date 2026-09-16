@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Só Pode PRO | Copa</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: white;
+        }
+
+        /* MENU */
+
+        header {
+            background: #050b14;
+            border-bottom: 1px solid #26364d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #dce5f2;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f5c542;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            background:
+                radial-gradient(circle at center, #17345a 0%, #07111f 65%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .season {
+            color: #f5c542;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 9vw, 90px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #f5c542;
+        }
+
+        .hero p {
+            color: #b9c7d9;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* SEÇÕES */
+
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: #0d1b2e;
+            border: 1px solid #263b57;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .card-number {
+            color: #f5c542;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #aebed1;
+            line-height: 1.6;
+        }
+
+        /* FORMATO */
+
+        .format-box {
+            background: linear-gradient(135deg, #122641, #0b1728);
+            border: 1px solid #2c405c;
+            border-radius: 15px;
+            padding: 35px;
+        }
+
+        .format-box p {
+            color: #b9c7d9;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .games {
+            display: grid;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .game {
+            padding: 18px 20px;
+            background: #0d1b2e;
+            border: 1px solid #263b57;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .game strong {
+            color: #f5c542;
+        }
+
+        /* FINAL */
+
+        .final-box {
+            text-align: center;
+            background: linear-gradient(135deg, #17345a, #0b1728);
+            border: 1px solid #f5c542;
+            border-radius: 15px;
+            padding: 45px 30px;
+        }
+
+        .final-box h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .final-box p {
+            color: #b9c7d9;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #040912;
+            border-top: 1px solid #26364d;
+            text-align: center;
+            padding: 40px 20px;
+            color: #71839b;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 750px) {
+
+            nav {
+                display: none;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .game {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            SÓ PODE <span>PRO</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="liga.html">Liga</a>
+            <a href="olimpiadas.html">Olimpíadas</a>
+            <a href="copa.html">Copa</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- APRESENTAÇÃO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="season">
+                DEZEMBRO
+            </div>
+
+            <h1>
+                COPA <span>SÓ PODE PRO</span>
+            </h1>
+
+            <p>
+                A disputa entre os campeões das duas
+                Olimpíadas do ano. Uma batalha de jogos
+                para definir o campeão da Copa.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- VISÃO GERAL -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            A Copa
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <div class="card-number">
+                    01
+                </div>
+
+                <h3>
+                    Quem participa?
+                </h3>
+
+                <p>
+                    Os campeões da 1ª e da 2ª edição
+                    das Olimpíadas realizadas durante
+                    o ano.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="card-number">
+                    02
+                </div>
+
+                <h3>
+                    Quando acontece?
+                </h3>
+
+                <p>
+                    A Copa acontece no final da temporada,
+                    durante o mês de dezembro.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FORMATO -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Formato da competição
+        </h2>
+
+        <div class="format-box">
+
+            <p>
+                A Copa é disputada em uma série de partidas
+                em diferentes jogos.
+            </p>
+
+            <p>
+                A série terá <strong>3 ou 5 partidas</strong>,
+                dependendo do formato definido para a edição.
+            </p>
+
+            <p>
+                Cada partida será disputada em um jogo
+                diferente.
+            </p>
+
+            <div class="games">
+
+                <div class="game">
+                    <span>Partida 1</span>
+                    <strong>Jogo diferente</strong>
+                </div>
+
+                <div class="game">
+                    <span>Partida 2</span>
+                    <strong>Jogo diferente</strong>
+                </div>
+
+                <div class="game">
+                    <span>Partida 3</span>
+                    <strong>Jogo diferente</strong>
+                </div>
+
+                <div class="game">
+                    <span>Partidas extras</span>
+                    <strong>4 e 5, se necessário</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CAMPEÃO -->
+
+    <section class="section">
+
+        <div class="final-box">
+
+            <h2>
+                O CAMPEÃO DA COPA
+            </h2>
+
+            <p>
+                O participante que vencer a maioria das
+                partidas será declarado campeão da
+                Copa Só Pode PRO.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <strong>SÓ PODE PRO</strong>
+
+    <br><br>
+
+    Copa Só Pode PRO
+
+    <br><br>
+
+    Site oficial da competição
+
+</footer>
+
+</body>
+</html>
