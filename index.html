@@ -2,19 +2,11 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Só Pode PRO | 2026</title>
+    <title>Só Pode PRO</title>
 
     <style>
-
-        /* =========================
-           CONFIGURAÇÕES GERAIS
-        ========================= */
 
         * {
             margin: 0;
@@ -22,23 +14,14 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #07111f;
+            background: #071426;
             color: white;
         }
 
-        a {
-            text-decoration: none;
-        }
-
-
         /* =========================
-           MENU
+           HEADER
         ========================= */
 
         header {
@@ -77,13 +60,13 @@
             color: #dce5f2;
             font-size: 14px;
             font-weight: bold;
-            transition: 0.2s;
+            text-decoration: none;
+            transition: .2s;
         }
 
         nav a:hover {
             color: #f5c542;
         }
-
 
         /* =========================
            MENU MOBILE
@@ -113,6 +96,7 @@
             display: block;
             color: #dce5f2;
             font-weight: bold;
+            text-decoration: none;
             padding: 14px 0;
             border-bottom: 1px solid #1d2b40;
         }
@@ -125,43 +109,31 @@
             border-bottom: none;
         }
 
-
         /* =========================
            HERO
         ========================= */
 
         .hero {
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    #17345a 0%,
-                    #07111f 65%
-                );
+            max-width: 1200px;
+            margin: auto;
+            padding: 95px 25px 80px;
         }
 
         .hero-content {
-            max-width: 850px;
+            max-width: 780px;
         }
 
-        .season {
+        .hero-tag {
             color: #f5c542;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: bold;
-            letter-spacing: 4px;
-            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
 
         .hero h1 {
-            font-size: clamp(52px, 10vw, 100px);
-            line-height: 0.95;
-            margin-bottom: 25px;
+            font-size: 64px;
+            line-height: 1;
+            margin: 14px 0 20px;
         }
 
         .hero h1 span {
@@ -169,256 +141,249 @@
         }
 
         .hero p {
-            max-width: 650px;
-            margin: auto;
-            color: #b9c7d9;
-            font-size: 19px;
+            color: #b8c3d1;
+            font-size: 18px;
             line-height: 1.6;
+            max-width: 700px;
         }
 
         .hero-button {
             display: inline-block;
-            margin-top: 35px;
-            padding: 15px 30px;
-            border-radius: 8px;
+            margin-top: 28px;
+            padding: 14px 22px;
             background: #f5c542;
-            color: #07111f;
+            color: #071426;
+            text-decoration: none;
             font-weight: 900;
-            transition: 0.2s;
+            border-radius: 7px;
+            transition: .2s;
         }
 
         .hero-button:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
+            opacity: .9;
         }
 
-
         /* =========================
-           SEÇÕES
+           PRÓXIMO EVENTO
         ========================= */
 
         .section {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: auto;
-            padding: 70px 25px;
+            padding: 30px 25px 70px;
         }
 
         .section-title {
-            font-size: 32px;
-            margin-bottom: 30px;
+            font-size: 30px;
+            margin-bottom: 22px;
         }
 
-
-        /* =========================
-           CALENDÁRIO
-        ========================= */
-
-        .calendar {
-            display: grid;
-            gap: 12px;
+        .section-title span {
+            color: #f5c542;
         }
 
-        .calendar-item {
+        .next-event {
+            background: linear-gradient(
+                135deg,
+                #102944,
+                #081525
+            );
+            border: 1px solid #f5c542;
+            border-radius: 15px;
+            padding: 35px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 22px;
-            background: #0d1b2e;
-            border: 1px solid #263b57;
-            border-radius: 10px;
-            transition: 0.2s;
+            gap: 30px;
         }
 
-        .calendar-item:hover {
-            border-color: #f5c542;
-            transform: translateX(3px);
-        }
-
-        .calendar-date {
+        .event-label {
             color: #f5c542;
+            font-size: 12px;
             font-weight: bold;
-            text-align: right;
+            letter-spacing: 2px;
         }
 
+        .next-event h2 {
+            font-size: 34px;
+            margin: 9px 0;
+        }
+
+        .next-event p {
+            color: #b8c3d1;
+            line-height: 1.5;
+        }
+
+        .event-date {
+            min-width: 190px;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #26364d;
+            border-radius: 10px;
+            background: #071426;
+        }
+
+        .event-date strong {
+            display: block;
+            color: #f5c542;
+            font-size: 28px;
+        }
+
+        .event-date span {
+            color: #b8c3d1;
+            font-size: 13px;
+        }
 
         /* =========================
            NOTÍCIAS
         ========================= */
 
-        .news-placeholder {
-            padding: 35px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #122641,
-                    #0b1728
-                );
-
-            border: 1px solid #2c405c;
-            border-radius: 15px;
-            text-align: center;
-        }
-
-        .news-placeholder h3 {
-            font-size: 25px;
-            margin-bottom: 12px;
-        }
-
-        .news-placeholder p {
-            color: #aebed1;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .secondary-button {
-            display: inline-block;
-            padding: 12px 22px;
-            border: 1px solid #f5c542;
-            border-radius: 7px;
-            color: #f5c542;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-
-        .secondary-button:hover {
-            background: #f5c542;
-            color: #07111f;
-        }
-
-
-        /* =========================
-           ÚLTIMA NOTÍCIA
-        ========================= */
-
-        .news-card-home {
-            background:
-                linear-gradient(
-                    135deg,
-                    #122641,
-                    #0b1728
-                );
-
-            border: 1px solid #2c405c;
-            border-radius: 16px;
-            padding: 32px;
-        }
-
-        .news-tag {
-            display: inline-block;
-            background: #f5c542;
-            color: #07111f;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            margin-bottom: 15px;
-        }
-
-        .news-date {
-            color: #f5c542;
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .news-card-home h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        .news-card-home p {
-            color: #b9c7d9;
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-
-
-        /* =========================
-           NAVEGAÇÃO DO SITE
-        ========================= */
-
-        .site-sections {
+        .news-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
-        .site-card {
-            padding: 30px;
-            background: #0d1b2e;
-            border: 1px solid #263b57;
-            border-radius: 14px;
-            transition: 0.2s;
+        .news-card {
+            background: #0d2039;
+            border: 1px solid #26364d;
+            border-radius: 12px;
+            padding: 23px;
+            transition: .2s;
         }
 
-        .site-card:hover {
-            transform: translateY(-5px);
+        .news-card:hover {
+            transform: translateY(-3px);
             border-color: #f5c542;
         }
 
-        .site-card-number {
+        .news-date {
             color: #f5c542;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        .site-card h3 {
-            font-size: 23px;
-            margin-bottom: 10px;
+        .news-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
         }
 
-        .site-card p {
-            color: #aebed1;
+        .news-card p {
+            color: #aeb9c8;
+            font-size: 14px;
             line-height: 1.5;
         }
 
+        .news-link {
+            display: inline-block;
+            margin-top: 16px;
+            color: #f5c542;
+            font-size: 13px;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
         /* =========================
-           SOBRE
+           ÁREAS DO GRUPO
         ========================= */
 
-        .about {
-            padding: 35px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #122641,
-                    #0b1728
-                );
-
-            border: 1px solid #2c405c;
-            border-radius: 15px;
+        .areas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
         }
 
-        .about p {
-            color: #b9c7d9;
-            line-height: 1.7;
+        .area-card {
+            background: #0d2039;
+            border: 1px solid #26364d;
+            border-radius: 12px;
+            padding: 25px;
+            text-decoration: none;
+            color: white;
+            transition: .2s;
         }
 
+        .area-card:hover {
+            transform: translateY(-3px);
+            border-color: #f5c542;
+        }
+
+        .area-card .icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .area-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .area-card p {
+            color: #aeb9c8;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           CAMPEÃO
+        ========================= */
+
+        .champion {
+            background: #0d2039;
+            border: 1px solid #26364d;
+            border-radius: 14px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .champion-info small {
+            color: #f5c542;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .champion-info h2 {
+            font-size: 28px;
+            margin: 8px 0;
+        }
+
+        .champion-info p {
+            color: #aeb9c8;
+        }
+
+        .champion-button {
+            color: #071426;
+            background: #f5c542;
+            padding: 13px 18px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+        }
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
-            background: #040912;
+            background: #050b14;
             border-top: 1px solid #26364d;
+            padding: 30px 25px;
             text-align: center;
-            padding: 40px 20px;
-            color: #71839b;
+            color: #7f8a99;
+            font-size: 13px;
         }
 
         footer strong {
-            color: white;
+            color: #f5c542;
         }
 
-
         /* =========================
-           IPAD / CELULAR
+           RESPONSIVO
         ========================= */
 
         @media (max-width: 800px) {
@@ -431,31 +396,56 @@
                 display: block;
             }
 
-            .site-sections {
+            .hero {
+                padding: 70px 25px 55px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .next-event {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .event-date {
+                width: 100%;
+            }
+
+            .news-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .areas {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .champion {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
         }
 
+        @media (max-width: 500px) {
 
-        /* =========================
-           CELULAR
-        ========================= */
-
-        @media (max-width: 600px) {
-
-            .hero {
-                min-height: 520px;
+            .hero h1 {
+                font-size: 40px;
             }
 
-            .calendar-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
+            .areas {
+                grid-template-columns: 1fr;
             }
 
-            .calendar-date {
-                text-align: left;
+            .section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .navbar {
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
         }
@@ -465,9 +455,8 @@
 
 <body>
 
-
 <!-- =========================
-     MENU PRINCIPAL
+     HEADER
 ========================= -->
 
 <header>
@@ -480,29 +469,17 @@
 
         <nav>
 
-            <a href="index.html">
-                Início
-            </a>
+            <a href="index.html">Início</a>
 
-            <a href="noticias.html">
-                Notícias
-            </a>
+            <a href="noticias.html">Notícias</a>
 
-            <a href="olimpiadas.html">
-                Olimpíadas
-            </a>
+            <a href="olimpiadas.html">Olimpíadas</a>
 
-            <a href="copa.html">
-                Copa
-            </a>
+            <a href="copa.html">Copa</a>
 
-            <a href="participantes.html">
-                Participantes
-            </a>
+            <a href="participantes.html">Participantes</a>
 
-            <a href="hall.html">
-                Hall dos Campeões
-            </a>
+            <a href="hall.html">Hall dos Campeões</a>
 
         </nav>
 
@@ -516,71 +493,49 @@
 
     </div>
 
+    <div class="mobile-nav" id="mobileNav">
 
-    <div
-        class="mobile-nav"
-        id="mobileNav"
-    >
-
-        <a href="index.html">
-            Início
-        </a>
-
-        <a href="noticias.html">
-            Notícias
-        </a>
-
-        <a href="olimpiadas.html">
-            Olimpíadas
-        </a>
-
-        <a href="copa.html">
-            Copa
-        </a>
-
-        <a href="participantes.html">
-            Participantes
-        </a>
-
-        <a href="hall.html">
-            Hall dos Campeões
-        </a>
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="olimpiadas.html">Olimpíadas</a>
+        <a href="copa.html">Copa</a>
+        <a href="participantes.html">Participantes</a>
+        <a href="hall.html">Hall dos Campeões</a>
 
     </div>
 
 </header>
 
 
-<main id="inicio">
-
-
 <!-- =========================
-     APRESENTAÇÃO
+     HERO
 ========================= -->
 
 <section class="hero">
 
     <div class="hero-content">
 
-        <div class="season">
-            TEMPORADA 2026
+        <div class="hero-tag">
+            BEM-VINDO AO SÓ PODE PRO
         </div>
 
         <h1>
-            SÓ PODE <span>PRO</span>
+            UM GRUPO.<br>
+            VÁRIOS JOGOS.<br>
+            <span>MOMENTOS INESQUECÍVEIS.</span>
         </h1>
 
         <p>
-            O campeonato oficial entre os membros.
-            Uma temporada de jogos, disputas,
-            títulos e momentos históricos.
+            O Só Pode PRO é um grupo de amigos que se reúne
+            para jogar, competir e criar grandes momentos.
+            Aqui você acompanha tudo o que acontece no grupo.
         </p>
 
         <a
-            href="#calendario"
+            href="participantes.html"
             class="hero-button"
         >
-            VER CALENDÁRIO DA TEMPORADA
+            CONHEÇA OS PARTICIPANTES
         </a>
 
     </div>
@@ -589,54 +544,43 @@
 
 
 <!-- =========================
-     CALENDÁRIO
+     PRÓXIMO EVENTO
 ========================= -->
 
-<section
-    class="section"
-    id="calendario"
->
+<section class="section">
 
     <h2 class="section-title">
-        Temporada 2026
+        Próximo <span>evento</span>
     </h2>
 
-    <div class="calendar">
+    <div class="next-event">
 
-        <div class="calendar-item">
+        <div>
 
-            <span>
-                Olimpíadas
-            </span>
+            <div class="event-label">
+                PRÓXIMAS OLIMPÍADAS
+            </div>
 
-            <span class="calendar-date">
+            <h2>
+                Olimpíadas Só Pode PRO
+            </h2>
+
+            <p>
+                A próxima edição das Olimpíadas acontecerá
+                em janeiro de 2027, reunindo os participantes
+                do grupo em diferentes modalidades.
+            </p>
+
+        </div>
+
+        <div class="event-date">
+
+            <strong>
                 JANEIRO
-            </span>
-
-        </div>
-
-
-        <div class="calendar-item">
+            </strong>
 
             <span>
-                Olimpíadas
-            </span>
-
-            <span class="calendar-date">
-                JULHO
-            </span>
-
-        </div>
-
-
-        <div class="calendar-item">
-
-            <span>
-                Copa
-            </span>
-
-            <span class="calendar-date">
-                DEZEMBRO
+                2027
             </span>
 
         </div>
@@ -650,41 +594,187 @@
      NOTÍCIAS
 ========================= -->
 
-<section
-    class="section"
-    id="noticias"
->
+<section class="section">
 
     <h2 class="section-title">
-        Notícias
+        Últimas <span>notícias</span>
     </h2>
 
-    <div class="news-card-home">
+    <div class="news-grid">
 
-        <div class="news-tag">
-            ÚLTIMA NOTÍCIA
-        </div>
+        <article class="news-card">
 
-        <div class="news-date">
-            15 DE SETEMBRO DE 2026
-        </div>
+            <div class="news-date">
+                15 DE SETEMBRO DE 2026
+            </div>
 
-        <h3>
-            O site oficial do Só Pode PRO está no ar!
-        </h3>
+            <h3>
+                O site oficial do Só Pode PRO está no ar!
+            </h3>
 
-        <p>
-            O Só Pode PRO agora tem um site oficial.
-            A partir de hoje, todas as notícias,
-            competições, regulamentos e informações
-            da temporada serão publicadas aqui.
-        </p>
+            <p>
+                O grupo agora tem um espaço oficial para
+                acompanhar notícias, competições, participantes
+                e tudo que acontece no Só Pode PRO.
+            </p>
+
+            <a
+                href="noticias.html"
+                class="news-link"
+            >
+                LER NOTÍCIAS →
+            </a>
+
+        </article>
+
+
+        <article class="news-card">
+
+            <div class="news-date">
+                SÓ PODE PRO
+            </div>
+
+            <h3>
+                Próximas Olimpíadas serão em janeiro de 2027
+            </h3>
+
+            <p>
+                A próxima edição das Olimpíadas do grupo
+                acontecerá em janeiro de 2027.
+            </p>
+
+            <a
+                href="olimpiadas.html"
+                class="news-link"
+            >
+                VER OLIMPÍADAS →
+            </a>
+
+        </article>
+
+
+        <article class="news-card">
+
+            <div class="news-date">
+                HISTÓRIA
+            </div>
+
+            <h3>
+                Guga é o primeiro campeão
+            </h3>
+
+            <p>
+                Guga, conhecido como Guitlac, foi o campeão
+                da primeira Olimpíada do Só Pode PRO.
+            </p>
+
+            <a
+                href="hall.html"
+                class="news-link"
+            >
+                VER HALL →
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ÁREAS DO GRUPO
+========================= -->
+
+<section class="section">
+
+    <h2 class="section-title">
+        Explore o <span>Só Pode PRO</span>
+    </h2>
+
+    <div class="areas">
 
         <a
-            href="noticias.html"
-            class="secondary-button"
+            href="olimpiadas.html"
+            class="area-card"
         >
-            LER NOTÍCIA COMPLETA
+
+            <div class="icon">
+                🏅
+            </div>
+
+            <h3>
+                Olimpíadas
+            </h3>
+
+            <p>
+                Conheça as modalidades, regras e formato
+                das Olimpíadas do grupo.
+            </p>
+
+        </a>
+
+
+        <a
+            href="copa.html"
+            class="area-card"
+        >
+
+            <div class="icon">
+                🏆
+            </div>
+
+            <h3>
+                Copa
+            </h3>
+
+            <p>
+                Confira como funciona a competição que
+                reúne os campeões das Olimpíadas.
+            </p>
+
+        </a>
+
+
+        <a
+            href="participantes.html"
+            class="area-card"
+        >
+
+            <div class="icon">
+                👥
+            </div>
+
+            <h3>
+                Participantes
+            </h3>
+
+            <p>
+                Conheça os 14 participantes oficiais
+                do Só Pode PRO.
+            </p>
+
+        </a>
+
+
+        <a
+            href="hall.html"
+            class="area-card"
+        >
+
+            <div class="icon">
+                🏆
+            </div>
+
+            <h3>
+                Hall dos Campeões
+            </h3>
+
+            <p>
+                Veja quem já conquistou títulos oficiais
+                no Só Pode PRO.
+            </p>
+
         </a>
 
     </div>
@@ -693,69 +783,35 @@
 
 
 <!-- =========================
-     CONHEÇA O SITE
+     CAMPEÃO ATUAL
 ========================= -->
 
 <section class="section">
 
-    <h2 class="section-title">
-        Só Pode PRO
-    </h2>
+    <div class="champion">
 
-    <div class="site-sections">
+        <div class="champion-info">
 
-        <div class="site-card">
+            <small>
+                PRIMEIRO CAMPEÃO
+            </small>
 
-            <div class="site-card-number">
-                01
-            </div>
-
-            <h3>
-                Competições
-            </h3>
+            <h2>
+                Guga — Guitlac
+            </h2>
 
             <p>
-                Conheça as competições
-                que fazem parte da temporada.
+                Campeão da 1ª Olimpíada do Só Pode PRO.
             </p>
 
         </div>
 
-
-        <div class="site-card">
-
-            <div class="site-card-number">
-                02
-            </div>
-
-            <h3>
-                Participantes
-            </h3>
-
-            <p>
-                Conheça os membros e
-                acompanhe suas trajetórias.
-            </p>
-
-        </div>
-
-
-        <div class="site-card">
-
-            <div class="site-card-number">
-                03
-            </div>
-
-            <h3>
-                Notícias
-            </h3>
-
-            <p>
-                Acompanhe as novidades
-                e acontecimentos da temporada.
-            </p>
-
-        </div>
+        <a
+            href="hall.html"
+            class="champion-button"
+        >
+            VER HALL DOS CAMPEÕES →
+        </a>
 
     </div>
 
@@ -763,44 +819,7 @@
 
 
 <!-- =========================
-     SOBRE
-========================= -->
-
-<section
-    class="section"
-    id="sobre"
->
-
-    <h2 class="section-title">
-        Sobre o Só Pode PRO
-    </h2>
-
-    <div class="about">
-
-        <p>
-            O Só Pode PRO é uma competição
-            criada para reunir os membros
-            em diferentes jogos e modalidades
-            ao longo do ano.
-        </p>
-
-        <br>
-
-        <p>
-            A temporada reúne grandes eventos
-            e disputas que fazem parte da
-            história do grupo.
-        </p>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- =========================
-     RODAPÉ
+     FOOTER
 ========================= -->
 
 <footer>
@@ -811,17 +830,13 @@
 
     <br><br>
 
-    Temporada 2026
-
-    <br><br>
-
-    Site oficial da competição
+    Grupo oficial · Site do Só Pode PRO
 
 </footer>
 
 
 <!-- =========================
-     MENU MOBILE - JAVASCRIPT
+     JAVASCRIPT
 ========================= -->
 
 <script>
@@ -836,7 +851,6 @@ function abrirMenu() {
 }
 
 </script>
-
 
 </body>
 </html>
