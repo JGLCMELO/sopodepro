@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Só Pode PRO | Supercopa</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: white;
+        }
+
+        /* MENU */
+
+        header {
+            background: #050b14;
+            border-bottom: 1px solid #26364d;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #dce5f2;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f5c542;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            background:
+                radial-gradient(circle at center, #17345a 0%, #07111f 65%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .season {
+            color: #f5c542;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 9vw, 90px);
+            line-height: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #f5c542;
+        }
+
+        .hero p {
+            color: #b9c7d9;
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* SEÇÕES */
+
+        .section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* CONFRONTO */
+
+        .matchup {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .team {
+            background: linear-gradient(135deg, #122641, #0b1728);
+            border: 1px solid #2c405c;
+            border-radius: 15px;
+            padding: 40px 25px;
+            text-align: center;
+        }
+
+        .team-label {
+            color: #f5c542;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .team h3 {
+            font-size: 27px;
+        }
+
+        .vs {
+            font-size: 28px;
+            font-weight: 900;
+            color: #f5c542;
+        }
+
+        /* FORMATO */
+
+        .format-box {
+            background: #0d1b2e;
+            border: 1px solid #263b57;
+            border-radius: 15px;
+            padding: 35px;
+        }
+
+        .format-box p {
+            color: #b9c7d9;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .highlight {
+            color: #f5c542;
+            font-weight: bold;
+        }
+
+        /* PRÊMIO */
+
+        .trophy-box {
+            text-align: center;
+            background: linear-gradient(135deg, #17345a, #0b1728);
+            border: 1px solid #f5c542;
+            border-radius: 15px;
+            padding: 45px 30px;
+        }
+
+        .trophy-box h2 {
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .trophy-box p {
+            color: #b9c7d9;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #040912;
+            border-top: 1px solid #26364d;
+            text-align: center;
+            padding: 40px 20px;
+            color: #71839b;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 750px) {
+
+            nav {
+                display: none;
+            }
+
+            .matchup {
+                grid-template-columns: 1fr;
+            }
+
+            .vs {
+                text-align: center;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            SÓ PODE <span>PRO</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="liga.html">Liga</a>
+            <a href="olimpiadas.html">Olimpíadas</a>
+            <a href="copa.html">Copa</a>
+            <a href="supercopa.html">Supercopa</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <!-- APRESENTAÇÃO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="season">
+                DEZEMBRO
+            </div>
+
+            <h1>
+                SUPERCOPA <span>SÓ PODE PRO</span>
+            </h1>
+
+            <p>
+                O confronto entre os campeões da Copa
+                e da Liga para encerrar a temporada
+                com um grande duelo.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONFRONTO -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            O confronto
+        </h2>
+
+        <div class="matchup">
+
+            <div class="team">
+
+                <div class="team-label">
+                    CAMPEÃO DA LIGA
+                </div>
+
+                <h3>
+                    CAMPEÃO
+                </h3>
+
+            </div>
+
+
+            <div class="vs">
+                VS
+            </div>
+
+
+            <div class="team">
+
+                <div class="team-label">
+                    CAMPEÃO DA COPA
+                </div>
+
+                <h3>
+                    CAMPEÃO
+                </h3>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FORMATO -->
+
+    <section class="section">
+
+        <h2 class="section-title">
+            Formato
+        </h2>
+
+        <div class="format-box">
+
+            <p>
+                A Supercopa acontece no final da temporada,
+                em <span class="highlight">dezembro</span>.
+            </p>
+
+            <p>
+                O confronto reúne o campeão da
+                <span class="highlight">Liga</span> e o campeão da
+                <span class="highlight">Copa</span>.
+            </p>
+
+            <p>
+                A partida é disputada no
+                <span class="highlight">jogo-tema da Liga daquele ano</span>.
+            </p>
+
+            <p>
+                O vencedor do confronto é declarado
+                campeão da Supercopa Só Pode PRO.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CAMPEÃO -->
+
+    <section class="section">
+
+        <div class="trophy-box">
+
+            <h2>
+                O TÍTULO FINAL
+            </h2>
+
+            <p>
+                A Supercopa encerra a temporada do
+                Só Pode PRO reunindo dois dos principais
+                campeões do ano em um último confronto.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <strong>SÓ PODE PRO</strong>
+
+    <br><br>
+
+    Supercopa Só Pode PRO
+
+    <br><br>
+
+    Site oficial da competição
+
+</footer>
+
+</body>
+</html>
