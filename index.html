@@ -2,34 +2,45 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
     <title>Só Pode PRO | 2026</title>
+
     <style>
+
         /* =========================
            CONFIGURAÇÕES GERAIS
         ========================= */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         html {
             scroll-behavior: smooth;
         }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #07111f;
             color: white;
         }
+
         a {
             text-decoration: none;
         }
+
+
         /* =========================
            MENU
         ========================= */
+
         header {
             position: sticky;
             top: 0;
@@ -37,6 +48,7 @@
             background: #050b14;
             border-bottom: 1px solid #26364d;
         }
+
         .navbar {
             max-width: 1200px;
             margin: auto;
@@ -45,30 +57,56 @@
             align-items: center;
             justify-content: space-between;
         }
+
         .logo {
             font-size: 24px;
             font-weight: 900;
             letter-spacing: 1px;
         }
+
         .logo span {
             color: #f5c542;
         }
+
         nav {
             display: flex;
             gap: 25px;
         }
+
         nav a {
             color: #dce5f2;
             font-size: 14px;
             font-weight: bold;
             transition: 0.2s;
         }
+
         nav a:hover {
             color: #f5c542;
         }
+
+
+        /* =========================
+           MENU MOBILE
+        ========================= */
+
+        .menu-mobile {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+
         /* =========================
            HERO
         ========================= */
+
         .hero {
             min-height: 600px;
             display: flex;
@@ -76,6 +114,7 @@
             justify-content: center;
             text-align: center;
             padding: 80px 20px;
+
             background:
                 radial-gradient(
                     circle at center,
@@ -83,9 +122,11 @@
                     #07111f 65%
                 );
         }
+
         .hero-content {
             max-width: 850px;
         }
+
         .season {
             color: #f5c542;
             font-size: 14px;
@@ -93,14 +134,17 @@
             letter-spacing: 4px;
             margin-bottom: 20px;
         }
+
         .hero h1 {
             font-size: clamp(52px, 10vw, 100px);
             line-height: 0.95;
             margin-bottom: 25px;
         }
+
         .hero h1 span {
             color: #f5c542;
         }
+
         .hero p {
             max-width: 650px;
             margin: auto;
@@ -108,6 +152,7 @@
             font-size: 19px;
             line-height: 1.6;
         }
+
         .hero-button {
             display: inline-block;
             margin-top: 35px;
@@ -118,28 +163,37 @@
             font-weight: 900;
             transition: 0.2s;
         }
+
         .hero-button:hover {
             transform: translateY(-3px);
         }
+
+
         /* =========================
            SEÇÕES
         ========================= */
+
         .section {
             max-width: 1100px;
             margin: auto;
             padding: 70px 25px;
         }
+
         .section-title {
             font-size: 32px;
             margin-bottom: 30px;
         }
+
+
         /* =========================
            CALENDÁRIO
         ========================= */
+
         .calendar {
             display: grid;
             gap: 12px;
         }
+
         .calendar-item {
             display: flex;
             justify-content: space-between;
@@ -150,39 +204,49 @@
             border-radius: 10px;
             transition: 0.2s;
         }
+
         .calendar-item:hover {
             border-color: #f5c542;
             transform: translateX(3px);
         }
+
         .calendar-date {
             color: #f5c542;
             font-weight: bold;
             text-align: right;
         }
+
+
         /* =========================
            NOTÍCIAS
         ========================= */
+
         .news-placeholder {
             padding: 35px;
+
             background:
                 linear-gradient(
                     135deg,
                     #122641,
                     #0b1728
                 );
+
             border: 1px solid #2c405c;
             border-radius: 15px;
             text-align: center;
         }
+
         .news-placeholder h3 {
             font-size: 25px;
             margin-bottom: 12px;
         }
+
         .news-placeholder p {
             color: #aebed1;
             line-height: 1.6;
             margin-bottom: 25px;
         }
+
         .secondary-button {
             display: inline-block;
             padding: 12px 22px;
@@ -192,57 +256,71 @@
             font-weight: bold;
             transition: 0.2s;
         }
+
         .secondary-button:hover {
             background: #f5c542;
             color: #07111f;
         }
 
-        /* ÚLTIMA NOTÍCIA */
 
-        .news-card-home{
-            background: linear-gradient(135deg,#122641,#0b1728);
-            border:1px solid #2c405c;
-            border-radius:16px;
-            padding:32px;
+        /* =========================
+           ÚLTIMA NOTÍCIA
+        ========================= */
+
+        .news-card-home {
+            background:
+                linear-gradient(
+                    135deg,
+                    #122641,
+                    #0b1728
+                );
+
+            border: 1px solid #2c405c;
+            border-radius: 16px;
+            padding: 32px;
         }
 
-        .news-tag{
-            display:inline-block;
-            background:#f5c542;
-            color:#07111f;
-            font-size:12px;
-            font-weight:bold;
-            letter-spacing:1px;
-            padding:6px 12px;
-            border-radius:999px;
-            margin-bottom:15px;
+        .news-tag {
+            display: inline-block;
+            background: #f5c542;
+            color: #07111f;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            margin-bottom: 15px;
         }
 
-        .news-date{
-            color:#f5c542;
-            font-size:13px;
-            font-weight:bold;
-            margin-bottom:10px;
+        .news-date {
+            color: #f5c542;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        .news-card-home h3{
-            font-size:28px;
-            margin-bottom:15px;
+        .news-card-home h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
         }
 
-        .news-card-home p{
-            color:#b9c7d9;
-            line-height:1.6;
-            margin-bottom:22px;
+        .news-card-home p {
+            color: #b9c7d9;
+            line-height: 1.6;
+            margin-bottom: 22px;
         }
+
+
         /* =========================
            NAVEGAÇÃO DO SITE
         ========================= */
+
         .site-sections {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
+
         .site-card {
             padding: 30px;
             background: #0d1b2e;
@@ -250,10 +328,12 @@
             border-radius: 14px;
             transition: 0.2s;
         }
+
         .site-card:hover {
             transform: translateY(-5px);
             border-color: #f5c542;
         }
+
         .site-card-number {
             color: #f5c542;
             font-size: 13px;
@@ -261,35 +341,46 @@
             letter-spacing: 2px;
             margin-bottom: 15px;
         }
+
         .site-card h3 {
             font-size: 23px;
             margin-bottom: 10px;
         }
+
         .site-card p {
             color: #aebed1;
             line-height: 1.5;
         }
+
+
         /* =========================
            SOBRE
         ========================= */
+
         .about {
             padding: 35px;
+
             background:
                 linear-gradient(
                     135deg,
                     #122641,
                     #0b1728
                 );
+
             border: 1px solid #2c405c;
             border-radius: 15px;
         }
+
         .about p {
             color: #b9c7d9;
             line-height: 1.7;
         }
+
+
         /* =========================
            FOOTER
         ========================= */
+
         footer {
             background: #040912;
             border-top: 1px solid #26364d;
@@ -297,93 +388,86 @@
             padding: 40px 20px;
             color: #71839b;
         }
+
         footer strong {
             color: white;
         }
+
+
         /* =========================
            IPAD / CELULAR
         ========================= */
+
         @media (max-width: 800px) {
+
             nav {
                 display: none;
             }
+
+            .menu-mobile {
+                display: block;
+            }
+
             .site-sections {
                 grid-template-columns: 1fr;
             }
+
+            .mobile-nav {
+                display: none;
+                background: #050b14;
+                border-top: 1px solid #26364d;
+                padding: 15px 25px;
+            }
+
+            .mobile-nav.active {
+                display: block;
+            }
+
+            .mobile-nav a {
+                display: block;
+                color: #dce5f2;
+                font-weight: bold;
+                padding: 14px 0;
+                border-bottom: 1px solid #1d2b40;
+            }
+
+            .mobile-nav a:last-child {
+                border-bottom: none;
+            }
         }
+
+
+        /* =========================
+           CELULAR
+        ========================= */
+
         @media (max-width: 600px) {
+
             .hero {
                 min-height: 520px;
-                /* =========================
-   MENU MOBILE
-========================= */
-
-.menu-mobile {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.mobile-nav {
-    display: none;
-    background: #050b14;
-    border-top: 1px solid #26364d;
-    padding: 15px 25px;
-}
-
-.mobile-nav a {
-    display: block;
-    color: #dce5f2;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 14px 0;
-    border-bottom: 1px solid #1d2b40;
-}
-
-.mobile-nav a:last-child {
-    border-bottom: none;
-}
-
-.mobile-nav.active {
-    display: block;
-}
-
-/* CELULAR */
-
-@media (max-width: 800px) {
-
-    nav {
-        display: none;
-    }
-
-    .menu-mobile {
-        display: block;
-    }
-
-    .site-sections {
-        grid-template-columns: 1fr;
-    }
-
-}
             }
+
             .calendar-item {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 8px;
             }
+
             .calendar-date {
                 text-align: left;
             }
         }
+
     </style>
 </head>
+
 <body>
+
+
 <!-- =========================
      MENU PRINCIPAL
 ========================= -->
+
 <header>
 
     <div class="navbar">
@@ -393,248 +477,377 @@
         </div>
 
         <nav>
-            <a href="index.html">Início</a>
-            <a href="noticias.html">Notícias</a>
-            <a href="liga.html">Liga</a>
-            <a href="olimpiadas.html">Olimpíadas</a>
-            <a href="copa.html">Copa</a>
-            <a href="supercopa.html">Supercopa</a>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="noticias.html">
+                Notícias
+            </a>
+
+            <a href="liga.html">
+                Liga
+            </a>
+
+            <a href="olimpiadas.html">
+                Olimpíadas
+            </a>
+
+            <a href="copa.html">
+                Copa
+            </a>
+
+            <a href="supercopa.html">
+                Supercopa
+            </a>
+
         </nav>
 
-        <button class="menu-mobile" onclick="abrirMenu()">
+        <button
+            class="menu-mobile"
+            onclick="abrirMenu()"
+            aria-label="Abrir menu"
+        >
             ☰
         </button>
 
     </div>
 
-    <div class="mobile-nav" id="mobileNav">
 
-        <a href="index.html">Início</a>
-        <a href="noticias.html">Notícias</a>
-        <a href="liga.html">Liga</a>
-        <a href="olimpiadas.html">Olimpíadas</a>
-        <a href="copa.html">Copa</a>
-        <a href="supercopa.html">Supercopa</a>
+    <div
+        class="mobile-nav"
+        id="mobileNav"
+    >
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="noticias.html">
+            Notícias
+        </a>
+
+        <a href="liga.html">
+            Liga
+        </a>
+
+        <a href="olimpiadas.html">
+            Olimpíadas
+        </a>
+
+        <a href="copa.html">
+            Copa
+        </a>
+
+        <a href="supercopa.html">
+            Supercopa
+        </a>
 
     </div>
 
 </header>
-        <nav>
-            <a href="#inicio">
-                Início
-            </a>
-            <a href="noticias.html"</a>
-                Notícias
-                <a href="liga.html"</a>
-                Liga
-            <a href="olimpiadas.html"</a>
-                Olimpíadas
-                <a href="copa.html"</a>
-                Copa
-                <a href="supercopa.html"</a>
-                Supercopa
-            </a>
-        </nav>
-    </div>
-</header>
+
+
 <main id="inicio">
+
+
 <!-- =========================
      APRESENTAÇÃO
 ========================= -->
+
 <section class="hero">
 
     <div class="hero-content">
 
         <div class="season">
-            TEMPORADA 
+            TEMPORADA 2026
         </div>
 
-        <h1>   
-    <h1>
+        <h1>
             SÓ PODE <span>PRO</span>
         </h1>
+
         <p>
             O campeonato oficial entre os membros.
             Uma temporada de jogos, disputas,
             títulos e momentos históricos.
         </p>
+
         <a
             href="#calendario"
             class="hero-button"
         >
-            VER CALENDÁRIO DA TEMPORADA 
+            VER CALENDÁRIO DA TEMPORADA
         </a>
+
     </div>
+
 </section>
+
+
 <!-- =========================
      CALENDÁRIO
 ========================= -->
+
 <section
     class="section"
     id="calendario"
 >
+
     <h2 class="section-title">
         Temporada 2026
     </h2>
+
     <div class="calendar">
+
         <div class="calendar-item">
+
             <span>
                 Olimpíadas
             </span>
+
             <span class="calendar-date">
                 JANEIRO
             </span>
+
         </div>
+
+
         <div class="calendar-item">
+
             <span>
                 Liga
             </span>
+
             <span class="calendar-date">
                 MAIO — DEZEMBRO
             </span>
+
         </div>
+
+
         <div class="calendar-item">
+
             <span>
                 Olimpíadas
             </span>
+
             <span class="calendar-date">
                 JULHO
             </span>
+
         </div>
+
+
         <div class="calendar-item">
+
             <span>
                 Copa + Supercopa
             </span>
+
             <span class="calendar-date">
                 DEZEMBRO
             </span>
+
         </div>
+
     </div>
+
 </section>
+
+
 <!-- =========================
      NOTÍCIAS
 ========================= -->
+
 <section
     class="section"
     id="noticias"
 >
+
     <h2 class="section-title">
         Notícias
     </h2>
+
     <div class="news-card-home">
 
-    <div class="news-tag">
-        ÚLTIMA NOTÍCIA
+        <div class="news-tag">
+            ÚLTIMA NOTÍCIA
+        </div>
+
+        <div class="news-date">
+            15 DE SETEMBRO DE 2026
+        </div>
+
+        <h3>
+            O site oficial do Só Pode PRO está no ar!
+        </h3>
+
+        <p>
+            O Só Pode PRO agora tem um site oficial.
+            A partir de hoje, todas as notícias,
+            competições, regulamentos e informações
+            da temporada serão publicadas aqui.
+        </p>
+
+        <a
+            href="noticias.html"
+            class="secondary-button"
+        >
+            LER NOTÍCIA COMPLETA
+        </a>
+
     </div>
 
-    <div class="news-date">
-        15 DE SETEMBRO DE 2026
-    </div>
-
-    <h3>
-        O site oficial do Só Pode PRO está no ar!
-    </h3>
-
-    <p>
-        O Só Pode PRO agora tem um site oficial. A partir de hoje,
-        todas as notícias, competições, regulamentos e informações
-        da temporada serão publicadas aqui.
-    </p>
-
-    <a href="noticias.html" class="secondary-button">
-        LER NOTÍCIA COMPLETA
-    </a>
-
-</div>
 </section>
+
+
 <!-- =========================
      CONHEÇA O SITE
 ========================= -->
+
 <section class="section">
+
     <h2 class="section-title">
         Só Pode PRO
     </h2>
+
     <div class="site-sections">
+
         <div class="site-card">
+
             <div class="site-card-number">
                 01
             </div>
+
             <h3>
                 Competições
             </h3>
+
             <p>
                 Conheça as competições
                 que fazem parte da temporada.
             </p>
+
         </div>
+
+
         <div class="site-card">
+
             <div class="site-card-number">
                 02
             </div>
+
             <h3>
                 Participantes
             </h3>
+
             <p>
                 Conheça os membros e
                 acompanhe suas trajetórias.
             </p>
+
         </div>
+
+
         <div class="site-card">
+
             <div class="site-card-number">
                 03
             </div>
+
             <h3>
                 Notícias
             </h3>
+
             <p>
                 Acompanhe as novidades
                 e acontecimentos da temporada.
             </p>
+
         </div>
+
     </div>
+
 </section>
+
+
 <!-- =========================
      SOBRE
 ========================= -->
+
 <section
     class="section"
     id="sobre"
 >
+
     <h2 class="section-title">
         Sobre o Só Pode PRO
     </h2>
+
     <div class="about">
+
         <p>
             O Só Pode PRO é uma competição
             criada para reunir os membros
             em diferentes jogos e modalidades
             ao longo do ano.
         </p>
+
         <br>
+
         <p>
             A temporada reúne grandes eventos
             e disputas que fazem parte da
             história do grupo.
         </p>
+
     </div>
+
 </section>
+
 </main>
+
+
 <!-- =========================
      RODAPÉ
 ========================= -->
+
 <footer>
+
     <strong>
         SÓ PODE PRO
     </strong>
+
     <br><br>
+
     Temporada 2026
+
     <br><br>
+
     Site oficial da competição
+
 </footer>
- <script>
+
+
+<!-- =========================
+     MENU MOBILE - JAVASCRIPT
+========================= -->
+
+<script>
+
 function abrirMenu() {
-    document.getElementById("mobileNav").classList.toggle("active");
+
+    document
+        .getElementById("mobileNav")
+        .classList
+        .toggle("active");
+
 }
-</script>                   
+
+</script>
+
+
 </body>
 </html>
