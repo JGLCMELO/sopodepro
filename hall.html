@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hall dos Campeões | Só Pode PRO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071321;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #081a2d;
+            border-bottom: 2px solid #d4af37;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #d4af37;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        nav a.active {
+            color: #d4af37;
+        }
+
+        .menu-mobile {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            background: #081a2d;
+            border-top: 1px solid #1d3550;
+            padding: 15px 25px;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .mobile-nav a.active {
+            color: #d4af37;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            padding: 75px 25px 50px;
+            text-align: center;
+        }
+
+        .hero-small {
+            color: #d4af37;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            color: #b9c4d0;
+            font-size: 17px;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .content {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 25px 80px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-size: 24px;
+        }
+
+        .section-line {
+            height: 2px;
+            flex: 1;
+            background: linear-gradient(
+                to right,
+                #d4af37,
+                transparent
+            );
+        }
+
+        .champions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .champion-card {
+            background: linear-gradient(
+                145deg,
+                #10253c,
+                #0a1829
+            );
+            border: 1px solid #29415c;
+            border-radius: 18px;
+            padding: 25px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.25s;
+        }
+
+        .champion-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .champion-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #d4af37;
+        }
+
+        .edition {
+            color: #d4af37;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        .champion-main {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .avatar-box {
+            width: 145px;
+            height: 165px;
+            min-width: 145px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #1b3654 0%,
+                    #0b1a2d 75%
+                );
+            border: 2px solid #d4af37;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .avatar-box::after {
+            content: "";
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 7px;
+            height: 2px;
+            background: #d4af37;
+            opacity: 0.35;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center bottom;
+            padding: 5px;
+            display: block;
+        }
+
+        .champion-info {
+            flex: 1;
+        }
+
+        .champion-info h3 {
+            font-size: 29px;
+            margin-bottom: 7px;
+        }
+
+        .nickname {
+            color: #b9c4d0;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .trophy {
+            color: #d4af37;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .year {
+            margin-top: 8px;
+            color: #8796a7;
+            font-size: 14px;
+        }
+
+        .champion-badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            background: #d4af37;
+            color: #071321;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 7px 10px;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        .empty-message {
+            margin-top: 30px;
+            padding: 25px;
+            border: 1px dashed #29415c;
+            border-radius: 14px;
+            text-align: center;
+            color: #78899b;
+            display: none;
+        }
+
+        footer {
+            background: #050e18;
+            border-top: 1px solid #1d3550;
+            padding: 30px 20px;
+            text-align: center;
+            color: #728196;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #d4af37;
+        }
+
+        @media (max-width: 750px) {
+
+            .header-container {
+                height: 65px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .menu-mobile {
+                display: block;
+            }
+
+            .hero {
+                padding: 55px 20px 40px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .content {
+                padding: 0 18px 60px;
+            }
+
+            .champion-main {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .avatar-box {
+                width: 120px;
+                height: 140px;
+                min-width: 120px;
+            }
+
+            .champion-info h3 {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-small {
+                font-size: 12px;
+            }
+
+            .champion-card {
+                padding: 20px;
+            }
+
+            .avatar-box {
+                width: 105px;
+                height: 120px;
+                min-width: 105px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-container">
+
+        <div class="logo">
+            SÓ PODE PRO
+        </div>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="olimpiadas.html">Olimpíadas</a>
+            <a href="copa.html">Copa</a>
+            <a href="participantes.html">Participantes</a>
+            <a href="hall.html" class="active">Hall dos Campeões</a>
+        </nav>
+
+        <button class="menu-mobile" onclick="abrirMenu()">☰</button>
+
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="olimpiadas.html">Olimpíadas</a>
+        <a href="copa.html">Copa</a>
+        <a href="participantes.html">Participantes</a>
+        <a href="hall.html" class="active">Hall dos Campeões</a>
+    </div>
+</header>
+
+
+<section class="hero">
+
+    <div class="hero-small">
+        HISTÓRIA DO SÓ PODE PRO
+    </div>
+
+    <h1>Hall dos Campeões</h1>
+
+    <p>
+        Os nomes que já levantaram um troféu oficial
+        e fizeram história no Só Pode PRO.
+    </p>
+
+</section>
+
+
+<main class="content">
+
+    <div class="section-title">
+        <h2>Campeões Oficiais</h2>
+        <div class="section-line"></div>
+    </div>
+
+
+    <div class="champions-grid">
+
+        <!-- GUGA -->
+
+        <article class="champion-card">
+
+            <div class="champion-badge">
+                CAMPEÃO
+            </div>
+
+            <div class="edition">
+                1ª OLIMPÍADA
+            </div>
+
+            <div class="champion-main">
+
+                <div class="avatar-box">
+
+                    <img
+                        class="avatar"
+                        src="https://pngimg.com/uploads/yoda/yoda_PNG41.png"
+                        alt="Yoda representando Guga"
+                    >
+
+                </div>
+
+                <div class="champion-info">
+
+                    <h3>Guga</h3>
+
+                    <div class="nickname">
+                        Guitlac
+                    </div>
+
+                    <div class="trophy">
+                        🏆 Campeão da 1ª Olimpíada
+                    </div>
+
+                    <div class="year">
+                        Só Pode PRO • 2026
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- FUTUROS CAMPEÕES SERÃO ADICIONADOS AQUI -->
+
+    </div>
+
+
+    <div class="empty-message">
+        Novos campeões aparecerão aqui após cada competição oficial.
+    </div>
+
+</main>
+
+
+<footer>
+
+    <strong>SÓ PODE PRO</strong><br><br>
+
+    Organização oficial de competições entre amigos.<br>
+
+    © 2026 Só Pode PRO. Todos os direitos reservados.
+
+</footer>
+
+
+<script>
+
+function abrirMenu() {
+
+    document
+        .getElementById("mobileNav")
+        .classList
+        .toggle("active");
+
+}
+
+</script>
+
+</body>
+</html>
