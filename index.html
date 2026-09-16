@@ -100,6 +100,29 @@
 
         .mobile-nav {
             display: none;
+            background: #050b14;
+            border-top: 1px solid #26364d;
+            padding: 15px 25px;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: #dce5f2;
+            font-weight: bold;
+            padding: 14px 0;
+            border-bottom: 1px solid #1d2b40;
+        }
+
+        .mobile-nav a:hover {
+            color: #f5c542;
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
         }
 
 
@@ -412,28 +435,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .mobile-nav {
-                display: none;
-                background: #050b14;
-                border-top: 1px solid #26364d;
-                padding: 15px 25px;
-            }
-
-            .mobile-nav.active {
-                display: block;
-            }
-
-            .mobile-nav a {
-                display: block;
-                color: #dce5f2;
-                font-weight: bold;
-                padding: 14px 0;
-                border-bottom: 1px solid #1d2b40;
-            }
-
-            .mobile-nav a:last-child {
-                border-bottom: none;
-            }
         }
 
 
@@ -456,6 +457,7 @@
             .calendar-date {
                 text-align: left;
             }
+
         }
 
     </style>
@@ -484,7 +486,7 @@
 
             <a href="noticias.html">
                 Notícias
-            </a> 
+            </a>
 
             <a href="olimpiadas.html">
                 Olimpíadas
@@ -496,6 +498,10 @@
 
             <a href="participantes.html">
                 Participantes
+            </a>
+
+            <a href="hall.html">
+                Hall dos Campeões
             </a>
 
         </nav>
@@ -524,8 +530,6 @@
             Notícias
         </a>
 
-        </a>
-
         <a href="olimpiadas.html">
             Olimpíadas
         </a>
@@ -533,8 +537,13 @@
         <a href="copa.html">
             Copa
         </a>
+
         <a href="participantes.html">
             Participantes
+        </a>
+
+        <a href="hall.html">
+            Hall dos Campeões
         </a>
 
     </div>
@@ -610,19 +619,6 @@
         <div class="calendar-item">
 
             <span>
-                Liga
-            </span>
-
-            <span class="calendar-date">
-                MAIO — DEZEMBRO
-            </span>
-
-        </div>
-
-
-        <div class="calendar-item">
-
-            <span>
                 Olimpíadas
             </span>
 
@@ -636,7 +632,7 @@
         <div class="calendar-item">
 
             <span>
-                Copa + Supercopa
+                Copa
             </span>
 
             <span class="calendar-date">
