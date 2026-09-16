@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Participantes | Só Pode PRO</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07111f;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #0b1a2d;
+            border-bottom: 2px solid #d4af37;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #d4af37;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .menu-mobile {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 69px;
+            left: 0;
+            width: 100%;
+            background: #0b1a2d;
+            border-bottom: 2px solid #d4af37;
+            padding: 20px;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .mobile-nav a:hover {
+            color: #d4af37;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 70px 20px 45px;
+            background:
+                radial-gradient(circle at center, #122844 0%, #07111f 65%);
+        }
+
+        .hero span {
+            color: #d4af37;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin: 12px 0;
+            font-weight: 900;
+        }
+
+        .hero p {
+            color: #aeb8c5;
+            font-size: 17px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding-bottom: 70px;
+        }
+
+        .search-box {
+            margin: 25px auto 35px;
+            max-width: 600px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid #263c55;
+            background: #0d1d31;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-box input:focus {
+            border-color: #d4af37;
+        }
+
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .participant-card {
+            background: linear-gradient(145deg, #0e2035, #091727);
+            border: 1px solid #203852;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .participant-card:hover {
+            transform: translateY(-4px);
+            border-color: #d4af37;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d4af37;
+            background: #16283d;
+        }
+
+        .info {
+            flex: 1;
+        }
+
+        .info h2 {
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .nick {
+            color: #d4af37;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .role {
+            color: #b8c2ce;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .titles {
+            display: inline-block;
+            background: #172b43;
+            border: 1px solid #304b68;
+            padding: 7px 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #f1f1f1;
+        }
+
+        .titles.champion {
+            color: #d4af37;
+            border-color: #d4af37;
+            font-weight: bold;
+        }
+
+        .no-results {
+            display: none;
+            text-align: center;
+            color: #aeb8c5;
+            padding: 40px;
+            font-size: 17px;
+        }
+
+        footer {
+            border-top: 1px solid #1d3045;
+            text-align: center;
+            padding: 30px 20px;
+            color: #718096;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #d4af37;
+        }
+
+        @media (max-width: 750px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .menu-mobile {
+                display: block;
+            }
+
+            .hero {
+                padding: 55px 20px 35px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .participants-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .participant-card {
+                padding: 16px;
+            }
+
+            .avatar {
+                width: 82px;
+                height: 82px;
+                min-width: 82px;
+            }
+
+            .info h2 {
+                font-size: 19px;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .participant-card {
+                gap: 14px;
+            }
+
+            .avatar {
+                width: 72px;
+                height: 72px;
+                min-width: 72px;
+            }
+
+            .info h2 {
+                font-size: 18px;
+            }
+
+            .nick,
+            .role,
+            .titles {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <a href="index.html" class="logo">SÓ PODE PRO</a>
+
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="olimpiadas.html">Olimpíadas</a>
+        <a href="copa.html">Copa</a>
+    </nav>
+
+    <button class="menu-mobile" onclick="abrirMenu()">☰</button>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Início</a>
+        <a href="noticias.html">Notícias</a>
+        <a href="olimpiadas.html">Olimpíadas</a>
+        <a href="copa.html">Copa</a>
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <span>ELENCO OFICIAL</span>
+
+    <h1>Participantes</h1>
+
+    <p>Conheça os 14 participantes do Só Pode PRO</p>
+
+</section>
+
+
+<main class="container">
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Pesquisar por nome ou nick..."
+            onkeyup="pesquisarParticipantes()"
+        >
+    </div>
+
+
+    <div class="participants-grid" id="participantsGrid">
+
+
+        <!-- JOÃO GABRIEL -->
+
+        <div class="participant-card" data-search="joão gabriel jglcmelo homem aranha presidente">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/9/98/Spider-Man_%282nd_series%29.jpg"
+                alt="Homem-Aranha"
+            >
+
+            <div class="info">
+
+                <h2>João Gabriel</h2>
+
+                <div class="nick">
+                    @JGLCMELO
+                </div>
+
+                <div class="role">
+                    Presidente
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GUGA -->
+
+        <div class="participant-card" data-search="guga guitlac yoda ministro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Yoda_Star_Wars.jpg"
+                alt="Yoda"
+            >
+
+            <div class="info">
+
+                <h2>Guga</h2>
+
+                <div class="nick">
+                    @Guitlac
+                </div>
+
+                <div class="role">
+                    Ministro
+                </div>
+
+                <div class="titles champion">
+                    🏆 1 Olimpíada
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CAMARGO -->
+
+        <div class="participant-card" data-search="camargo kling darth vader membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/3/32/Darth_Vader.jpg"
+                alt="Darth Vader"
+            >
+
+            <div class="info">
+
+                <h2>Camargo</h2>
+
+                <div class="nick">
+                    @Kling
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- GUI -->
+
+        <div class="participant-card" data-search="gui jejpgui wolverine deputado">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Wolverine_%2850976061676%29.jpg"
+                alt="Wolverine"
+            >
+
+            <div class="info">
+
+                <h2>Gui</h2>
+
+                <div class="nick">
+                    @Jejpgui
+                </div>
+
+                <div class="role">
+                    Deputado
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOÃO PEDRO -->
+
+        <div class="participant-card" data-search="joão pedro jejpgui_jp minion deputado">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Minion_Stuart.jpg"
+                alt="Minion"
+            >
+
+            <div class="info">
+
+                <h2>João Pedro</h2>
+
+                <div class="nick">
+                    @Jejpgui_jp
+                </div>
+
+                <div class="role">
+                    Deputado
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LEO BRIL -->
+
+        <div class="participant-card" data-search="leo bril leo_bril max verstappen diretor geral">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/3/36/Max_Verstappen_2024.jpg"
+                alt="Max Verstappen"
+            >
+
+            <div class="info">
+
+                <h2>Leo Bril</h2>
+
+                <div class="nick">
+                    @Leo_Bril
+                </div>
+
+                <div class="role">
+                    Diretor Geral
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LEO BURATTA -->
+
+        <div class="participant-card" data-search="leo buratta fburatta batman deputado">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/1/17/Batman_-_The_Brave_and_the_Bold.jpg"
+                alt="Batman"
+            >
+
+            <div class="info">
+
+                <h2>Leo Buratta</h2>
+
+                <div class="nick">
+                    @Fburatta
+                </div>
+
+                <div class="role">
+                    Deputado
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- VICTER -->
+
+        <div class="participant-card" data-search="victer fullvictine voldemort membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Ralph_Fiennes_as_Lord_Voldemort.jpg"
+                alt="Voldemort"
+            >
+
+            <div class="info">
+
+                <h2>Victer</h2>
+
+                <div class="nick">
+                    @FullVictine
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- XAVIER -->
+
+        <div class="participant-card" data-search="xavier joão_xavier11 pikachu membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Pikachu_%282017%29.png"
+                alt="Pikachu"
+            >
+
+            <div class="info">
+
+                <h2>Xavier</h2>
+
+                <div class="nick">
+                    @João_xavier11
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHICO -->
+
+        <div class="participant-card" data-search="chico chico prime goku membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/8/80/Goku_Dragon_Ball.jpg"
+                alt="Goku"
+            >
+
+            <div class="info">
+
+                <h2>Chico</h2>
+
+                <div class="nick">
+                    @Chico Prime
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- MUNIZ -->
+
+        <div class="participant-card" data-search="muniz gabity2014 capitão américa membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Captain_America_%2853536936391%29.jpg"
+                alt="Capitão América"
+            >
+
+            <div class="info">
+
+                <h2>Muniz</h2>
+
+                <div class="nick">
+                    @Gabity2014
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOÃO GUILHERME -->
+
+        <div class="participant-card" data-search="joão guilherme jg calmon charmander membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Charmander-Pokemon.jpg"
+                alt="Charmander"
+            >
+
+            <div class="info">
+
+                <h2>João Guilherme</h2>
+
+                <div class="nick">
+                    @JG Calmon
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CABRAL -->
+
+        <div class="participant-card" data-search="cabral antoniocabral cristiano ronaldo membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg"
+                alt="Cristiano Ronaldo"
+            >
+
+            <div class="info">
+
+                <h2>Cabral</h2>
+
+                <div class="nick">
+                    @antoniocabral
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PEPÊ -->
+
+        <div class="participant-card" data-search="pepê pepelcmelo alvin membro">
+
+            <img
+                class="avatar"
+                src="https://upload.wikimedia.org/wikipedia/commons/7/75/Alvin_and_the_Chipmunks_2007.jpg"
+                alt="Alvin"
+            >
+
+            <div class="info">
+
+                <h2>Pepê</h2>
+
+                <div class="nick">
+                    @PEPELCMELO
+                </div>
+
+                <div class="role">
+                    Membro
+                </div>
+
+                <div class="titles">
+                    Nenhum título
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="no-results" id="noResults">
+        Nenhum participante encontrado.
+    </div>
+
+</main>
+
+
+<footer>
+
+    <strong>SÓ PODE PRO</strong><br><br>
+
+    Organização oficial do grupo Só Pode PRO<br>
+    Temporada 2026
+
+</footer>
+
+
+<script>
+
+    function abrirMenu() {
+        document.getElementById("mobileNav").classList.toggle("active");
+    }
+
+
+    function pesquisarParticipantes() {
+
+        const input = document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        const cards = document.querySelectorAll(".participant-card");
+
+        let encontrados = 0;
+
+        cards.forEach(card => {
+
+            const texto = card
+                .getAttribute("data-search")
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+
+            if (texto.includes(input)) {
+
+                card.style.display = "flex";
+                encontrados++;
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+        const noResults = document.getElementById("noResults");
+
+        if (encontrados === 0) {
+            noResults.style.display = "block";
+        } else {
+            noResults.style.display = "none";
+        }
+    }
+
+</script>
+
+</body>
+</html>
