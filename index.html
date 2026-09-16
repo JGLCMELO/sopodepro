@@ -116,28 +116,38 @@
         .hero {
             max-width: 1200px;
             margin: auto;
-            padding: 95px 25px 80px;
+            padding: 90px 25px 85px;
         }
 
         .hero-content {
-            max-width: 780px;
+            max-width: 850px;
         }
 
         .hero-tag {
             color: #f5c542;
             font-size: 13px;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
         }
 
-        .hero h1 {
-            font-size: 64px;
-            line-height: 1;
-            margin: 14px 0 20px;
+        .brand-title {
+            font-size: 86px;
+            line-height: .88;
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
         }
 
-        .hero h1 span {
+        .brand-title .pro {
             color: #f5c542;
+        }
+
+        .hero-subtitle {
+            font-size: 27px;
+            font-weight: bold;
+            line-height: 1.25;
+            margin-bottom: 20px;
         }
 
         .hero p {
@@ -400,8 +410,13 @@
                 padding: 70px 25px 55px;
             }
 
-            .hero h1 {
-                font-size: 48px;
+            .brand-title {
+                font-size: 64px;
+                letter-spacing: -2px;
+            }
+
+            .hero-subtitle {
+                font-size: 23px;
             }
 
             .next-event {
@@ -430,8 +445,21 @@
 
         @media (max-width: 500px) {
 
-            .hero h1 {
-                font-size: 40px;
+            .hero {
+                padding-top: 60px;
+            }
+
+            .brand-title {
+                font-size: 52px;
+                line-height: .9;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
             }
 
             .areas {
@@ -516,14 +544,18 @@
     <div class="hero-content">
 
         <div class="hero-tag">
-            BEM-VINDO AO SÓ PODE PRO
+            BEM-VINDO AO
         </div>
 
-        <h1>
-            UM GRUPO.<br>
-            VÁRIOS JOGOS.<br>
-            <span>MOMENTOS INESQUECÍVEIS.</span>
+        <h1 class="brand-title">
+            SÓ PODE<br>
+            <span class="pro">PRO</span>
         </h1>
+
+        <div class="hero-subtitle">
+            Um grupo. Vários jogos.<br>
+            Momentos inesquecíveis.
+        </div>
 
         <p>
             O Só Pode PRO é um grupo de amigos que se reúne
