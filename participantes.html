@@ -156,30 +156,68 @@
             background: linear-gradient(145deg, #0e2035, #091727);
             border: 1px solid #203852;
             border-radius: 16px;
-            padding: 20px;
+            padding: 18px;
             display: flex;
             align-items: center;
             gap: 20px;
-            transition: transform 0.2s, border-color 0.2s;
+            min-height: 165px;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
         }
 
         .participant-card:hover {
             transform: translateY(-4px);
             border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        /*
+        ========================================
+        AVATAR DOS PARTICIPANTES
+        ========================================
+        */
+
+        .avatar-box {
+            width: 120px;
+            height: 130px;
+            min-width: 120px;
+
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+
+            background:
+                radial-gradient(circle at center, #1b3654 0%, #0b1a2d 75%);
+
+            border: 2px solid #d4af37;
+            border-radius: 14px;
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .avatar-box::after {
+            content: "";
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            bottom: 7px;
+            height: 2px;
+            background: #d4af37;
+            opacity: 0.35;
         }
 
         .avatar {
-            width: 100px;
-            height: 100px;
-            min-width: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #d4af37;
-            background: #16283d;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center bottom;
+            padding: 5px;
+            display: block;
         }
 
         .info {
             flex: 1;
+            min-width: 0;
         }
 
         .info h2 {
@@ -192,6 +230,7 @@
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 10px;
+            word-break: break-word;
         }
 
         .role {
@@ -268,12 +307,13 @@
 
             .participant-card {
                 padding: 16px;
+                min-height: 145px;
             }
 
-            .avatar {
-                width: 82px;
-                height: 82px;
-                min-width: 82px;
+            .avatar-box {
+                width: 90px;
+                height: 110px;
+                min-width: 90px;
             }
 
             .info h2 {
@@ -284,13 +324,13 @@
         @media (max-width: 430px) {
 
             .participant-card {
-                gap: 14px;
+                gap: 13px;
             }
 
-            .avatar {
-                width: 72px;
-                height: 72px;
-                min-width: 72px;
+            .avatar-box {
+                width: 78px;
+                height: 95px;
+                min-width: 78px;
             }
 
             .info h2 {
@@ -363,11 +403,13 @@
 
         <div class="participant-card" data-search="joão gabriel jglcmelo homem aranha presidente">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Spider-Man%20cosplay.jpg"
-                alt="Homem-Aranha"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/spiderman/spiderman_PNG2.png"
+                    alt="Homem-Aranha"
+                >
+            </div>
 
             <div class="info">
 
@@ -394,11 +436,13 @@
 
         <div class="participant-card" data-search="guga guitlac yoda ministro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Yoda.jpg"
-                alt="Yoda"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/yoda/yoda_PNG41.png"
+                    alt="Yoda"
+                >
+            </div>
 
             <div class="info">
 
@@ -425,11 +469,13 @@
 
         <div class="participant-card" data-search="camargo kling darth vader membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Darth%20Vader%20cosplay.JPG"
-                alt="Darth Vader"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/darth_vader/darth_vader_PNG1.png"
+                    alt="Darth Vader"
+                >
+            </div>
 
             <div class="info">
 
@@ -456,11 +502,13 @@
 
         <div class="participant-card" data-search="gui jejpgui wolverine deputado">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Wolverine%20cosplay.jpg"
-                alt="Wolverine"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/wolverine/wolverine_PNG50.png"
+                    alt="Wolverine"
+                >
+            </div>
 
             <div class="info">
 
@@ -487,11 +535,13 @@
 
         <div class="participant-card" data-search="joão pedro jejpgui_jp minion deputado">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Minion%20cosplay.jpg"
-                alt="Minion"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://image.pngaaa.com/409/1105409-middle.png"
+                    alt="Minion"
+                >
+            </div>
 
             <div class="info">
 
@@ -518,11 +568,15 @@
 
         <div class="participant-card" data-search="leo bril leo_bril max verstappen diretor geral">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Max%20Verstappen%202022.jpg"
-                alt="Max Verstappen"
-            >
+            <div class="avatar-box">
+
+                <img
+                    class="avatar"
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Max%20Verstappen%202022.jpg"
+                    alt="Max Verstappen"
+                >
+
+            </div>
 
             <div class="info">
 
@@ -549,11 +603,13 @@
 
         <div class="participant-card" data-search="leo buratta fburatta batman deputado">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Wintercon%202015%20-%20Batman%20Cosplay.jpg"
-                alt="Batman"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/batman/batman_PNG5.png"
+                    alt="Batman"
+                >
+            </div>
 
             <div class="info">
 
@@ -580,11 +636,13 @@
 
         <div class="participant-card" data-search="victer fullvictine voldemort membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Cosplay%20of%20Lord%20Voldemort%20at%20Brussels%20Comic%20Con%202019%20%2840510881853%29.jpg"
-                alt="Voldemort"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/lord_voldemort/voldemort_PNG2.png"
+                    alt="Voldemort"
+                >
+            </div>
 
             <div class="info">
 
@@ -611,11 +669,13 @@
 
         <div class="participant-card" data-search="xavier joão_xavier11 pikachu membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Pokemon%20Cosplay.jpg"
-                alt="Pikachu"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/pikachu/pikachu_PNG30.png"
+                    alt="Pikachu"
+                >
+            </div>
 
             <div class="info">
 
@@ -642,11 +702,13 @@
 
         <div class="participant-card" data-search="chico chico prime goku membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Goku%20cosplay.jpg"
-                alt="Goku"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/goku/goku_PNG.png"
+                    alt="Goku"
+                >
+            </div>
 
             <div class="info">
 
@@ -673,11 +735,13 @@
 
         <div class="participant-card" data-search="muniz gabity2014 capitão américa membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Captain%20America%20cosplay.jpg"
-                alt="Capitão América"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/captain_america/captain_america_PNG37.png"
+                    alt="Capitão América"
+                >
+            </div>
 
             <div class="info">
 
@@ -704,11 +768,13 @@
 
         <div class="participant-card" data-search="joão guilherme jg calmon charmander membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Anime%20Expo%202013%20-%20Charmander%20Cosplay%20%289228423198%29.jpg"
-                alt="Charmander"
-            >
+            <div class="avatar-box">
+                <img
+                    class="avatar"
+                    src="https://vectorified.com/image/charmander-vector-33.png"
+                    alt="Charmander"
+                >
+            </div>
 
             <div class="info">
 
@@ -735,11 +801,15 @@
 
         <div class="participant-card" data-search="cabral antoniocabral cristiano ronaldo membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Cristiano%20Ronaldo%202018.jpg"
-                alt="Cristiano Ronaldo"
-            >
+            <div class="avatar-box">
+
+                <img
+                    class="avatar"
+                    src="https://commons.wikimedia.org/wiki/Special:FilePath/Cristiano%20Ronaldo%202018.jpg"
+                    alt="Cristiano Ronaldo"
+                >
+
+            </div>
 
             <div class="info">
 
@@ -766,11 +836,15 @@
 
         <div class="participant-card" data-search="pepê pepelcmelo alvin membro">
 
-            <img
-                class="avatar"
-                src="https://commons.wikimedia.org/wiki/Special:FilePath/Alvin%20and%20the%20Chipmunks%20%282007%20film%29%20logo.png"
-                alt="Alvin"
-            >
+            <div class="avatar-box">
+
+                <img
+                    class="avatar"
+                    src="https://pngimg.com/uploads/alvin_and_the_chipmunks/alvin_PNG1.png"
+                    alt="Alvin"
+                >
+
+            </div>
 
             <div class="info">
 
