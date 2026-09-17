@@ -213,8 +213,76 @@
 
 <script>
 
-    document.getElementById("loading").textContent =
-        "JAVASCRIPT FUNCIONANDO";
+    const SUPABASE_URL =
+        "https://xfhkdfponsyxeccolhon.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "COLE_AQUI_SUA_PUBLISHABLE_KEY";
+
+
+    const supabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    async function testarSessao() {
+
+        const loading =
+            document.getElementById("loading");
+
+
+        loading.textContent =
+            "Testando sessão...";
+
+
+        try {
+
+            const resultado =
+                await supabase.auth.getSession();
+
+
+            console.log(resultado);
+
+
+            if (resultado.error) {
+
+                loading.textContent =
+                    "ERRO: " +
+                    resultado.error.message;
+
+                return;
+            }
+
+
+            if (!resultado.data.session) {
+
+                loading.textContent =
+                    "NENHUMA SESSÃO ENCONTRADA";
+
+                return;
+            }
+
+
+            loading.textContent =
+                "SESSÃO ENCONTRADA!";
+
+        } catch (erro) {
+
+            console.error(erro);
+
+            loading.textContent =
+                "ERRO: " +
+                erro.message;
+
+        }
+
+    }
+
+
+    testarSessao();
 
 </script>
 
