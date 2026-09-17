@@ -1,14 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Área — Só Pode PRO</title>
 
@@ -17,53 +15,96 @@
 <body>
 
     <div id="loading">
-        INICIANDO NOVO TESTE...
+
+        Verificando sessão...
+
     </div>
-
-
-    <script>
-
-        document
-            .getElementById("loading")
-            .textContent =
-                "PASSO 1 FUNCIONOU!";
-
-    </script>
-
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+    <script>
 
-<script>
+        const loading = document.getElementById("loading");
 
-    document
-        .getElementById("loading")
-        .textContent =
-            "PASSO 2 — SCRIPT SUPABASE COMEÇOU!";
+        const SUPABASE_URL =
 
-    const SUPABASE_URL =
-        "https://xfhkdfponsyxeccolhon.supabase.co";
+            "https://xfhkdfponsyxeccolhon.supabase.co";
 
-    const SUPABASE_KEY =
-        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+        const SUPABASE_KEY =
 
-    document
-        .getElementById("loading")
-        .textContent =
-            "PASSO 2 — ANTES DO CLIENTE!";
+            "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
-    const supabase =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+        try {
 
-    document
-        .getElementById("loading")
-        .textContent =
-            "PASSO 3 — CLIENTE CRIADO!";
+            if (!window.supabase) {
 
-</script>
-    
+                throw new Error("Biblioteca do Supabase não foi carregada.");
+
+            }
+
+            // Use outro nome para o cliente
+
+            const supabaseClient =
+
+                window.supabase.createClient(
+
+                    SUPABASE_URL,
+
+                    SUPABASE_KEY
+
+                );
+
+            async function verificarSessao() {
+
+    loading.textContent =
+        "PASSO 1 — ENTROU NA FUNÇÃO!";
+
+    const {
+        data,
+        error
+    } = await supabaseClient.auth.getSession();
+
+    loading.textContent =
+        "PASSO 2 — GETSESSION TERMINOU!";
+
+    if (error) {
+
+        console.error(error);
+
+        loading.textContent =
+            "PASSO 3 — ERRO NO GETSESSION!";
+
+        return;
+    }
+
+    if (!data.session) {
+
+        loading.textContent =
+            "PASSO 4 — NÃO HÁ SESSÃO!";
+
+        return;
+    }
+
+    loading.textContent =
+        "PASSO 5 — SESSÃO ENCONTRADA!";
+
+}
+            }
+
+            verificarSessao();
+
+        } catch (error) {
+
+            console.error(error);
+
+            loading.textContent =
+
+                "Erro ao iniciar o Supabase.";
+
+        }
+
+    </script>
+
 </body>
+
 </html>
