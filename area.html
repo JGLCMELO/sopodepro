@@ -324,7 +324,66 @@
 
             border-radius: 10px;
         }
+.modalidades {
+    display: grid;
 
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
+    margin-top: 20px;
+}
+
+
+.modalidade {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: #111f35;
+
+    border: 1px solid #26364d;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    color: #dce5f2;
+
+    cursor: pointer;
+}
+
+
+.modalidade:hover {
+    border-color: #f5c542;
+}
+
+
+.modalidade input {
+    width: 18px;
+    height: 18px;
+
+    accent-color: #f5c542;
+
+    cursor: pointer;
+}
+
+
+.modalidade span {
+    font-weight: bold;
+}
+
+
+@media (max-width: 700px) {
+
+    .modalidades {
+        grid-template-columns: 1fr;
+    }
+
+}
 
         @media (max-width: 700px) {
 
@@ -529,24 +588,116 @@
 
             <section class="inscricao">
 
-                <h3>
-                    Olimpíadas Só Pode PRO
-                </h3>
+    <h3>
+        Olimpíadas Só Pode PRO
+    </h3>
+
+    <p>
+        Escolha as modalidades em que
+        você deseja competir:
+    </p>
 
 
-                <p>
-                    Em breve você poderá escolher
-                    as modalidades em que deseja
-                    competir diretamente pela
-                    sua área de participante.
-                </p>
+    <div class="modalidades">
+
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="Rocket League 1x1"
+            >
+            <span>
+                Rocket League 1x1
+            </span>
+        </label>
 
 
-                <span class="status">
-                    SISTEMA DE INSCRIÇÕES EM BREVE
-                </span>
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="Rocket League 2x2"
+            >
+            <span>
+                Rocket League 2x2
+            </span>
+        </label>
 
-            </section>
+
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="Stumble Guys"
+            >
+            <span>
+                Stumble Guys
+            </span>
+        </label>
+
+
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="Minecraft"
+            >
+            <span>
+                Minecraft
+            </span>
+        </label>
+
+
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="eFootball"
+            >
+            <span>
+                eFootball
+            </span>
+        </label>
+
+
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="Madden"
+            >
+            <span>
+                Madden
+            </span>
+        </label>
+
+
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="F1"
+            >
+            <span>
+                F1
+            </span>
+        </label>
+
+
+        <label class="modalidade">
+            <input
+                type="checkbox"
+                value="Fortnite"
+            >
+            <span>
+                Fortnite
+            </span>
+        </label>
+
+    </div>
+
+
+    <button
+        class="botao"
+        type="button"
+    >
+        CONFIRMAR INSCRIÇÕES
+    </button>
+
+</section>
 
 
         </div>
