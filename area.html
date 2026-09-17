@@ -102,7 +102,7 @@
         "https://xfhkdfponsyxeccolhon.supabase.co";
 
     const SUPABASE_KEY =
-        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+        "SUA_CHAVE_PUBLISHABLE";
 
 
     const supabase =
@@ -112,71 +112,19 @@
         );
 
 
-    async function testarSessao() {
-
-        const loading =
-            document.getElementById("loading");
-
-
-        loading.textContent =
-            "LENDO SESSÃO...";
+    document
+        .getElementById("loading")
+        .textContent =
+            "CHEGOU ANTES DO GETSESSION!";
 
 
-        try {
-
-            const resultado =
-                await supabase.auth.getSession();
-
-
-            console.log(
-                "RESULTADO:",
-                resultado
-            );
-
-
-            if (resultado.error) {
-
-                loading.textContent =
-                    "ERRO AO LER SESSÃO";
-
-                return;
-
-            }
-
-
-            if (resultado.data.session) {
-
-                loading.textContent =
-                    "SESSÃO RECEBIDA!";
-
-                console.log(
-                    "USUÁRIO:",
-                    resultado.data.session.user
-                );
-
-            } else {
-
-                loading.textContent =
-                    "NENHUMA SESSÃO!";
-
-            }
-
-        } catch (erro) {
-
-            console.error(erro);
-
-            loading.textContent =
-                "ERRO AO EXECUTAR GETSESSION";
-
-        }
-
-    }
-
-
-    testarSessao();
+    console.log(
+        "Cliente criado:",
+        supabase
+    );
 
 </script>
-
+    
 </body>
 
 </html>
