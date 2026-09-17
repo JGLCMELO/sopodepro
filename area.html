@@ -213,8 +213,6 @@
 
 <script>
 
-    <script>
-
     const SUPABASE_URL =
         "https://xfhkdfponsyxeccolhon.supabase.co";
 
@@ -231,10 +229,11 @@
 
     async function testarSessao() {
 
-        document
-            .getElementById("loading")
-            .textContent =
-                "LENDO SESSÃO...";
+        const loading =
+            document.getElementById("loading");
+
+        loading.textContent =
+            "LENDO SESSÃO...";
 
 
         const resultado =
@@ -242,17 +241,14 @@
 
 
         console.log(
-            "RESULTADO:",
             resultado
         );
 
 
         if (resultado.error) {
 
-            document
-                .getElementById("loading")
-                .textContent =
-                    "ERRO NA SESSÃO";
+            loading.textContent =
+                "ERRO NA SESSÃO";
 
             return;
 
@@ -261,17 +257,13 @@
 
         if (resultado.data.session) {
 
-            document
-                .getElementById("loading")
-                .textContent =
-                    "SESSÃO RECEBIDA!";
+            loading.textContent =
+                "SESSÃO RECEBIDA!";
 
         } else {
 
-            document
-                .getElementById("loading")
-                .textContent =
-                    "NENHUMA SESSÃO!";
+            loading.textContent =
+                "NENHUMA SESSÃO!";
 
         }
 
