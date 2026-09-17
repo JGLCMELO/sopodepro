@@ -1000,36 +1000,100 @@ window.confirmarInscricoes = async function () {
         sessionData.session.user.id;
 
 
-    const inscricoes =
-        Array.from(selecionadas).map(
-            checkbox => ({
+    botao.disabled = true;
 
-                user_id: userId,
+    botao.textContent =
+        "VERIFICANDO...";
 
-                modalidade:
-                    checkbox.value
 
-            })
+    const {
+        data: inscricoesExistentes,
+        error: consultaError
+    } =
+        await supabaseClient
+            .from("inscricoes_olimpiadas")
+            .select("modalidade")
+            .eq("user_id", userId);
+
+
+    if (consultaError) {
+
+        console.error(consultaError);
+
+        alert(
+            "Não foi possível verificar suas inscrições."
+        );
+
+        botao.disabled = false;
+
+        botao.textContent =
+            "CONFIRMAR INSCRIÇÕES";
+
+        return;
+
+    }
+
+
+    const modalidadesExistentes =
+        new Set(
+            inscricoesExistentes.map(
+                inscricao =>
+                    inscricao.modalidade
+            )
         );
 
 
-    botao.disabled = true;
+    const novasInscricoes =
+        Array.from(selecionadas)
+            .filter(
+                checkbox =>
+                    !modalidadesExistentes.has(
+                        checkbox.value
+                    )
+            )
+            .map(
+                checkbox => ({
+
+                    user_id: userId,
+
+                    modalidade:
+                        checkbox.value
+
+                })
+            );
+
+
+    if (novasInscricoes.length === 0) {
+
+        alert(
+            "Você já está inscrito em todas as modalidades selecionadas."
+        );
+
+        botao.disabled = false;
+
+        botao.textContent =
+            "CONFIRMAR INSCRIÇÕES";
+
+        return;
+
+    }
+
 
     botao.textContent =
         "SALVANDO...";
 
 
     const {
-        error
+        error: insercaoError
     } =
         await supabaseClient
             .from("inscricoes_olimpiadas")
-            .insert(inscricoes);
+            .insert(novasInscricoes);
 
 
-    if (error) {
+    if (insercaoError) {
 
-        console.error(error);
+        console.error(insercaoError);
 
         alert(
             "Não foi possível salvar as inscrições."
@@ -1046,12 +1110,17 @@ window.confirmarInscricoes = async function () {
 
 
     alert(
-        "Inscrições confirmadas com sucesso!"
+        novasInscricoes.length === 1
+            ? "Inscrição confirmada com sucesso!"
+            : "Inscrições confirmadas com sucesso!"
     );
 
 
     botao.textContent =
         "INSCRIÇÕES CONFIRMADAS";
+
+
+    botao.disabled = false;
 
 }
             
