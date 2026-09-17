@@ -160,7 +160,7 @@
         class="loading"
         id="loading"
     >
-        Teste 123
+        Verificando Login...
     </div>
 
 
@@ -228,7 +228,7 @@
         );
 
 
-    async function testarSessao() {
+    async function verificarSessao() {
 
         const loading =
             document.getElementById("loading");
@@ -242,9 +242,6 @@
 
             const resultado =
                 await supabase.auth.getSession();
-
-
-            console.log(resultado);
 
 
             if (resultado.error) {
@@ -271,8 +268,6 @@
 
         } catch (erro) {
 
-            console.error(erro);
-
             loading.textContent =
                 "ERRO: " +
                 erro.message;
@@ -282,7 +277,7 @@
     }
 
 
-    testarSessao();
+    verificarSessao();
 
 </script>
 
