@@ -135,99 +135,98 @@
             >
 
             <button type="submit">
-    ENTRAR
-</button>
+                ENTRAR
+            </button>
 
-</form>
+        </form>
 
-<div
-    class="message"
-    id="message"
-></div>
+        <div
+            class="message"
+            id="message"
+        ></div>
 
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-    const SUPABASE_URL = "https://xfhkdfponsyxeccolhon.supabase.co/rest/v1/";
-
-    const SUPABASE_KEY = "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+    </div>
 
 
-    const supabase = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+
+        const SUPABASE_URL = "SUA_PROJECT_URL";
+
+        const SUPABASE_KEY = "SUA_PUBLISHABLE_KEY";
 
 
-    document
-        .getElementById("loginForm")
-        .addEventListener("submit", async function(event) {
-
-            event.preventDefault();
-
-            const usuario =
-                document.getElementById("usuario").value.trim();
-
-            const senha =
-                document.getElementById("senha").value;
-
-            const message =
-                document.getElementById("message");
+        const supabase = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
 
-            message.textContent =
-                "Entrando...";
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", async function(event) {
 
+                event.preventDefault();
 
-            let email = "";
+                const usuario =
+                    document.getElementById("usuario").value.trim();
 
+                const senha =
+                    document.getElementById("senha").value;
 
-            if (usuario.toLowerCase() === "guga") {
+                const message =
+                    document.getElementById("message");
 
-                email = "guga@sopodepro.com";
-
-            } else {
 
                 message.textContent =
-                    "Usuário não encontrado.";
-
-                return;
-
-            }
+                    "Entrando...";
 
 
-            const { data, error } =
-                await supabase.auth.signInWithPassword({
-                    email: email,
-                    password: senha
-                });
+                let email = "";
 
 
-            if (error) {
+                if (usuario.toLowerCase() === "guga") {
+
+                    email = "guga@sopodepro.com";
+
+                } else {
+
+                    message.textContent =
+                        "Usuário não encontrado.";
+
+                    return;
+
+                }
+
+
+                const { data, error } =
+                    await supabase.auth.signInWithPassword({
+                        email: email,
+                        password: senha
+                    });
+
+
+                if (error) {
+
+                    message.textContent =
+                        "Usuário ou senha incorretos.";
+
+                    console.error(error);
+
+                    return;
+
+                }
+
 
                 message.textContent =
-                    "Usuário ou senha incorretos.";
+                    "Login realizado com sucesso!";
 
-                console.error(error);
+                console.log(data);
 
-                return;
+            });
 
-            }
-
-
-            message.textContent =
-                "Login realizado com sucesso!";
-
-            console.log(data);
-
-        });
-
-</script>
-
+    </script>
 
 </body>
 </html>
