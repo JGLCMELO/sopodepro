@@ -219,19 +219,31 @@
     const SUPABASE_KEY =
         "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
-    const supabase =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+    try {
 
-    document
-        .getElementById("loading")
-        .textContent =
-            "SUPABASE CARREGADO!";
+        const supabase =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+        document
+            .getElementById("loading")
+            .textContent =
+                "SUPABASE CARREGADO!";
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        document
+            .getElementById("loading")
+            .textContent =
+                "ERRO AO CARREGAR SUPABASE!";
+
+    }
 
 </script>
-
 </body>
 </html>
 
