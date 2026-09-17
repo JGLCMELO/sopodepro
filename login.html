@@ -134,13 +134,13 @@
                 required
             >
 
-           <button
-    type="button"
-    id="loginButton"
-    onclick="fazerLogin()"
->
-    ENTRAR
-</button>
+            <button
+                type="button"
+                id="loginButton"
+                onclick="fazerLogin()"
+            >
+                ENTRAR
+            </button>
 
         </form>
 
@@ -157,19 +157,59 @@
 
     <script>
 
-        const SUPABASE_URL = "https://xfhkdfponsyxeccolhon.supabase.co";
-
-        const SUPABASE_KEY = "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
-
-
-        const supabase =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
+        const SUPABASE_URL =
+            "https://xfhkdfponsyxeccolhon.supabase.co";
 
 
-       async function fazerLogin() {
+        const SUPABASE_KEY =
+            "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+
+
+        let supabaseClient = null;
+
+
+        try {
+
+            if (!window.supabase) {
+
+                throw new Error(
+                    "Biblioteca do Supabase não carregou."
+                );
+
+            }
+
+
+            supabaseClient =
+                window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_KEY
+                );
+
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
+
+        async function fazerLogin() {
+
+            const message =
+                document.getElementById("message");
+
+
+            message.textContent =
+                "Entrando...";
+
+
+            if (!supabaseClient) {
+
+                message.textContent =
+                    "Erro ao carregar o sistema de login.";
+
+                return;
+            }
 
 
             const usuario =
@@ -185,12 +225,13 @@
                     .value;
 
 
-            const message =
-                document.getElementById("message");
+            if (!usuario || !senha) {
 
+                message.textContent =
+                    "Digite o usuário e a senha.";
 
-            message.textContent =
-                "Entrando...";
+                return;
+            }
 
 
             let email = "";
@@ -212,45 +253,57 @@
             }
 
 
-            const {
-                data,
-                error
-            } =
-                await supabase.auth.signInWithPassword({
+            try {
 
-                    email: email,
+                const {
+                    data,
+                    error
+                } =
+                    await supabaseClient.auth.signInWithPassword({
 
-                    password: senha
+                        email: email,
 
-                });
+                        password: senha
+
+                    });
 
 
-            if (error) {
+                if (error) {
+
+                    console.error(error);
+
+                    message.textContent =
+                        "Usuário ou senha incorretos.";
+
+                    return;
+                }
+
+
+                if (!data.session) {
+
+                    message.textContent =
+                        "Não foi possível criar a sessão.";
+
+                    return;
+                }
+
+
+                message.textContent =
+                    "Login realizado!";
+
+
+                window.location.href =
+                    "area.html";
+
+
+            } catch (error) {
 
                 console.error(error);
 
                 message.textContent =
-                    "Usuário ou senha incorretos.";
+                    "Erro ao conectar ao sistema.";
 
-                return;
             }
-
-
-            if (!data.session) {
-
-                message.textContent =
-                    "Não foi possível criar a sessão.";
-
-                return;
-            }
-
-
-            message.textContent =
-                "Login realizado!";
-
-
-            window.location.href =
-                "area.html";
 
         }
 
