@@ -228,134 +228,56 @@
         );
 
 
-    async function verificarLogin() {
+    async function testarSessao() {
 
         const loading =
             document.getElementById("loading");
 
-        const content =
-            document.getElementById("content");
-
-        const error =
-            document.getElementById("error");
-
 
         loading.textContent =
-            "Verificando login...";
+            "Testando sessão...";
 
 
         const {
             data,
-            error: sessionError
+            error
         } =
             await supabase.auth.getSession();
 
 
-        if (sessionError) {
+        if (error) {
 
-            console.error(sessionError);
+            console.error(error);
 
-            loading.style.display =
-                "none";
-
-            error.textContent =
-                "Erro ao verificar o login.";
-
-            error.style.display =
-                "block";
+            loading.textContent =
+                "ERRO AO LER A SESSÃO";
 
             return;
 
         }
 
 
-        const session =
-            data.session;
+        if (data.session) {
 
+            loading.textContent =
+                "SESSÃO RECEBIDA!";
 
-        if (!session) {
+            console.log(
+                "Usuário:",
+                data.session.user
+            );
 
-            window.location.href =
-                "login.html";
+        } else {
 
-            return;
-
-        }
-
-
-        const userId =
-            session.user.id;
-
-
-        const {
-            data: participante,
-            error: participanteError
-        } =
-            await supabase
-                .from("participantes")
-                .select("nome")
-                .eq("user_id", userId)
-                .single();
-
-
-        if (participanteError) {
-
-            console.error(participanteError);
-
-            loading.style.display =
-                "none";
-
-            error.textContent =
-                "Participante não encontrado.";
-
-            error.style.display =
-                "block";
-
-            return;
+            loading.textContent =
+                "NENHUMA SESSÃO!";
 
         }
-
-
-        document
-            .getElementById("nomeParticipante")
-            .textContent =
-                participante.nome;
-
-
-        document
-            .getElementById("nomeConta")
-            .textContent =
-                participante.nome;
-
-
-        loading.style.display =
-            "none";
-
-        content.style.display =
-            "block";
 
     }
 
 
-    async function sair() {
-
-        await supabase.auth.signOut();
-
-        window.location.href =
-            "login.html";
-
-    }
-
-
-    document
-        .getElementById("logoutButton")
-        .addEventListener(
-            "click",
-            sair
-        );
-
-
-    verificarLogin();
+    testarSessao();
 
 </script>
 
