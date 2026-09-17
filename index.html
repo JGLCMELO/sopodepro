@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Só Pode PRO</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Só Pode PRO | Início</title>
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
 
         * {
             margin: 0;
@@ -14,78 +23,175 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #071426;
-            color: white;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* =========================
+        body {
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #071426;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
            HEADER
-        ========================= */
+        ===================================================== */
 
         header {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: #050b14;
-            border-bottom: 1px solid #26364d;
+            z-index: 1000;
+
+            background: rgba(5, 11, 20, 0.94);
+
+            border-bottom:
+                1px solid
+                rgba(245, 197, 66, 0.14);
+
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .navbar {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 25px;
+            width: 100%;
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding:
+                17px
+                25px;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            gap: 25px;
         }
 
+
+        /* =====================================================
+           LOGO
+        ===================================================== */
+
         .logo {
+            color: #ffffff;
+
             font-size: 24px;
             font-weight: 900;
+
             letter-spacing: 1px;
+
+            white-space: nowrap;
         }
 
         .logo span {
             color: #f5c542;
         }
 
+
+        /* =====================================================
+           DESKTOP NAV
+        ===================================================== */
+
         nav {
             display: flex;
+            align-items: center;
+
             gap: 25px;
         }
 
         nav a {
+            position: relative;
+
             color: #dce5f2;
+
             font-size: 14px;
             font-weight: bold;
-            text-decoration: none;
-            transition: .2s;
+
+            transition:
+                color .2s ease;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 2px;
+
+            background: #f5c542;
+
+            transition:
+                width .2s ease;
         }
 
         nav a:hover {
             color: #f5c542;
         }
 
-        /* =========================
-           MENU MOBILE
-        ========================= */
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =====================================================
+           MOBILE MENU BUTTON
+        ===================================================== */
 
         .menu-mobile {
             display: none;
+
             background: none;
             border: none;
-            color: white;
+
+            color: #ffffff;
+
             font-size: 30px;
+
             cursor: pointer;
+
+            line-height: 1;
+
+            padding: 4px;
         }
+
+
+        /* =====================================================
+           MOBILE NAVIGATION
+        ===================================================== */
 
         .mobile-nav {
             display: none;
+
             background: #050b14;
-            border-top: 1px solid #26364d;
-            padding: 15px 25px;
+
+            border-top:
+                1px solid
+                #26364d;
+
+            padding:
+                12px
+                25px
+                18px;
         }
 
         .mobile-nav.active {
@@ -94,11 +200,20 @@
 
         .mobile-nav a {
             display: block;
+
             color: #dce5f2;
+
+            font-size: 15px;
             font-weight: bold;
-            text-decoration: none;
+
             padding: 14px 0;
-            border-bottom: 1px solid #1d2b40;
+
+            border-bottom:
+                1px solid
+                #1d2b40;
+
+            transition:
+                color .2s ease;
         }
 
         .mobile-nav a:hover {
@@ -109,376 +224,1380 @@
             border-bottom: none;
         }
 
-        /* =========================
+
+        /* =====================================================
            HERO
-        ========================= */
+        ===================================================== */
 
         .hero {
-            max-width: 1200px;
-            margin: auto;
-            padding: 90px 25px 85px;
+            position: relative;
+
+            min-height: 620px;
+
+            display: flex;
+            align-items: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 78% 30%,
+                    rgba(245, 197, 66, 0.16),
+                    transparent 24%
+                ),
+
+                radial-gradient(
+                    circle at 65% 50%,
+                    rgba(38, 89, 145, 0.32),
+                    transparent 45%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #071426 0%,
+                    #081a30 52%,
+                    #050d19 100%
+                );
+        }
+
+
+        /* =====================================================
+           HERO DECORATIVE LIGHTS
+        ===================================================== */
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -170px;
+            top: -160px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(245, 197, 66, 0.16),
+                    transparent 68%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 2px;
+
+            right: -100px;
+            bottom: 100px;
+
+            transform: rotate(-27deg);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(245, 197, 66, 0.35),
+                    transparent
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           HERO CONTAINER
+        ===================================================== */
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding:
+                90px
+                25px
+                95px;
         }
 
         .hero-content {
-            max-width: 850px;
+            max-width: 900px;
         }
+
+
+        /* =====================================================
+           HERO TAG
+        ===================================================== */
 
         .hero-tag {
-            color: #f5c542;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-        }
+            display: inline-flex;
+            align-items: center;
 
-        .brand-title {
-            font-size: 86px;
-            line-height: .88;
+            gap: 9px;
+
+            color: #f5c542;
+
+            font-size: 12px;
             font-weight: 900;
-            letter-spacing: -3px;
-            margin-bottom: 25px;
-        }
 
-        .brand-title .pro {
-            color: #f5c542;
-        }
+            letter-spacing: 3px;
 
-        .hero-subtitle {
-            font-size: 27px;
-            font-weight: bold;
-            line-height: 1.25;
             margin-bottom: 20px;
         }
 
-        .hero p {
-            color: #b8c3d1;
-            font-size: 18px;
-            line-height: 1.6;
+        .hero-tag::before {
+            content: "";
+
+            width: 28px;
+            height: 2px;
+
+            background: #f5c542;
+        }
+
+
+        /* =====================================================
+           MAIN BRAND TITLE
+        ===================================================== */
+
+        .brand-title {
+            font-size: 96px;
+
+            line-height: .84;
+
+            font-weight: 900;
+
+            letter-spacing: -5px;
+
+            margin-bottom: 30px;
+
+            text-transform: uppercase;
+        }
+
+        .brand-title .pro {
+            display: inline-block;
+
+            color: #f5c542;
+
+            text-shadow:
+                0 0 35px
+                rgba(245, 197, 66, 0.18);
+        }
+
+
+        /* =====================================================
+           HERO SUBTITLE
+        ===================================================== */
+
+        .hero-subtitle {
+            font-size: 29px;
+
+            line-height: 1.2;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+
             max-width: 700px;
         }
 
+        .hero-description {
+            max-width: 700px;
+
+            color: #b8c3d1;
+
+            font-size: 17px;
+
+            line-height: 1.65;
+        }
+
+
+        /* =====================================================
+           HERO BUTTONS
+        ===================================================== */
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+
+            gap: 14px;
+
+            margin-top: 32px;
+
+            flex-wrap: wrap;
+        }
+
         .hero-button {
-            display: inline-block;
-            margin-top: 28px;
-            padding: 14px 22px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 48px;
+
+            padding:
+                0
+                22px;
+
+            border-radius: 8px;
+
             background: #f5c542;
+
             color: #071426;
-            text-decoration: none;
+
+            font-size: 13px;
             font-weight: 900;
-            border-radius: 7px;
-            transition: .2s;
+
+            letter-spacing: .4px;
+
+            transition:
+                transform .2s ease,
+                box-shadow .2s ease,
+                background .2s ease;
         }
 
         .hero-button:hover {
-            transform: translateY(-2px);
-            opacity: .9;
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(245, 197, 66, 0.18);
+
+            background: #ffd75b;
         }
 
-        /* =========================
-           PRÓXIMO EVENTO
-        ========================= */
+        .hero-button-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
 
-        .section {
-            max-width: 1200px;
-            margin: auto;
-            padding: 30px 25px 70px;
+            min-height: 48px;
+
+            padding:
+                0
+                22px;
+
+            border-radius: 8px;
+
+            border:
+                1px solid
+                #33465f;
+
+            background:
+                rgba(7, 20, 38, 0.45);
+
+            color: #dce5f2;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            transition:
+                border-color .2s ease,
+                color .2s ease,
+                transform .2s ease;
         }
 
-        .section-title {
-            font-size: 30px;
-            margin-bottom: 22px;
-        }
+        .hero-button-secondary:hover {
+            transform: translateY(-3px);
 
-        .section-title span {
+            border-color: #f5c542;
+
             color: #f5c542;
         }
 
-        .next-event {
-            background: linear-gradient(
-                135deg,
-                #102944,
-                #081525
-            );
-            border: 1px solid #f5c542;
-            border-radius: 15px;
-            padding: 35px;
+
+        /* =====================================================
+           HERO SIDE DECORATION
+        ===================================================== */
+
+        .hero-badge {
+            position: absolute;
+
+            right: 55px;
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            width: 250px;
+            height: 250px;
+
+            border:
+                1px solid
+                rgba(245, 197, 66, 0.18);
+
+            border-radius: 50%;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(245, 197, 66, 0.08),
+                    rgba(7, 20, 38, 0.02) 65%,
+                    transparent 66%
+                );
+
+            pointer-events: none;
+        }
+
+        .hero-badge::before {
+            content: "";
+
+            width: 165px;
+            height: 165px;
+
+            border:
+                1px solid
+                rgba(245, 197, 66, 0.25);
+
+            border-radius: 50%;
+        }
+
+        .hero-badge-text {
+            position: absolute;
+
+            text-align: center;
+
+            color: #f5c542;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           GENERIC SECTION
+        ===================================================== */
+
+        .section {
+            width: 100%;
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding:
+                75px
+                25px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 25px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-heading {
+            font-size: 30px;
+
+            line-height: 1.1;
+
+            font-weight: 900;
+        }
+
+        .section-heading span {
+            color: #f5c542;
+        }
+
+        .section-description {
+            color: #8998aa;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            max-width: 500px;
+
+            text-align: right;
+        }
+
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .stats-section {
+            padding-top: 10px;
+            padding-bottom: 55px;
+        }
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+        .stat-card {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0e2139,
+                    #091729
+                );
+
+            border:
+                1px solid
+                #26364d;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            transition:
+                transform .2s ease,
+                border-color .2s ease;
+        }
+
+        .stat-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            right: -35px;
+            bottom: -35px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(245, 197, 66, 0.06);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(245, 197, 66, 0.55);
+        }
+
+        .stat-number {
+            color: #f5c542;
+
+            font-size: 34px;
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #dce5f2;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        /* =====================================================
+           PRÓXIMO EVENTO
+        ===================================================== */
+
+        .next-event {
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 90% 10%,
+                    rgba(245, 197, 66, 0.12),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #102944,
+                    #081525
+                );
+
+            border:
+                1px solid
+                rgba(245, 197, 66, 0.55);
+
+            border-radius: 16px;
+
+            padding: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 35px;
+        }
+
+        .next-event-info {
+            max-width: 720px;
         }
 
         .event-label {
             color: #f5c542;
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 2px;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: 2.5px;
+
+            margin-bottom: 10px;
         }
 
         .next-event h2 {
-            font-size: 34px;
-            margin: 9px 0;
+            font-size: 35px;
+
+            line-height: 1.1;
+
+            margin-bottom: 12px;
         }
 
         .next-event p {
-            color: #b8c3d1;
-            line-height: 1.5;
+            color: #aeb9c8;
+
+            font-size: 15px;
+
+            line-height: 1.6;
         }
 
+
+        /* =====================================================
+           EVENT DATE
+        ===================================================== */
+
         .event-date {
-            min-width: 190px;
+            flex-shrink: 0;
+
+            min-width: 205px;
+
+            padding: 22px;
+
             text-align: center;
-            padding: 20px;
-            border: 1px solid #26364d;
-            border-radius: 10px;
-            background: #071426;
+
+            border:
+                1px solid
+                #31445d;
+
+            border-radius: 12px;
+
+            background:
+                rgba(7, 20, 38, 0.75);
         }
 
         .event-date strong {
             display: block;
+
             color: #f5c542;
-            font-size: 28px;
-        }
 
-        .event-date span {
-            color: #b8c3d1;
-            font-size: 13px;
-        }
+            font-size: 29px;
 
-        /* =========================
-           NOTÍCIAS
-        ========================= */
+            font-weight: 900;
 
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+            line-height: 1;
 
-        .news-card {
-            background: #0d2039;
-            border: 1px solid #26364d;
-            border-radius: 12px;
-            padding: 23px;
-            transition: .2s;
-        }
-
-        .news-card:hover {
-            transform: translateY(-3px);
-            border-color: #f5c542;
-        }
-
-        .news-date {
-            color: #f5c542;
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .news-card h3 {
-            font-size: 20px;
-            margin: 10px 0;
-        }
-
-        .news-card p {
-            color: #aeb9c8;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .news-link {
-            display: inline-block;
-            margin-top: 16px;
-            color: #f5c542;
-            font-size: 13px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        /* =========================
-           ÁREAS DO GRUPO
-        ========================= */
-
-        .areas {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .area-card {
-            background: #0d2039;
-            border: 1px solid #26364d;
-            border-radius: 12px;
-            padding: 25px;
-            text-decoration: none;
-            color: white;
-            transition: .2s;
-        }
-
-        .area-card:hover {
-            transform: translateY(-3px);
-            border-color: #f5c542;
-        }
-
-        .area-card .icon {
-            font-size: 30px;
-            margin-bottom: 15px;
-        }
-
-        .area-card h3 {
             margin-bottom: 8px;
         }
 
-        .area-card p {
+        .event-date span {
             color: #aeb9c8;
+
             font-size: 13px;
-            line-height: 1.5;
-        }
 
-        /* =========================
-           CAMPEÃO
-        ========================= */
-
-        .champion {
-            background: #0d2039;
-            border: 1px solid #26364d;
-            border-radius: 14px;
-            padding: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 25px;
-        }
-
-        .champion-info small {
-            color: #f5c542;
             font-weight: bold;
+        }
+
+        .event-date small {
+            display: block;
+
+            color: #64758a;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
             letter-spacing: 1px;
-        }
 
-        .champion-info h2 {
-            font-size: 28px;
-            margin: 8px 0;
-        }
-
-        .champion-info p {
-            color: #aeb9c8;
-        }
-
-        .champion-button {
-            color: #071426;
-            background: #f5c542;
-            padding: 13px 18px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #050b14;
-            border-top: 1px solid #26364d;
-            padding: 30px 25px;
-            text-align: center;
-            color: #7f8a99;
-            font-size: 13px;
-        }
-
-        footer strong {
-            color: #f5c542;
-        }
-
-        /* =========================
-           RESPONSIVO
-        ========================= */
-
-        @media (max-width: 800px) {
-
-            nav {
-                display: none;
-            }
-
-            .menu-mobile {
-                display: block;
-            }
-
-            .hero {
-                padding: 70px 25px 55px;
-            }
-
-            .brand-title {
-                font-size: 64px;
-                letter-spacing: -2px;
-            }
-
-            .hero-subtitle {
-                font-size: 23px;
-            }
-
-            .next-event {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .event-date {
-                width: 100%;
-            }
-
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .areas {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .champion {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-        }
-
-        @media (max-width: 500px) {
-
-            .hero {
-                padding-top: 60px;
-            }
-
-            .brand-title {
-                font-size: 52px;
-                line-height: .9;
-            }
-
-            .hero-subtitle {
-                font-size: 20px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .areas {
-                grid-template-columns: 1fr;
-            }
-
-            .section {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            .navbar {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
+            margin-top: 10px;
         }
 
     </style>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ===================================================== -->
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+                SÓ PODE <span>PRO</span>
+            </div>
+
+            <nav>
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="noticias.html">
+                    Notícias
+                </a>
+
+                <a href="olimpiadas.html">
+                    Olimpíadas
+                </a>
+
+                <a href="copa.html">
+                    Copa
+                </a>
+
+                <a href="participantes.html">
+                    Participantes
+                </a>
+
+                <a href="hall.html">
+                    Hall dos Campeões
+                </a>
+
+            </nav>
+
+            <button
+                class="menu-mobile"
+                onclick="abrirMenu()"
+                aria-label="Abrir menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+        <div
+            class="mobile-nav"
+            id="mobileNav"
+        >
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="noticias.html">
+                Notícias
+            </a>
+
+            <a href="olimpiadas.html">
+                Olimpíadas
+            </a>
+
+            <a href="copa.html">
+                Copa
+            </a>
+
+            <a href="participantes.html">
+                Participantes
+            </a>
+
+            <a href="hall.html">
+                Hall dos Campeões
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ===================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-inner">
+
+            <div class="hero-content">
+
+                <div class="hero-tag">
+                    BEM-VINDO AO SÓ PODE PRO
+                </div>
+
+                <h1 class="brand-title">
+                    SÓ PODE
+                    <br>
+                    <span class="pro">
+                        PRO
+                    </span>
+                </h1>
+
+                <div class="hero-subtitle">
+                    Um grupo. Vários jogos.
+                    <br>
+                    Momentos inesquecíveis.
+                </div>
+
+                <p class="hero-description">
+                    O Só Pode PRO é um grupo de amigos que se reúne
+                    para jogar, competir e criar grandes momentos.
+                    Aqui você acompanha as competições, os participantes,
+                    os resultados e a história do grupo.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="participantes.html"
+                        class="hero-button"
+                    >
+                        CONHEÇA OS PARTICIPANTES
+                    </a>
+
+                    <a
+                        href="olimpiadas.html"
+                        class="hero-button-secondary"
+                    >
+                        VER OLIMPÍADAS
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="hero-badge">
+
+                <div class="hero-badge-text">
+                    SÓ PODE
+                    <br>
+                    PRO
+                    <br>
+                    OFICIAL
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NÚMEROS DO GRUPO
+    ===================================================== -->
+
+    <section class="section stats-section">
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    14
+                </div>
+
+                <div class="stat-label">
+                    Participantes oficiais
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    8
+                </div>
+
+                <div class="stat-label">
+                    Modalidades das Olimpíadas
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    1
+                </div>
+
+                <div class="stat-label">
+                    Campeão oficial
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-number">
+                    2027
+                </div>
+
+                <div class="stat-label">
+                    Próxima Olimpíada
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRÓXIMO EVENTO
+    ===================================================== -->
+
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2 class="section-heading">
+                Próximo <span>evento</span>
+            </h2>
+
+            <p class="section-description">
+                O próximo grande evento oficial do Só Pode PRO.
+            </p>
+
+        </div>
+
+        <div class="next-event">
+
+            <div class="next-event-info">
+
+                <div class="event-label">
+                    PRÓXIMAS OLIMPÍADAS
+                </div>
+
+                <h2>
+                    Olimpíadas Só Pode PRO
+                </h2>
+
+                <p>
+                    A próxima edição das Olimpíadas acontecerá
+                    em janeiro de 2027, reunindo os participantes
+                    do grupo em diferentes modalidades.
+                </p>
+
+            </div>
+
+            <div class="event-date">
+                
+                
+                <strong>
+                    JANEIRO
+                </strong>
+
+                <span>
+                    2027
+                </span>
+
+                <small>
+                    PRÓXIMA EDIÇÃO
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    /* =========================
+   HEADER
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #050b14;
+    border-bottom: 1px solid #26364d;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: #f5c542;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #dce5f2;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: .2s;
+}
+
+nav a:hover {
+    color: #f5c542;
+}
+
+
+/* =========================
+   MENU MOBILE
+========================= */
+
+.menu-mobile {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.mobile-nav {
+    display: none;
+    background: #050b14;
+    border-top: 1px solid #26364d;
+    padding: 15px 25px;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav a {
+    display: block;
+    color: #dce5f2;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 14px 0;
+    border-bottom: 1px solid #1d2b40;
+}
+
+.mobile-nav a:hover {
+    color: #f5c542;
+}
+
+.mobile-nav a:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 90px 25px 85px;
+}
+
+.hero-content {
+    max-width: 850px;
+}
+
+.hero-tag {
+    color: #f5c542;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.brand-title {
+    font-size: 86px;
+    line-height: .88;
+    font-weight: 900;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+}
+
+.brand-title .pro {
+    color: #f5c542;
+}
+
+.hero-subtitle {
+    font-size: 27px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #b8c3d1;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 22px;
+    background: #f5c542;
+    color: #071426;
+    text-decoration: none;
+    font-weight: 900;
+    border-radius: 7px;
+    transition: .2s;
+}
+
+.hero-button:hover {
+    transform: translateY(-2px);
+    opacity: .9;
+}
+
+    /* =========================
+   PRÓXIMO EVENTO
+========================= */
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 25px 70px;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 22px;
+}
+
+.section-title span {
+    color: #f5c542;
+}
+
+.next-event {
+    background: linear-gradient(
+        135deg,
+        #102944,
+        #081525
+    );
+    border: 1px solid #f5c542;
+    border-radius: 15px;
+    padding: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.event-label {
+    color: #f5c542;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.next-event h2 {
+    font-size: 34px;
+    margin: 9px 0;
+}
+
+.next-event p {
+    color: #b8c3d1;
+    line-height: 1.5;
+}
+
+.event-date {
+    min-width: 190px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #26364d;
+    border-radius: 10px;
+    background: #071426;
+}
+
+.event-date strong {
+    display: block;
+    color: #f5c542;
+    font-size: 28px;
+}
+
+.event-date span {
+    color: #b8c3d1;
+    font-size: 13px;
+}
+
+
+/* =========================
+   NOTÍCIAS
+========================= */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.news-card {
+    background: #0d2039;
+    border: 1px solid #26364d;
+    border-radius: 12px;
+    padding: 23px;
+    transition: .2s;
+}
+
+.news-card:hover {
+    transform: translateY(-3px);
+    border-color: #f5c542;
+}
+
+.news-date {
+    color: #f5c542;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.news-card h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.news-card p {
+    color: #aeb9c8;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.news-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: #f5c542;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+    /* =========================
+   ÁREAS DO GRUPO
+========================= */
+
+.areas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.area-card {
+    background: #0d2039;
+    border: 1px solid #26364d;
+    border-radius: 12px;
+    padding: 25px;
+    text-decoration: none;
+    color: white;
+    transition: .2s;
+}
+
+.area-card:hover {
+    transform: translateY(-3px);
+    border-color: #f5c542;
+}
+
+.area-card .icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.area-card h3 {
+    margin-bottom: 8px;
+}
+
+.area-card p {
+    color: #aeb9c8;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================
+   CAMPEÃO
+========================= */
+
+.champion {
+    background: #0d2039;
+    border: 1px solid #26364d;
+    border-radius: 14px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.champion-info small {
+    color: #f5c542;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.champion-info h2 {
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+.champion-info p {
+    color: #aeb9c8;
+}
+
+.champion-button {
+    color: #071426;
+    background: #f5c542;
+    padding: 13px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #050b14;
+    border-top: 1px solid #26364d;
+    padding: 30px 25px;
+    text-align: center;
+    color: #7f8a99;
+    font-size: 13px;
+}
+
+footer strong {
+    color: #f5c542;
+}
+
+    /* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        display: none;
+    }
+
+    .menu-mobile {
+        display: block;
+    }
+
+    .hero {
+        padding: 70px 25px 55px;
+    }
+
+    .brand-title {
+        font-size: 64px;
+        letter-spacing: -2px;
+    }
+
+    .hero-subtitle {
+        font-size: 23px;
+    }
+
+    .next-event {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .event-date {
+        width: 100%;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .areas {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .champion {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .hero {
+        padding-top: 60px;
+    }
+
+    .brand-title {
+        font-size: 52px;
+        line-height: .9;
+    }
+
+    .hero-subtitle {
+        font-size: 20px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .areas {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
@@ -498,15 +1617,10 @@
         <nav>
 
             <a href="index.html">Início</a>
-
             <a href="noticias.html">Notícias</a>
-
             <a href="olimpiadas.html">Olimpíadas</a>
-
             <a href="copa.html">Copa</a>
-
             <a href="participantes.html">Participantes</a>
-
             <a href="hall.html">Hall dos Campeões</a>
 
         </nav>
@@ -548,7 +1662,7 @@
         </div>
 
         <h1 class="brand-title">
-            SÓ PODE PRO<br> 
+            SÓ PODE PRO
         </h1>
 
         <div class="hero-subtitle">
@@ -814,7 +1928,7 @@
 
 
 <!-- =========================
-     CAMPEÃO ATUAL
+     CAMPEÃO
 ========================= -->
 
 <section class="section">
