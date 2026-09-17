@@ -219,33 +219,64 @@
     const SUPABASE_KEY =
         "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
-    try {
+    const supabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
-        const supabase =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
 
-        document
-            .getElementById("loading")
-            .textContent =
-                "SUPABASE CARREGADO!";
-
-    } catch (erro) {
-
-        console.error(erro);
+    async function testarSessao() {
 
         document
             .getElementById("loading")
             .textContent =
-                "ERRO AO CARREGAR SUPABASE!";
+                "LENDO SESSÃO...";
+
+
+        const resultado =
+            await supabase.auth.getSession();
+
+
+        console.log(
+            "RESULTADO:",
+            resultado
+        );
+
+
+        if (resultado.error) {
+
+            document
+                .getElementById("loading")
+                .textContent =
+                    "ERRO NA SESSÃO";
+
+            return;
+
+        }
+
+
+        if (resultado.data.session) {
+
+            document
+                .getElementById("loading")
+                .textContent =
+                    "SESSÃO RECEBIDA!";
+
+        } else {
+
+            document
+                .getElementById("loading")
+                .textContent =
+                    "NENHUMA SESSÃO!";
+
+        }
 
     }
 
-</script>
-</body>
-</html>
 
+    testarSessao();
+
+</script>
 </body>
 </html>
