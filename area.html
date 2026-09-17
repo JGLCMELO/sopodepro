@@ -1,87 +1,267 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Área — Só Pode PRO</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            background: #071426;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background: #050b14;
+            padding: 20px 25px;
+            border-bottom: 1px solid #26364d;
+        }
+
+        .logo {
+            color: #f5c542;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 25px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #dce5f2;
+        }
+
+        .area {
+            display: none;
+        }
+
+        .card {
+            background: #0d1b2e;
+            border: 1px solid #26364d;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #f5c542;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        .nome {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .error {
+            display: none;
+            color: #ff6b6b;
+            text-align: center;
+        }
+
+    </style>
 
 </head>
 
 <body>
 
-    <div id="loading">
+<header>
 
+    <div class="logo">
+        SÓ PODE PRO
+    </div>
+
+</header>
+
+<main>
+
+    <div
+        class="loading"
+        id="loading"
+    >
         Verificando sessão...
+    </div>
+
+    <div
+        class="error"
+        id="error"
+    ></div>
+
+    <div
+        class="area"
+        id="area"
+    >
+
+        <div class="card">
+
+            <h1>
+                Área do participante
+            </h1>
+
+            <p>
+                Login confirmado.
+            </p>
+
+            <p>
+                Participante:
+            </p>
+
+            <div
+                class="nome"
+                id="nomeParticipante"
+            >
+                Carregando...
+            </div>
+
+        </div>
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</main>
 
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        const loading = document.getElementById("loading");
+<script>
 
-        const SUPABASE_URL =
+    const loading =
+        document.getElementById("loading");
 
-            "https://xfhkdfponsyxeccolhon.supabase.co";
+    const errorBox =
+        document.getElementById("error");
 
-        const SUPABASE_KEY =
+    const area =
+        document.getElementById("area");
 
-            "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+    const nomeParticipante =
+        document.getElementById(
+            "nomeParticipante"
+        );
 
-        try {
+    const SUPABASE_URL =
+        "https://xfhkdfponsyxeccolhon.supabase.co";
 
-            if (!window.supabase) {
+    const SUPABASE_KEY =
+        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV
+";
 
-                throw new Error("Biblioteca do Supabase não foi carregada.");
+    try {
 
-            }
+        if (!window.supabase) {
 
-            // Use outro nome para o cliente
-
-            const supabaseClient =
-
-                window.supabase.createClient(
-
-                    SUPABASE_URL,
-
-                    SUPABASE_KEY
-
-                );
-
-            async function verificarSessao() {
-    const {
-        data,
-        error
-    } = await supabaseClient.auth.getSession();
-
-    if (error || !data.session) {
-        window.location.href = "login.html";
-        return;
-    }
-
-    loading.textContent =
-        "Login confirmado! Área liberada.";
-}
-
-            verificarSessao();
-
-        } catch (error) {
-
-            console.error(error);
-
-            loading.textContent =
-
-                "Erro ao iniciar o Supabase.";
+            throw new Error(
+                "Biblioteca do Supabase não foi carregada."
+            );
 
         }
 
-    </script>
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+        async function verificarSessao() {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient.auth.getSession();
+
+            if (
+                error ||
+                !data.session
+            ) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+            const userId =
+                data.session.user.id;
+
+            loading.textContent =
+                "Buscando participante...";
+
+            const {
+                data: participante,
+                error: participanteError
+            } =
+                await supabaseClient
+                    .from("participantes")
+                    .select("nome")
+                    .eq("user_id", userId)
+                    .single();
+
+            if (participanteError) {
+
+                console.error(
+                    participanteError
+                );
+
+                loading.style.display =
+                    "none";
+
+                errorBox.style.display =
+                    "block";
+
+                errorBox.textContent =
+                    "Não foi possível encontrar seu cadastro de participante.";
+
+                return;
+
+            }
+
+            nomeParticipante.textContent =
+                participante.nome;
+
+            loading.style.display =
+                "none";
+
+            area.style.display =
+                "block";
+
+        }
+
+        verificarSessao();
+
+    } catch (error) {
+
+        console.error(error);
+
+        loading.style.display =
+            "none";
+
+        errorBox.style.display =
+            "block";
+
+        errorBox.textContent =
+            "Erro ao iniciar o sistema.";
+
+    }
+
+</script>
 
 </body>
 
