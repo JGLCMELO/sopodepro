@@ -10,121 +10,39 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Área do Participante — Só Pode PRO</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #071426;
-            color: white;
-            min-height: 100vh;
-        }
-
-        header {
-            background: #050b14;
-            border-bottom: 1px solid #26364d;
-        }
-
-        .navbar {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: #f5c542;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 70px 25px;
-        }
-
-        .loading {
-            color: #aeb9c8;
-        }
-
-    </style>
+    <title>Área — Só Pode PRO</title>
 
 </head>
 
-
 <body>
 
-
-<header>
-
-    <div class="navbar">
-
-        <div class="logo">
-            SÓ PODE <span>PRO</span>
-        </div>
-
+    <div id="loading">
+        INICIANDO NOVO TESTE...
     </div>
 
-</header>
+
+    <script>
+
+        document
+            .getElementById("loading")
+            .textContent =
+                "PASSO 1 FUNCIONOU!";
+
+    </script>
 
 
-<main>
-
-    <div
-        class="loading"
-        id="loading"
-    >
-        Iniciando...
-    </div>
-
-</main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
 
-<script>
+        document
+            .getElementById("loading")
+            .textContent =
+                "PASSO 2 FUNCIONOU!";
 
-    const SUPABASE_URL =
-        "https://xfhkdfponsyxeccolhon.supabase.co";
+    </script>
 
-    const SUPABASE_KEY =
-        "SUA_CHAVE_PUBLISHABLE";
-
-
-    const supabase =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-
-    document
-        .getElementById("loading")
-        .textContent =
-            "CHEGOU ANTES DO GETSESSION!";
-
-
-    console.log(
-        "Cliente criado:",
-        supabase
-    );
-
-</script>
-    
 </body>
 
 </html>
