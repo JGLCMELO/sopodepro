@@ -110,7 +110,7 @@
             Área exclusiva dos participantes
         </div>
 
-        <form id="loginForm">
+        <form id="loginForm" onsubmit="fazerLogin(event)">
 
             <label for="usuario">
                 Usuário
@@ -161,21 +161,6 @@
         const SUPABASE_KEY = "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
 
-        const message =
-            document.getElementById("message");
-
-        const loginButton =
-            document.getElementById("loginButton");
-
-
-        if (!window.supabase) {
-
-            message.textContent =
-                "Erro ao carregar o sistema de login.";
-
-        }
-
-
         const supabase =
             window.supabase.createClient(
                 SUPABASE_URL,
@@ -183,111 +168,92 @@
             );
 
 
-        document
-            .getElementById("loginForm")
-            .addEventListener("submit", async function(event) {
+        async function fazerLogin(event) {
 
-                event.preventDefault();
+            event.preventDefault();
 
 
-                loginButton.disabled = true;
-
-                loginButton.textContent =
-                    "ENTRANDO...";
-
-
-                const usuario =
-                    document
-                        .getElementById("usuario")
-                        .value
-                        .trim();
+            const usuario =
+                document
+                    .getElementById("usuario")
+                    .value
+                    .trim();
 
 
-                const senha =
-                    document
-                        .getElementById("senha")
-                        .value;
+            const senha =
+                document
+                    .getElementById("senha")
+                    .value;
 
 
-                message.textContent =
-                    "Verificando...";
+            const message =
+                document.getElementById("message");
 
 
-                let email = "";
+            message.textContent =
+                "Entrando...";
 
 
-                if (
-                    usuario.toLowerCase() === "guga"
-                ) {
-
-                    email =
-                        "guga@sopodepro.com";
-
-                } else {
-
-                    message.textContent =
-                        "Usuário não encontrado.";
-
-                    loginButton.disabled = false;
-
-                    loginButton.textContent =
-                        "ENTRAR";
-
-                    return;
-
-                }
+            let email = "";
 
 
-                const {
-                    data,
-                    error
-                } =
-                    await supabase.auth.signInWithPassword({
-                        email: email,
-                        password: senha
-                    });
+            if (
+                usuario.toLowerCase() === "guga"
+            ) {
 
+                email =
+                    "guga@sopodepro.com";
 
-                if (error) {
-
-                    console.error(error);
-
-                    message.textContent =
-                        "Usuário ou senha incorretos.";
-
-                    loginButton.disabled = false;
-
-                    loginButton.textContent =
-                        "ENTRAR";
-
-                    return;
-
-                }
-
-
-                if (!data.session) {
-
-                    message.textContent =
-                        "Login não criou uma sessão.";
-
-                    loginButton.disabled = false;
-
-                    loginButton.textContent =
-                        "ENTRAR";
-
-                    return;
-
-                }
-
+            } else {
 
                 message.textContent =
-                    "Login realizado!";
+                    "Usuário não encontrado.";
+
+                return;
+            }
 
 
-                window.location.href =
-                    "area.html";
+            const {
+                data,
+                error
+            } =
+                await supabase.auth.signInWithPassword({
 
-            });
+                    email: email,
+
+                    password: senha
+
+                });
+
+
+            if (error) {
+
+                console.error(error);
+
+                message.textContent =
+                    "Usuário ou senha incorretos.";
+
+                return;
+            }
+
+
+            if (!data.session) {
+
+                message.textContent =
+                    "Não foi possível criar a sessão.";
+
+                return;
+            }
+
+
+            message.textContent =
+                "Login realizado!";
+
+
+            window.location.href =
+                "area.html";
+
+        }
 
     </script>
 
