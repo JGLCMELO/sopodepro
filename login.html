@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login — Só Pode PRO</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071426;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 420px;
+            background: #0d2039;
+            border: 1px solid #26364d;
+            border-radius: 15px;
+            padding: 35px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        .subtitle {
+            color: #aeb9c8;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 18px;
+            background: #071426;
+            border: 1px solid #26364d;
+            border-radius: 7px;
+            color: white;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #f5c542;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #f5c542;
+            color: #071426;
+            border: none;
+            border-radius: 7px;
+            font-weight: 900;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: .9;
+        }
+
+        .message {
+            margin-top: 18px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="logo">
+            SÓ PODE <span>PRO</span>
+        </div>
+
+        <div class="subtitle">
+            Área exclusiva dos participantes
+        </div>
+
+        <form id="loginForm">
+
+            <label for="usuario">
+                Usuário
+            </label>
+
+            <input
+                type="text"
+                id="usuario"
+                placeholder="Digite seu usuário"
+                required
+            >
+
+            <label for="senha">
+                Senha
+            </label>
+
+            <input
+                type="password"
+                id="senha"
+                placeholder="Digite sua senha"
+                required
+            >
+
+            <button type="submit">
+                ENTRAR
+            </button>
+
+        </form>
+
+        <div
+            class="message"
+            id="message"
+        ></div>
+
+    </div>
+
+
+    <script>
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const usuario =
+                    document.getElementById("usuario").value;
+
+                const message =
+                    document.getElementById("message");
+
+                message.textContent =
+                    "Login sendo configurado...";
+
+                console.log("Usuário:", usuario);
+
+            });
+
+    </script>
+
+</body>
+</html>
