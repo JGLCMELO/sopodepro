@@ -946,6 +946,122 @@
                     "login.html";
 
             }
+
+async function carregarInscricoes() {
+
+    const {
+        data: sessionData,
+        error: sessionError
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (
+        sessionError ||
+        !sessionData.session
+    ) {
+
+        window.location.href =
+            "login.html";
+
+        return;
+
+    }
+
+
+    const userId =
+        sessionData.session.user.id;
+
+
+    const {
+        data: inscricoes,
+        error
+    } =
+        await supabaseClient
+            .from("inscricoes_olimpiadas")
+            .select("modalidade")
+            .eq("user_id", userId);
+
+
+    if (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "statusInscricoes"
+        ).textContent =
+            "Não foi possível carregar suas inscrições.";
+
+        return;
+
+    }
+
+
+    const modalidadesInscritas =
+        new Set(
+            inscricoes.map(
+                inscricao =>
+                    inscricao.modalidade
+            )
+        );
+
+
+    const checkboxes =
+        document.querySelectorAll(
+            '.modalidade input[type="checkbox"]'
+        );
+
+
+    checkboxes.forEach(
+        checkbox => {
+
+            if (
+                modalidadesInscritas.has(
+                    checkbox.value
+                )
+            ) {
+
+                checkbox.checked = true;
+
+                checkbox.disabled = true;
+
+                checkbox
+                    .closest(".modalidade")
+                    .style.opacity = "0.55";
+
+                checkbox
+                    .closest(".modalidade")
+                    .style.cursor = "default";
+
+            }
+
+        }
+    );
+
+
+    if (inscricoes.length === 0) {
+
+        document.getElementById(
+            "statusInscricoes"
+        ).textContent =
+            "Você ainda não está inscrito em nenhuma modalidade.";
+
+    } else {
+
+        document.getElementById(
+            "statusInscricoes"
+        ).textContent =
+            "Você já está inscrito em " +
+            inscricoes.length +
+            (inscricoes.length === 1
+                ? " modalidade."
+                : " modalidades."
+            );
+
+    }
+
+}
+            
 window.confirmarInscricoes = async function () {
 
     const botao =
@@ -1205,6 +1321,7 @@ window.alterarSenha = async function () {
 
 }
             verificarSessao();
+            carregarinscricoes();
 
 
         } catch (error) {
