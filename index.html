@@ -214,44 +214,44 @@
            PRÓXIMO EVENTO
         ========================= */
 
-       .next-event {
-    background:
-        linear-gradient(
-            135deg,
-            #132f4d 0%,
-            #0b1d32 55%,
-            #081525 100%
-        );
+    .next-event {
+    background: linear-gradient(
+        135deg,
+        #173858 0%,
+        #0d2742 50%,
+        #081525 100%
+    );
     border: 1px solid #f5c542;
-    border-radius: 15px;
-    padding: 38px;
+    border-radius: 16px;
+    padding: 42px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    gap: 50px;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .22);
 }
 
 .next-event::before {
     content: "";
     position: absolute;
-    width: 220px;
-    height: 220px;
-    right: 130px;
-    top: -110px;
+    width: 280px;
+    height: 280px;
+    right: 40px;
+    top: -150px;
     border-radius: 50%;
-    border: 1px solid rgba(245, 197, 66, .12);
+    border: 1px solid rgba(245, 197, 66, .18);
 }
 
 .next-event::after {
     content: "";
     position: absolute;
-    width: 300px;
-    height: 1px;
-    right: -70px;
-    bottom: 35px;
-    background: rgba(245, 197, 66, .18);
+    width: 380px;
+    height: 2px;
+    right: -100px;
+    bottom: 45px;
+    background: rgba(245, 197, 66, .2);
     transform: rotate(-25deg);
 }
 
@@ -265,40 +265,44 @@
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 
 .next-event h2 {
-    font-size: 34px;
-    margin: 9px 0 10px;
+    font-size: 36px;
+    margin: 10px 0 12px;
 }
 
 .next-event p {
-    color: #b8c3d1;
-    line-height: 1.5;
+    color: #c0cad6;
+    line-height: 1.6;
     max-width: 650px;
 }
 
 .event-date {
-    min-width: 190px;
+    min-width: 205px;
+    padding: 25px 30px;
     text-align: center;
-    padding: 22px;
-    border: 1px solid #3a4b61;
-    border-radius: 10px;
-    background: rgba(7, 20, 38, .85);
+    border: 1px solid #f5c542;
+    border-radius: 12px;
+    background: #071426;
     position: relative;
     z-index: 2;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .25);
 }
 
 .event-date strong {
     display: block;
     color: #f5c542;
-    font-size: 28px;
+    font-size: 30px;
+    letter-spacing: 1px;
 }
 
 .event-date span {
-    color: #b8c3d1;
-    font-size: 13px;
+    display: block;
+    margin-top: 5px;
+    color: #dce5f2;
+    font-size: 14px;
 }
 
         /* =========================
