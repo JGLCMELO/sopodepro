@@ -110,7 +110,7 @@
             Área exclusiva dos participantes
         </div>
 
-        <form id="loginForm" onsubmit="fazerLogin(event)">
+        <form id="loginForm">
 
             <label for="usuario">
                 Usuário
@@ -134,12 +134,13 @@
                 required
             >
 
-            <button
-                type="submit"
-                id="loginButton"
-            >
-                ENTRAR
-            </button>
+           <button
+    type="button"
+    id="loginButton"
+    onclick="fazerLogin()"
+>
+    ENTRAR
+</button>
 
         </form>
 
