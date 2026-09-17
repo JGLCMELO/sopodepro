@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Área do Participante — Só Pode PRO</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071426;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #050b14;
+            border-bottom: 1px solid #26364d;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        .logout {
+            background: transparent;
+            border: 1px solid #26364d;
+            color: #dce5f2;
+            padding: 10px 15px;
+            border-radius: 7px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .logout:hover {
+            border-color: #f5c542;
+            color: #f5c542;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .welcome {
+            color: #f5c542;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #aeb9c8;
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 650px;
+        }
+
+        .card {
+            margin-top: 40px;
+            background: #0d2039;
+            border: 1px solid #26364d;
+            border-radius: 14px;
+            padding: 30px;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #aeb9c8;
+            line-height: 1.5;
+        }
+
+        .loading {
+            color: #aeb9c8;
+        }
+
+        .error {
+            color: #f5c542;
+        }
+
+        @media (max-width: 600px) {
+
+            main {
+                padding: 50px 20px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .navbar {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            SÓ PODE <span>PRO</span>
+        </div>
+
+        <button
+            class="logout"
+            id="logoutButton"
+        >
+            SAIR
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div
+        class="loading"
+        id="loading"
+    >
+        Verificando login...
+    </div>
+
+
+    <div
+        id="content"
+        style="display:none;"
+    >
+
+        <div class="welcome">
+            ÁREA DO PARTICIPANTE
+        </div>
+
+        <h1>
+            Olá, <span id="nomeParticipante"></span>!
+        </h1>
+
+        <p class="description">
+            Você está conectado à sua conta do Só Pode PRO.
+            Aqui ficarão suas inscrições, informações e
+            atividades como participante.
+        </p>
+
+
+        <div class="card">
+
+            <h2>
+                Sua conta
+            </h2>
+
+            <p>
+                Participante:
+                <strong id="nomeConta"></strong>
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div
+        class="error"
+        id="error"
+        style="display:none;"
+    >
+        Você precisa estar logado para acessar esta página.
+    </div>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    const SUPABASE_URL = "SUA_PROJECT_URL";
+
+    const SUPABASE_KEY = "SUA_PUBLISHABLE_KEY";
+
+
+    const supabase = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+    async function verificarLogin() {
+
+        const {
+            data: {
+                session
+            }
+        } = await supabase.auth.getSession();
+
+
+        if (!session) {
+
+            document
+                .getElementById("loading")
+                .style.display = "none";
+
+            document
+                .getElementById("error")
+                .style.display = "block";
+
+            return;
+
+        }
+
+
+        const userId =
+            session.user.id;
+
+
+        const {
+            data: participante,
+            error
+        } = await supabase
+            .from("participantes")
+            .select("nome")
+            .eq("user_id", userId)
+            .single();
+
+
+        if (error || !participante) {
+
+            document
+                .getElementById("loading")
+                .style.display = "none";
+
+            document
+                .getElementById("error")
+                .textContent =
+                    "Não foi possível encontrar seu cadastro.";
+
+            document
+                .getElementById("error")
+                .style.display = "block";
+
+            return;
+
+        }
+
+
+        document
+            .getElementById("nomeParticipante")
+            .textContent =
+                participante.nome;
+
+
+        document
+            .getElementById("nomeConta")
+            .textContent =
+                participante.nome;
+
+
+        document
+            .getElementById("loading")
+            .style.display = "none";
+
+        document
+            .getElementById("content")
+            .style.display = "block";
+
+    }
+
+
+    document
+        .getElementById("logoutButton")
+        .addEventListener("click", async function() {
+
+            await supabase.auth.signOut();
+
+            window.location.href =
+                "login.html";
+
+        });
+
+
+    verificarLogin();
+
+</script>
+
+</body>
+</html>
