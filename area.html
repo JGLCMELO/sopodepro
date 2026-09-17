@@ -144,6 +144,7 @@
         <button
             class="logout"
             id="logoutButton"
+            type="button"
         >
             SAIR
         </button>
@@ -203,119 +204,195 @@
         class="error"
         id="error"
         style="display:none;"
-    >
-        Você precisa estar logado para acessar esta página.
-    </div>
+    ></div>
 
 </main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
 <script>
 
-    const SUPABASE_URL = "https://xfhkdfponsyxeccolhon.supabase.co/rest/v1/";
+    const SUPABASE_URL =
+        "https://xfhkdfponsyxeccolhon.supabase.co";
 
-    const SUPABASE_KEY = "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+
+    const SUPABASE_KEY =
+        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
 
-    const supabase = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
+    const supabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
 
     async function verificarLogin() {
 
-        const {
-            data: {
-                session
+        const loading =
+            document.getElementById("loading");
+
+        const content =
+            document.getElementById("content");
+
+        const errorBox =
+            document.getElementById("error");
+
+
+        try {
+
+            const {
+                data,
+                error: sessionError
+            } =
+                await supabase.auth.getSession();
+
+
+            if (sessionError) {
+
+                console.error(
+                    "Erro ao verificar sessão:",
+                    sessionError
+                );
+
+                loading.style.display =
+                    "none";
+
+                errorBox.textContent =
+                    "Erro ao verificar o login.";
+
+                errorBox.style.display =
+                    "block";
+
+                return;
             }
-        } = await supabase.auth.getSession();
 
 
-        if (!session) {
-
-            document
-                .getElementById("loading")
-                .style.display = "none";
-
-            document
-                .getElementById("error")
-                .style.display = "block";
-
-            return;
-
-        }
+            const session =
+                data.session;
 
 
-        const userId =
-            session.user.id;
+            if (!session) {
+
+                loading.style.display =
+                    "none";
+
+                errorBox.textContent =
+                    "Você precisa estar logado para acessar esta página.";
+
+                errorBox.style.display =
+                    "block";
+
+                return;
+            }
 
 
-        const {
-            data: participante,
-            error
-        } = await supabase
-            .from("participantes")
-            .select("nome")
-            .eq("user_id", userId)
-            .single();
+            const userId =
+                session.user.id;
 
 
-        if (error || !participante) {
+            const {
+                data: participante,
+                error: participanteError
+            } =
+                await supabase
+                    .from("participantes")
+                    .select("nome")
+                    .eq("user_id", userId)
+                    .single();
 
-            document
-                .getElementById("loading")
-                .style.display = "none";
 
-            document
-                .getElementById("error")
-                .textContent =
+            if (participanteError) {
+
+                console.error(
+                    "Erro ao buscar participante:",
+                    participanteError
+                );
+
+                loading.style.display =
+                    "none";
+
+                errorBox.textContent =
+                    "Erro ao carregar seu cadastro.";
+
+                errorBox.style.display =
+                    "block";
+
+                return;
+            }
+
+
+            if (!participante) {
+
+                loading.style.display =
+                    "none";
+
+                errorBox.textContent =
                     "Não foi possível encontrar seu cadastro.";
 
-            document
-                .getElementById("error")
-                .style.display = "block";
+                errorBox.style.display =
+                    "block";
 
-            return;
+                return;
+            }
+
+
+            document
+                .getElementById("nomeParticipante")
+                .textContent =
+                    participante.nome;
+
+
+            document
+                .getElementById("nomeConta")
+                .textContent =
+                    participante.nome;
+
+
+            loading.style.display =
+                "none";
+
+
+            content.style.display =
+                "block";
+
+
+        } catch (error) {
+
+            console.error(
+                "Erro inesperado:",
+                error
+            );
+
+            loading.style.display =
+                "none";
+
+            errorBox.textContent =
+                "Ocorreu um erro ao carregar a área do participante.";
+
+            errorBox.style.display =
+                "block";
 
         }
-
-
-        document
-            .getElementById("nomeParticipante")
-            .textContent =
-                participante.nome;
-
-
-        document
-            .getElementById("nomeConta")
-            .textContent =
-                participante.nome;
-
-
-        document
-            .getElementById("loading")
-            .style.display = "none";
-
-        document
-            .getElementById("content")
-            .style.display = "block";
 
     }
 
 
     document
         .getElementById("logoutButton")
-        .addEventListener("click", async function() {
+        .addEventListener(
+            "click",
+            async function() {
 
-            await supabase.auth.signOut();
+                await supabase.auth.signOut();
 
-            window.location.href =
-                "login.html";
+                window.location.href =
+                    "login.html";
 
-        });
+            }
+        );
 
 
     verificarLogin();
