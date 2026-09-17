@@ -135,25 +135,91 @@
             >
 
             <button type="submit">
-                ENTRAR
-            </button>
+       <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-        </form>
+<script>
 
-        <div
-            class="message"
-            id="message"
-        ></div>
+    const SUPABASE_URL = "COLE_AQUI_SUA_PROJECT_URL";
 
-    </div>
+    const SUPABASE_KEY = "COLE_AQUI_SUA_PUBLISHABLE_KEY";
+
+    const supabase = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-    <script>
+    document
+        .getElementById("loginForm")
+        .addEventListener("submit", async function(event) {
 
-        document
-            .getElementById("loginForm")
-            .addEventListener("submit", function(event) {
+            event.preventDefault();
 
+            const usuario =
+                document.getElementById("usuario").value.trim();
+
+            const senha =
+                document.getElementById("senha").value;
+
+            const message =
+                document.getElementById("message");
+
+
+            message.textContent =
+                "Entrando...";
+
+
+            /*
+                TEMPORARIAMENTE:
+                O Supabase Auth usa o e-mail interno
+                da conta para fazer o login.
+
+                Por enquanto estamos testando com o Guga.
+            */
+
+            let email = "";
+
+            if (usuario.toLowerCase() === "guga") {
+
+                email = "guga@sopodepro.com";
+
+            } else {
+
+                message.textContent =
+                    "Usuário não encontrado.";
+
+                return;
+
+            }
+
+
+            const { data, error } =
+                await supabase.auth.signInWithPassword({
+                    email: email,
+                    password: senha
+                });
+
+
+            if (error) {
+
+                message.textContent =
+                    "Usuário ou senha incorretos.";
+
+                console.error(error);
+
+                return;
+
+            }
+
+
+            message.textContent =
+                "Login realizado com sucesso!";
+
+            console.log(data);
+
+        });
+
+</script>
                 event.preventDefault();
 
                 const usuario =
