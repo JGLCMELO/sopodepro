@@ -134,7 +134,10 @@
                 required
             >
 
-            <button type="submit">
+            <button
+                type="submit"
+                id="loginButton"
+            >
                 ENTRAR
             </button>
 
@@ -150,17 +153,34 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
     <script>
 
-        const SUPABASE_URL = "https://xfhkdfponsyxeccolhon.supabase.co/rest/v1/";
+        const SUPABASE_URL = "SUA_PROJECT_URL";
 
-        const SUPABASE_KEY = "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+        const SUPABASE_KEY = "SUA_PUBLISHABLE_KEY";
 
 
-        const supabase = window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
+        const message =
+            document.getElementById("message");
+
+        const loginButton =
+            document.getElementById("loginButton");
+
+
+        if (!window.supabase) {
+
+            message.textContent =
+                "Erro ao carregar o sistema de login.";
+
+        }
+
+
+        const supabase =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
 
 
         document
@@ -169,38 +189,59 @@
 
                 event.preventDefault();
 
+
+                loginButton.disabled = true;
+
+                loginButton.textContent =
+                    "ENTRANDO...";
+
+
                 const usuario =
-                    document.getElementById("usuario").value.trim();
+                    document
+                        .getElementById("usuario")
+                        .value
+                        .trim();
+
 
                 const senha =
-                    document.getElementById("senha").value;
-
-                const message =
-                    document.getElementById("message");
+                    document
+                        .getElementById("senha")
+                        .value;
 
 
                 message.textContent =
-                    "Entrando...";
+                    "Verificando...";
 
 
                 let email = "";
 
 
-                if (usuario.toLowerCase() === "guga") {
+                if (
+                    usuario.toLowerCase() === "guga"
+                ) {
 
-                    email = "guga@sopodepro.com";
+                    email =
+                        "guga@sopodepro.com";
 
                 } else {
 
                     message.textContent =
                         "Usuário não encontrado.";
 
+                    loginButton.disabled = false;
+
+                    loginButton.textContent =
+                        "ENTRAR";
+
                     return;
 
                 }
 
 
-                const { data, error } =
+                const {
+                    data,
+                    error
+                } =
                     await supabase.auth.signInWithPassword({
                         email: email,
                         password: senha
@@ -209,17 +250,42 @@
 
                 if (error) {
 
+                    console.error(error);
+
                     message.textContent =
                         "Usuário ou senha incorretos.";
 
-                    console.error(error);
+                    loginButton.disabled = false;
+
+                    loginButton.textContent =
+                        "ENTRAR";
 
                     return;
 
                 }
 
-window.location.href = "area.html";
-          
+
+                if (!data.session) {
+
+                    message.textContent =
+                        "Login não criou uma sessão.";
+
+                    loginButton.disabled = false;
+
+                    loginButton.textContent =
+                        "ENTRAR";
+
+                    return;
+
+                }
+
+
+                message.textContent =
+                    "Login realizado!";
+
+
+                window.location.href =
+                    "area.html";
 
             });
 
