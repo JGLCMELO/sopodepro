@@ -109,70 +109,106 @@
             border-bottom: none;
         }
 
-        /* =========================
-           HERO
-        ========================= */
+       /* =========================
+   HERO
+========================= */
 
-        .hero {
-            max-width: 1200px;
-            margin: auto;
-            padding: 90px 25px 85px;
-        }
+.hero {
+    max-width: 1200px;
+    min-height: 560px;
+    margin: auto;
+    padding: 100px 25px 90px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
 
-        .hero-content {
-            max-width: 850px;
-        }
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    right: -130px;
+    top: 40px;
+    border-radius: 50%;
+    background: rgba(245, 197, 66, .07);
+    border: 1px solid rgba(245, 197, 66, .12);
+}
 
-        .hero-tag {
-            color: #f5c542;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-        }
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 520px;
+    height: 1px;
+    right: -80px;
+    bottom: 105px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(245, 197, 66, .35),
+        transparent
+    );
+    transform: rotate(-28deg);
+}
 
-        .brand-title {
-            font-size: 86px;
-            line-height: .88;
-            font-weight: 900;
-            letter-spacing: -3px;
-            margin-bottom: 25px;
-        }
+.hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
+}
 
-        .brand-title .pro {
-            color: #f5c542;
-        }
+.hero-tag {
+    color: #f5c542;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
 
-        .hero-subtitle {
-            font-size: 27px;
-            font-weight: bold;
-            line-height: 1.25;
-            margin-bottom: 20px;
-        }
+.brand-title {
+    font-size: 92px;
+    line-height: .86;
+    font-weight: 900;
+    letter-spacing: -4px;
+    margin-bottom: 28px;
+}
 
-        .hero p {
-            color: #b8c3d1;
-            font-size: 18px;
-            line-height: 1.6;
-            max-width: 700px;
-        }
+.brand-title .pro {
+    color: #f5c542;
+}
 
-        .hero-button {
-            display: inline-block;
-            margin-top: 28px;
-            padding: 14px 22px;
-            background: #f5c542;
-            color: #071426;
-            text-decoration: none;
-            font-weight: 900;
-            border-radius: 7px;
-            transition: .2s;
-        }
+.hero-subtitle {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
 
-        .hero-button:hover {
-            transform: translateY(-2px);
-            opacity: .9;
-        }
+.hero p {
+    color: #b8c3d1;
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 680px;
+}
+
+.hero-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 24px;
+    background: #f5c542;
+    color: #071426;
+    text-decoration: none;
+    font-weight: 900;
+    border-radius: 7px;
+    transition: .2s;
+    box-shadow: 0 8px 25px rgba(245, 197, 66, .12);
+}
+
+.hero-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(245, 197, 66, .2);
+}
 
         /* =========================
            PRÓXIMO EVENTO
