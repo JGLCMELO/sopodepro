@@ -96,80 +96,12 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
-    const SUPABASE_URL =
-        "https://xfhkdfponsyxeccolhon.supabase.co";
-
-
-    const SUPABASE_KEY =
-        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
-
-
-    const supabase =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-
-    async function testarSessao() {
-
-        const loading =
-            document.getElementById("loading");
-
-
-        loading.textContent =
-            "LENDO SESSÃO...";
-
-
-        const {
-            data,
-            error
-        } =
-            await supabase.auth.getSession();
-
-
-        console.log(
-            "Sessão:",
-            data
-        );
-
-
-        if (error) {
-
-            loading.textContent =
-                "ERRO AO LER SESSÃO";
-
-            console.error(error);
-
-            return;
-
-        }
-
-
-        if (data.session) {
-
-            loading.textContent =
-                "SESSÃO RECEBIDA!";
-
-            console.log(
-                "ID:",
-                data.session.user.id
-            );
-
-        } else {
-
-            loading.textContent =
-                "NENHUMA SESSÃO!";
-
-        }
-
-    }
-
-
-    testarSessao();
+    document
+        .getElementById("loading")
+        .textContent =
+            "JAVASCRIPT DEPOIS DO SUPABASE!";
 
 </script>
 
