@@ -36,12 +36,21 @@
 
 <script>
 
+    document
+        .getElementById("loading")
+        .textContent =
+            "PASSO 2 — SCRIPT SUPABASE COMEÇOU!";
+
     const SUPABASE_URL =
         "https://xfhkdfponsyxeccolhon.supabase.co";
 
     const SUPABASE_KEY =
         "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
+    document
+        .getElementById("loading")
+        .textContent =
+            "PASSO 2 — ANTES DO CLIENTE!";
 
     const supabase =
         window.supabase.createClient(
@@ -49,15 +58,12 @@
             SUPABASE_KEY
         );
 
-
     document
         .getElementById("loading")
         .textContent =
             "PASSO 3 — CLIENTE CRIADO!";
 
-
 </script>
-
 </body>
 
 </html>
