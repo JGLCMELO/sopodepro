@@ -105,29 +105,75 @@
         "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
 
-    try {
+    const supabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
 
-        const supabase =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
+
+    async function testarSessao() {
+
+        const loading =
+            document.getElementById("loading");
+
+
+        loading.textContent =
+            "LENDO SESSÃO...";
+
+
+        try {
+
+            const resultado =
+                await supabase.auth.getSession();
+
+
+            console.log(
+                "RESULTADO:",
+                resultado
             );
 
-        document
-            .getElementById("loading")
-            .textContent =
-                "CLIENTE SUPABASE CRIADO!";
 
-    } catch (erro) {
+            if (resultado.error) {
 
-        console.error(erro);
+                loading.textContent =
+                    "ERRO AO LER SESSÃO";
 
-        document
-            .getElementById("loading")
-            .textContent =
-                "ERRO AO CRIAR CLIENTE!";
+                return;
+
+            }
+
+
+            if (resultado.data.session) {
+
+                loading.textContent =
+                    "SESSÃO RECEBIDA!";
+
+                console.log(
+                    "USUÁRIO:",
+                    resultado.data.session.user
+                );
+
+            } else {
+
+                loading.textContent =
+                    "NENHUMA SESSÃO!";
+
+            }
+
+        } catch (erro) {
+
+            console.error(erro);
+
+            loading.textContent =
+                "ERRO AO EXECUTAR GETSESSION";
+
+        }
 
     }
+
+
+    testarSessao();
 
 </script>
 
