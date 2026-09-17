@@ -1,175 +1,42 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Área — Só Pode PRO</title>
-
-    <style>
-
-        body {
-            margin: 0;
-            background: #071426;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        header {
-            background: #050b14;
-            padding: 20px 25px;
-            border-bottom: 1px solid #26364d;
-        }
-
-        .logo {
-            color: #f5c542;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 25px;
-        }
-
-        .loading {
-            text-align: center;
-            color: #dce5f2;
-        }
-
-        .area {
-            display: none;
-        }
-
-        .card {
-            background: #0d1b2e;
-            border: 1px solid #26364d;
-            border-radius: 14px;
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            margin-top: 0;
-            color: #f5c542;
-        }
-
-        h2 {
-            color: white;
-        }
-
-        .nome {
-            font-size: 28px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .error {
-            display: none;
-            color: #ff6b6b;
-            text-align: center;
-        }
-
-    </style>
 
 </head>
 
 <body>
 
-<header>
+    <div id="loading">
 
-    <div class="logo">
-        SÓ PODE PRO
-    </div>
-
-</header>
-
-<main>
-
-    <div
-        class="loading"
-        id="loading"
-    >
         Verificando sessão...
-    </div>
-
-    <div
-        class="error"
-        id="error"
-    ></div>
-
-    <div
-        class="area"
-        id="area"
-    >
-
-        <div class="card">
-
-            <h1>
-                Área do participante
-            </h1>
-
-            <p>
-                Login confirmado.
-            </p>
-
-            <p>
-                Participante:
-            </p>
-
-            <div
-                class="nome"
-                id="nomeParticipante"
-            >
-                Carregando...
-            </div>
-
-        </div>
 
     </div>
 
-</main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
+    <script>
     const loading =
         document.getElementById("loading");
-
-    const errorBox =
-        document.getElementById("error");
-
-    const area =
-        document.getElementById("area");
-
-    const nomeParticipante =
-        document.getElementById(
-            "nomeParticipante"
-        );
 
     const SUPABASE_URL =
         "https://xfhkdfponsyxeccolhon.supabase.co";
 
     const SUPABASE_KEY =
-        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV
-";
+        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
     try {
-
         if (!window.supabase) {
-
             throw new Error(
                 "Biblioteca do Supabase não foi carregada."
             );
-
         }
 
         const supabaseClient =
@@ -181,28 +48,25 @@
         async function verificarSessao() {
 
             const {
-                data,
-                error
+                data: sessionData,
+                error: sessionError
             } =
                 await supabaseClient.auth.getSession();
 
             if (
-                error ||
-                !data.session
+                sessionError ||
+                !sessionData.session
             ) {
-
                 window.location.href =
                     "login.html";
-
                 return;
-
             }
 
             const userId =
-                data.session.user.id;
+                sessionData.session.user.id;
 
             loading.textContent =
-                "Buscando participante...";
+                "Procurando participante...";
 
             const {
                 data: participante,
@@ -215,32 +79,20 @@
                     .single();
 
             if (participanteError) {
-
                 console.error(
                     participanteError
                 );
 
-                loading.style.display =
-                    "none";
-
-                errorBox.style.display =
-                    "block";
-
-                errorBox.textContent =
-                    "Não foi possível encontrar seu cadastro de participante.";
+                loading.textContent =
+                    "Erro ao procurar participante.";
 
                 return;
-
             }
 
-            nomeParticipante.textContent =
-                participante.nome;
-
-            loading.style.display =
-                "none";
-
-            area.style.display =
-                "block";
+            loading.textContent =
+                "Olá, " +
+                participante.nome +
+                "! Login confirmado.";
 
         }
 
@@ -250,19 +102,11 @@
 
         console.error(error);
 
-        loading.style.display =
-            "none";
-
-        errorBox.style.display =
-            "block";
-
-        errorBox.textContent =
-            "Erro ao iniciar o sistema.";
+        loading.textContent =
+            "Erro ao iniciar o Supabase.";
 
     }
-
 </script>
-
 </body>
 
 </html>
