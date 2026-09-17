@@ -10,27 +10,169 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Teste — Só Pode PRO</title>
+    <title>Área do Participante — Só Pode PRO</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071426;
+            color: white;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #050b14;
+            border-bottom: 1px solid #26364d;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .loading {
+            color: #aeb9c8;
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-    <div id="teste">
-        CARREGANDO...
+
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            SÓ PODE <span>PRO</span>
+        </div>
+
     </div>
 
+</header>
 
-    <script>
 
-        alert("NOVO AREA.HTML");
+<main>
 
-        document
-            .getElementById("teste")
-            .textContent =
-                "JAVASCRIPT NOVO FUNCIONANDO!";
+    <div
+        class="loading"
+        id="loading"
+    >
+        Iniciando...
+    </div>
 
-    </script>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+    const SUPABASE_URL =
+        "https://xfhkdfponsyxeccolhon.supabase.co";
+
+
+    const SUPABASE_KEY =
+        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+
+
+    const supabase =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    async function testarSessao() {
+
+        const loading =
+            document.getElementById("loading");
+
+
+        loading.textContent =
+            "LENDO SESSÃO...";
+
+
+        const {
+            data,
+            error
+        } =
+            await supabase.auth.getSession();
+
+
+        console.log(
+            "Sessão:",
+            data
+        );
+
+
+        if (error) {
+
+            loading.textContent =
+                "ERRO AO LER SESSÃO";
+
+            console.error(error);
+
+            return;
+
+        }
+
+
+        if (data.session) {
+
+            loading.textContent =
+                "SESSÃO RECEBIDA!";
+
+            console.log(
+                "ID:",
+                data.session.user.id
+            );
+
+        } else {
+
+            loading.textContent =
+                "NENHUMA SESSÃO!";
+
+        }
+
+    }
+
+
+    testarSessao();
+
+</script>
+
 
 </body>
 
