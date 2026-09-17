@@ -691,12 +691,14 @@
 
 
     <button
-        class="botao"
-        type="button"
-    >
-        CONFIRMAR INSCRIÇÕES
-    </button>
-
+    class="botao"
+    type="button"
+    id="confirmarInscricoes"
+    onclick="confirmarInscricoes()"
+>
+    CONFIRMAR INSCRIÇÕES
+</button>
+                
 </section>
 
 
@@ -874,7 +876,109 @@
 
 
             async function sair() {
+                
+async function confirmarInscricoes() {
 
+    const botao =
+        document.getElementById(
+            "confirmarInscricoes"
+        );
+
+    const selecionadas =
+        document.querySelectorAll(
+            '.modalidade input:checked'
+        );
+
+
+    if (selecionadas.length === 0) {
+
+        alert(
+            "Selecione pelo menos uma modalidade."
+        );
+
+        return;
+
+    }
+
+
+    const {
+        data: sessionData,
+        error: sessionError
+    } =
+        await supabaseClient.auth.getSession();
+
+
+    if (
+        sessionError ||
+        !sessionData.session
+    ) {
+
+        window.location.href =
+            "login.html";
+
+        return;
+
+    }
+
+
+    const userId =
+        sessionData.session.user.id;
+
+
+    const inscricoes =
+        Array.from(selecionadas).map(
+            checkbox => ({
+
+                user_id: userId,
+
+                modalidade:
+                    checkbox.value
+
+            })
+        );
+
+
+    botao.disabled = true;
+
+    botao.textContent =
+        "SALVANDO...";
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("inscricoes_olimpiadas")
+            .insert(inscricoes);
+
+
+    if (error) {
+
+        console.error(error);
+
+        alert(
+            "Não foi possível salvar as inscrições."
+        );
+
+        botao.disabled = false;
+
+        botao.textContent =
+            "CONFIRMAR INSCRIÇÕES";
+
+        return;
+
+    }
+
+
+    alert(
+        "Inscrições confirmadas com sucesso!"
+    );
+
+
+    botao.textContent =
+        "INSCRIÇÕES CONFIRMADAS";
+
+}
                 await supabaseClient.auth.signOut();
 
                 window.location.href =
