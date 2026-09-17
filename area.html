@@ -218,7 +218,7 @@
 
 
     const SUPABASE_KEY =
-        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+        "SUA_CHAVE_PUBLISHABLE";
 
 
     const supabase =
@@ -228,17 +228,134 @@
         );
 
 
-    async function testar() {
+    async function verificarLogin() {
+
+        const loading =
+            document.getElementById("loading");
+
+        const content =
+            document.getElementById("content");
+
+        const error =
+            document.getElementById("error");
+
+
+        loading.textContent =
+            "Verificando login...";
+
+
+        const {
+            data,
+            error: sessionError
+        } =
+            await supabase.auth.getSession();
+
+
+        if (sessionError) {
+
+            console.error(sessionError);
+
+            loading.style.display =
+                "none";
+
+            error.textContent =
+                "Erro ao verificar o login.";
+
+            error.style.display =
+                "block";
+
+            return;
+
+        }
+
+
+        const session =
+            data.session;
+
+
+        if (!session) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        const userId =
+            session.user.id;
+
+
+        const {
+            data: participante,
+            error: participanteError
+        } =
+            await supabase
+                .from("participantes")
+                .select("nome")
+                .eq("user_id", userId)
+                .single();
+
+
+        if (participanteError) {
+
+            console.error(participanteError);
+
+            loading.style.display =
+                "none";
+
+            error.textContent =
+                "Participante não encontrado.";
+
+            error.style.display =
+                "block";
+
+            return;
+
+        }
+
 
         document
-            .getElementById("loading")
+            .getElementById("nomeParticipante")
             .textContent =
-                "TESTE DO SUPABASE";
+                participante.nome;
+
+
+        document
+            .getElementById("nomeConta")
+            .textContent =
+                participante.nome;
+
+
+        loading.style.display =
+            "none";
+
+        content.style.display =
+            "block";
 
     }
 
 
-    testar();
+    async function sair() {
+
+        await supabase.auth.signOut();
+
+        window.location.href =
+            "login.html";
+
+    }
+
+
+    document
+        .getElementById("logoutButton")
+        .addEventListener(
+            "click",
+            sair
+        );
+
+
+    verificarLogin();
 
 </script>
 
