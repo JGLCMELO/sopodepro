@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="pt-BR">
 
@@ -6,107 +6,756 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Área — Só Pode PRO</title>
+    <title>Área do Participante — Só Pode PRO</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #071426;
+            color: white;
+            min-height: 100vh;
+        }
+
+
+        header {
+            background: #050b14;
+            border-bottom: 1px solid #26364d;
+
+            padding: 18px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            color: #f5c542;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+
+        .logout {
+            background: transparent;
+            color: #dce5f2;
+
+            border: 1px solid #3a4c65;
+
+            padding: 9px 16px;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .logout:hover {
+            border-color: #f5c542;
+            color: #f5c542;
+        }
+
+
+        main {
+            width: min(1000px, 92%);
+            margin: 45px auto;
+        }
+
+
+        .welcome {
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    #263f69 0%,
+                    #111f35 40%,
+                    #0d1a2d 100%
+                );
+
+            border: 1px solid #26364d;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .welcome small {
+            color: #f5c542;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+
+        .welcome h1 {
+            margin-top: 10px;
+
+            font-size: 38px;
+        }
+
+
+        .welcome p {
+            margin-top: 12px;
+
+            color: #b8c5d6;
+
+            font-size: 16px;
+        }
+
+
+        .section-title {
+            margin: 30px 0 15px;
+
+            font-size: 23px;
+        }
+
+
+        .profile {
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .avatar {
+            width: 75px;
+            height: 75px;
+
+            border-radius: 50%;
+
+            background: #17283f;
+
+            border: 2px solid #f5c542;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: #f5c542;
+
+            font-size: 30px;
+
+            font-weight: bold;
+        }
+
+
+        .profile-info h2 {
+            font-size: 25px;
+        }
+
+
+        .profile-info p {
+            color: #8999ad;
+
+            margin-top: 5px;
+        }
+
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 18px;
+        }
+
+
+        .card {
+            background: #0d1a2d;
+
+            border: 1px solid #26364d;
+
+            border-radius: 14px;
+
+            padding: 24px;
+        }
+
+
+        .card h3 {
+            color: #f5c542;
+
+            margin-bottom: 10px;
+
+            font-size: 20px;
+        }
+
+
+        .card p {
+            color: #b8c5d6;
+
+            line-height: 1.5;
+        }
+
+
+        .status {
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            background: #17283f;
+
+            color: #f5c542;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+
+        .inscricao {
+            margin-top: 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111f35,
+                    #0d1a2d
+                );
+
+            border: 1px solid #3b4e68;
+
+            border-radius: 14px;
+
+            padding: 25px;
+        }
+
+
+        .inscricao h3 {
+            color: #f5c542;
+
+            margin-bottom: 10px;
+        }
+
+
+        .inscricao p {
+            color: #b8c5d6;
+
+            line-height: 1.5;
+        }
+
+
+        .botao {
+            display: inline-block;
+
+            margin-top: 18px;
+
+            background: #f5c542;
+
+            color: #071426;
+
+            border: none;
+
+            padding: 12px 20px;
+
+            border-radius: 8px;
+
+            font-weight: 900;
+
+            text-decoration: none;
+
+            cursor: pointer;
+        }
+
+
+        .botao:hover {
+            background: #ffd75a;
+        }
+
+
+        footer {
+            text-align: center;
+
+            color: #65758a;
+
+            padding: 40px 20px;
+
+            font-size: 13px;
+        }
+
+
+        .loading {
+            text-align: center;
+
+            color: #b8c5d6;
+
+            padding: 60px 20px;
+        }
+
+
+        .error {
+            text-align: center;
+
+            background: #321b1b;
+
+            border: 1px solid #713434;
+
+            color: #ffb5b5;
+
+            padding: 20px;
+
+            border-radius: 10px;
+        }
+
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 16px 20px;
+            }
+
+
+            .logo {
+                font-size: 20px;
+            }
+
+
+            main {
+                margin: 25px auto;
+            }
+
+
+            .welcome {
+                padding: 25px;
+            }
+
+
+            .welcome h1 {
+                font-size: 30px;
+            }
+
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            .profile {
+                gap: 15px;
+            }
+
+        }
+
+
+    </style>
 
 </head>
 
+
 <body>
 
-    <div id="loading">
 
-        Verificando sessão...
+    <header>
 
-    </div>
+        <div class="logo">
+            SÓ PODE PRO
+        </div>
+
+
+        <button
+            class="logout"
+            onclick="sair()"
+        >
+            SAIR
+        </button>
+
+    </header>
+
+
+    <main>
+
+
+        <div
+            class="loading"
+            id="loading"
+        >
+            Verificando sessão...
+        </div>
+
+
+        <div
+            id="area"
+            style="display:none;"
+        >
+
+
+            <section class="welcome">
+
+                <small>
+                    ÁREA EXCLUSIVA DOS PARTICIPANTES
+                </small>
+
+
+                <h1 id="boasVindas">
+                    Olá!
+                </h1>
+
+
+                <p>
+                    Bem-vindo à área do participante
+                    do Só Pode PRO.
+                </p>
+
+            </section>
+
+
+
+            <h2 class="section-title">
+                Meu perfil
+            </h2>
+
+
+            <section class="card">
+
+                <div class="profile">
+
+
+                    <div
+                        class="avatar"
+                        id="avatar"
+                    >
+                        ?
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <h2 id="nomeParticipante">
+                            Participante
+                        </h2>
+
+
+                        <p>
+                            Participante oficial
+                            do Só Pode PRO
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <h2 class="section-title">
+                Competições
+            </h2>
+
+
+            <div class="cards">
+
+
+                <div class="card">
+
+                    <h3>
+                        Olimpíadas
+                    </h3>
+
+
+                    <p>
+                        Participe das modalidades
+                        oficiais das Olimpíadas
+                        Só Pode PRO.
+                    </p>
+
+
+                    <span class="status">
+                        JANEIRO 2027
+                    </span>
+
+                </div>
+
+
+
+                <div class="card">
+
+                    <h3>
+                        Copa
+                    </h3>
+
+
+                    <p>
+                        Competição especial entre
+                        os campeões das duas
+                        edições das Olimpíadas.
+                    </p>
+
+
+                    <span class="status">
+                        FUTURA COMPETIÇÃO
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <h2 class="section-title">
+                Inscrições
+            </h2>
+
+
+            <section class="inscricao">
+
+                <h3>
+                    Olimpíadas Só Pode PRO
+                </h3>
+
+
+                <p>
+                    Em breve você poderá escolher
+                    as modalidades em que deseja
+                    competir diretamente pela
+                    sua área de participante.
+                </p>
+
+
+                <span class="status">
+                    SISTEMA DE INSCRIÇÕES EM BREVE
+                </span>
+
+            </section>
+
+
+        </div>
+
+
+
+        <div
+            class="error"
+            id="error"
+            style="display:none;"
+        ></div>
+
+
+    </main>
+
+
+
+    <footer>
+
+        Só Pode PRO · Área oficial dos participantes
+
+    </footer>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
     <script>
-    const loading =
-        document.getElementById("loading");
 
-    const SUPABASE_URL =
-        "https://xfhkdfponsyxeccolhon.supabase.co";
+        const loading =
+            document.getElementById("loading");
 
-    const SUPABASE_KEY =
-        "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
-    try {
-        if (!window.supabase) {
-            throw new Error(
-                "Biblioteca do Supabase não foi carregada."
-            );
-        }
+        const area =
+            document.getElementById("area");
 
-        const supabaseClient =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_KEY
-            );
 
-        async function verificarSessao() {
+        const errorBox =
+            document.getElementById("error");
 
-            const {
-                data: sessionData,
-                error: sessionError
-            } =
-                await supabaseClient.auth.getSession();
 
-            if (
-                sessionError ||
-                !sessionData.session
-            ) {
-                window.location.href =
-                    "login.html";
-                return;
-            }
+        const SUPABASE_URL =
+            "https://xfhkdfponsyxeccolhon.supabase.co";
 
-            const userId =
-                sessionData.session.user.id;
 
-            loading.textContent =
-                "Procurando participante...";
+        const SUPABASE_KEY =
+            "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
 
-            const {
-                data: participante,
-                error: participanteError
-            } =
-                await supabaseClient
-                    .from("participantes")
-                    .select("nome")
-                    .eq("user_id", userId)
-                    .single();
 
-            if (participanteError) {
-                console.error(
-                    participanteError
+        try {
+
+            if (!window.supabase) {
+
+                throw new Error(
+                    "Biblioteca do Supabase não foi carregada."
                 );
 
-                loading.textContent =
-                    "Erro ao procurar participante.";
-
-                return;
             }
 
-            loading.textContent =
-                "Olá, " +
-                participante.nome +
-                "! Login confirmado.";
+
+            const supabaseClient =
+                window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_KEY
+                );
+
+
+            async function verificarSessao() {
+
+
+                const {
+                    data: sessionData,
+                    error: sessionError
+                } =
+                    await supabaseClient.auth.getSession();
+
+
+                if (
+                    sessionError ||
+                    !sessionData.session
+                ) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                const userId =
+                    sessionData.session.user.id;
+
+
+                loading.textContent =
+                    "Procurando participante...";
+
+
+                const {
+                    data: participante,
+                    error: participanteError
+                } =
+                    await supabaseClient
+                        .from("participantes")
+                        .select("nome")
+                        .eq("user_id", userId)
+                        .single();
+
+
+                if (participanteError) {
+
+                    console.error(
+                        participanteError
+                    );
+
+
+                    loading.style.display =
+                        "none";
+
+
+                    errorBox.style.display =
+                        "block";
+
+
+                    errorBox.textContent =
+                        "Não foi possível encontrar seu cadastro.";
+
+
+                    return;
+
+                }
+
+
+                const nome =
+                    participante.nome;
+
+
+                document
+                    .getElementById(
+                        "boasVindas"
+                    )
+                    .textContent =
+                        "Olá, " + nome + "!";
+
+
+                document
+                    .getElementById(
+                        "nomeParticipante"
+                    )
+                    .textContent =
+                        nome;
+
+
+                document
+                    .getElementById(
+                        "avatar"
+                    )
+                    .textContent =
+                        nome
+                            .charAt(0)
+                            .toUpperCase();
+
+
+                loading.style.display =
+                    "none";
+
+
+                area.style.display =
+                    "block";
+
+            }
+
+
+
+            async function sair() {
+
+                await supabaseClient.auth.signOut();
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+
+            verificarSessao();
+
+
+        } catch (error) {
+
+            console.error(error);
+
+
+            loading.style.display =
+                "none";
+
+
+            errorBox.style.display =
+                "block";
+
+
+            errorBox.textContent =
+                "Erro ao iniciar o Supabase.";
 
         }
 
-        verificarSessao();
+    </script>
 
-    } catch (error) {
 
-        console.error(error);
-
-        loading.textContent =
-            "Erro ao iniciar o Supabase.";
-
-    }
-</script>
 </body>
 
 </html>
