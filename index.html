@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
     <meta charset="UTF-8">
@@ -35,6 +36,7 @@
 
             background: #071426;
             color: #ffffff;
+
             overflow-x: hidden;
         }
 
@@ -631,889 +633,614 @@
 
             text-align: right;
         }
-
-
-        /* =====================================================
-           STATS
-        ===================================================== */
-
-        .stats-section {
-            padding-top: 10px;
-            padding-bottom: 55px;
-        }
-
-        .stats-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 14px;
-        }
-
-        .stat-card {
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #0e2139,
-                    #091729
-                );
-
-            border:
-                1px solid
-                #26364d;
-
-            border-radius: 12px;
-
-            padding: 25px;
-
-            transition:
-                transform .2s ease,
-                border-color .2s ease;
-        }
-
-        .stat-card::after {
-            content: "";
-
-            position: absolute;
-
-            width: 80px;
-            height: 80px;
-
-            right: -35px;
-            bottom: -35px;
-
-            border-radius: 50%;
-
-            background:
-                rgba(245, 197, 66, 0.06);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-3px);
-
-            border-color:
-                rgba(245, 197, 66, 0.55);
-        }
-
-        .stat-number {
-            color: #f5c542;
-
-            font-size: 34px;
-
-            line-height: 1;
-
-            font-weight: 900;
-
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            color: #dce5f2;
-
-            font-size: 13px;
-
-            font-weight: bold;
-        }
-
-
-        /* =====================================================
-           PRÓXIMO EVENTO
-        ===================================================== */
-
-        .next-event {
-            position: relative;
-
-            overflow: hidden;
-
-            background:
-                radial-gradient(
-                    circle at 90% 10%,
-                    rgba(245, 197, 66, 0.12),
-                    transparent 30%
-                ),
-
-                linear-gradient(
-                    135deg,
-                    #102944,
-                    #081525
-                );
-
-            border:
-                1px solid
-                rgba(245, 197, 66, 0.55);
-
-            border-radius: 16px;
-
-            padding: 38px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 35px;
-        }
-
-        .next-event-info {
-            max-width: 720px;
-        }
-
-        .event-label {
-            color: #f5c542;
-
-            font-size: 11px;
-
-            font-weight: 900;
-
-            letter-spacing: 2.5px;
-
-            margin-bottom: 10px;
-        }
-
-        .next-event h2 {
-            font-size: 35px;
-
-            line-height: 1.1;
-
-            margin-bottom: 12px;
-        }
-
-        .next-event p {
-            color: #aeb9c8;
-
-            font-size: 15px;
-
-            line-height: 1.6;
-        }
-
-
-        /* =====================================================
-           EVENT DATE
-        ===================================================== */
-
-        .event-date {
-            flex-shrink: 0;
-
-            min-width: 205px;
-
-            padding: 22px;
-
-            text-align: center;
-
-            border:
-                1px solid
-                #31445d;
-
-            border-radius: 12px;
-
-            background:
-                rgba(7, 20, 38, 0.75);
-        }
-
-        .event-date strong {
-            display: block;
-
-            color: #f5c542;
-
-            font-size: 29px;
-
-            font-weight: 900;
-
-            line-height: 1;
-
-            margin-bottom: 8px;
-        }
-
-        .event-date span {
-            color: #aeb9c8;
-
-            font-size: 13px;
-
-            font-weight: bold;
-        }
-
-        .event-date small {
-            display: block;
-
-            color: #64758a;
-
-            font-size: 10px;
-
-            font-weight: bold;
-
-            letter-spacing: 1px;
-
-            margin-top: 10px;
-        }
-
-    </style>
-
-</head>
-
-<body>
-
-    <!-- =====================================================
-         HEADER
-    ===================================================== -->
-
-    <header>
-
-        <div class="navbar">
-
-            <div class="logo">
-                SÓ PODE <span>PRO</span>
-            </div>
-
-            <nav>
-
-                <a href="index.html">
-                    Início
-                </a>
-
-                <a href="noticias.html">
-                    Notícias
-                </a>
-
-                <a href="olimpiadas.html">
-                    Olimpíadas
-                </a>
-
-                <a href="copa.html">
-                    Copa
-                </a>
-
-                <a href="participantes.html">
-                    Participantes
-                </a>
-
-                <a href="hall.html">
-                    Hall dos Campeões
-                </a>
-
-            </nav>
-
-            <button
-                class="menu-mobile"
-                onclick="abrirMenu()"
-                aria-label="Abrir menu"
-            >
-                ☰
-            </button>
-
-        </div>
-
-        <div
-            class="mobile-nav"
-            id="mobileNav"
-        >
-
-            <a href="index.html">
-                Início
-            </a>
-
-            <a href="noticias.html">
-                Notícias
-            </a>
-
-            <a href="olimpiadas.html">
-                Olimpíadas
-            </a>
-
-            <a href="copa.html">
-                Copa
-            </a>
-
-            <a href="participantes.html">
-                Participantes
-            </a>
-
-            <a href="hall.html">
-                Hall dos Campeões
-            </a>
-
-        </div>
-
-    </header>
-
-
-    <!-- =====================================================
-         HERO
-    ===================================================== -->
-
-    <section class="hero">
-
-        <div class="hero-inner">
-
-            <div class="hero-content">
-
-                <div class="hero-tag">
-                    BEM-VINDO AO SÓ PODE PRO
-                </div>
-
-                <h1 class="brand-title">
-                    SÓ PODE
-                    <br>
-                    <span class="pro">
-                        PRO
-                    </span>
-                </h1>
-
-                <div class="hero-subtitle">
-                    Um grupo. Vários jogos.
-                    <br>
-                    Momentos inesquecíveis.
-                </div>
-
-                <p class="hero-description">
-                    O Só Pode PRO é um grupo de amigos que se reúne
-                    para jogar, competir e criar grandes momentos.
-                    Aqui você acompanha as competições, os participantes,
-                    os resultados e a história do grupo.
-                </p>
-
-                <div class="hero-actions">
-
-                    <a
-                        href="participantes.html"
-                        class="hero-button"
-                    >
-                        CONHEÇA OS PARTICIPANTES
-                    </a>
-
-                    <a
-                        href="olimpiadas.html"
-                        class="hero-button-secondary"
-                    >
-                        VER OLIMPÍADAS
-                    </a>
-
-                </div>
-
-            </div>
-
-            <div class="hero-badge">
-
-                <div class="hero-badge-text">
-                    SÓ PODE
-                    <br>
-                    PRO
-                    <br>
-                    OFICIAL
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         NÚMEROS DO GRUPO
-    ===================================================== -->
-
-    <section class="section stats-section">
-
-        <div class="stats-grid">
-
-            <div class="stat-card">
-
-                <div class="stat-number">
-                    14
-                </div>
-
-                <div class="stat-label">
-                    Participantes oficiais
-                </div>
-
-            </div>
-
-            <div class="stat-card">
-
-                <div class="stat-number">
-                    8
-                </div>
-
-                <div class="stat-label">
-                    Modalidades das Olimpíadas
-                </div>
-
-            </div>
-
-            <div class="stat-card">
-
-                <div class="stat-number">
-                    1
-                </div>
-
-                <div class="stat-label">
-                    Campeão oficial
-                </div>
-
-            </div>
-
-            <div class="stat-card">
-
-                <div class="stat-number">
-                    2027
-                </div>
-
-                <div class="stat-label">
-                    Próxima Olimpíada
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PRÓXIMO EVENTO
-    ===================================================== -->
-
-    <section class="section">
-
-        <div class="section-header">
-
-            <h2 class="section-heading">
-                Próximo <span>evento</span>
-            </h2>
-
-            <p class="section-description">
-                O próximo grande evento oficial do Só Pode PRO.
-            </p>
-
-        </div>
-
-        <div class="next-event">
-
-            <div class="next-event-info">
-
-                <div class="event-label">
-                    PRÓXIMAS OLIMPÍADAS
-                </div>
-
-                <h2>
-                    Olimpíadas Só Pode PRO
-                </h2>
-
-                <p>
-                    A próxima edição das Olimpíadas acontecerá
-                    em janeiro de 2027, reunindo os participantes
-                    do grupo em diferentes modalidades.
-                </p>
-
-            </div>
-
-            <div class="event-date">
-                
-                
-                <strong>
-                    JANEIRO
-                </strong>
-
-                <span>
-                    2027
-                </span>
-
-                <small>
-                    PRÓXIMA EDIÇÃO
-                </small>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    /* =========================
-   HEADER
-========================= */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: #050b14;
-    border-bottom: 1px solid #26364d;
+/* =====================================================
+   ESTATÍSTICAS
+===================================================== */
+
+.stats-section {
+    padding-top: 10px;
+    padding-bottom: 55px;
 }
 
-.navbar {
-    max-width: 1200px;
-    margin: auto;
-    padding: 18px 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
 }
 
-.logo {
-    font-size: 24px;
+.stat-card {
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0e2139,
+            #091729
+        );
+
+    border:
+        1px solid
+        #26364d;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+.stat-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+    height: 80px;
+
+    right: -35px;
+    bottom: -35px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(245, 197, 66, 0.06);
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+
+    border-color:
+        rgba(245, 197, 66, 0.55);
+}
+
+.stat-number {
+    color: #f5c542;
+
+    font-size: 34px;
+
+    line-height: 1;
+
     font-weight: 900;
-    letter-spacing: 1px;
+
+    margin-bottom: 8px;
 }
 
-.logo span {
-    color: #f5c542;
-}
-
-nav {
-    display: flex;
-    gap: 25px;
-}
-
-nav a {
+.stat-label {
     color: #dce5f2;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: .2s;
-}
 
-nav a:hover {
-    color: #f5c542;
-}
-
-
-/* =========================
-   MENU MOBILE
-========================= */
-
-.menu-mobile {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.mobile-nav {
-    display: none;
-    background: #050b14;
-    border-top: 1px solid #26364d;
-    padding: 15px 25px;
-}
-
-.mobile-nav.active {
-    display: block;
-}
-
-.mobile-nav a {
-    display: block;
-    color: #dce5f2;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 14px 0;
-    border-bottom: 1px solid #1d2b40;
-}
-
-.mobile-nav a:hover {
-    color: #f5c542;
-}
-
-.mobile-nav a:last-child {
-    border-bottom: none;
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    max-width: 1200px;
-    margin: auto;
-    padding: 90px 25px 85px;
-}
-
-.hero-content {
-    max-width: 850px;
-}
-
-.hero-tag {
-    color: #f5c542;
     font-size: 13px;
+
     font-weight: bold;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
 }
 
-.brand-title {
-    font-size: 86px;
-    line-height: .88;
-    font-weight: 900;
-    letter-spacing: -3px;
-    margin-bottom: 25px;
-}
 
-.brand-title .pro {
-    color: #f5c542;
-}
-
-.hero-subtitle {
-    font-size: 27px;
-    font-weight: bold;
-    line-height: 1.25;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    color: #b8c3d1;
-    font-size: 18px;
-    line-height: 1.6;
-    max-width: 700px;
-}
-
-.hero-button {
-    display: inline-block;
-    margin-top: 28px;
-    padding: 14px 22px;
-    background: #f5c542;
-    color: #071426;
-    text-decoration: none;
-    font-weight: 900;
-    border-radius: 7px;
-    transition: .2s;
-}
-
-.hero-button:hover {
-    transform: translateY(-2px);
-    opacity: .9;
-}
-
-    /* =========================
+/* =====================================================
    PRÓXIMO EVENTO
-========================= */
-
-.section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 30px 25px 70px;
-}
-
-.section-title {
-    font-size: 30px;
-    margin-bottom: 22px;
-}
-
-.section-title span {
-    color: #f5c542;
-}
+===================================================== */
 
 .next-event {
-    background: linear-gradient(
-        135deg,
-        #102944,
-        #081525
-    );
-    border: 1px solid #f5c542;
-    border-radius: 15px;
-    padding: 35px;
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(245, 197, 66, 0.12),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #102944,
+            #081525
+        );
+
+    border:
+        1px solid
+        rgba(245, 197, 66, 0.55);
+
+    border-radius: 16px;
+
+    padding: 38px;
+
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
-    gap: 30px;
+
+    justify-content: space-between;
+
+    gap: 35px;
+}
+
+.next-event-info {
+    max-width: 720px;
 }
 
 .event-label {
     color: #f5c542;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 2px;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 10px;
 }
 
 .next-event h2 {
-    font-size: 34px;
-    margin: 9px 0;
+    font-size: 35px;
+
+    line-height: 1.1;
+
+    margin-bottom: 12px;
 }
 
 .next-event p {
-    color: #b8c3d1;
-    line-height: 1.5;
+    color: #aeb9c8;
+
+    font-size: 15px;
+
+    line-height: 1.6;
 }
 
+
+/* =====================================================
+   DATA DO EVENTO
+===================================================== */
+
 .event-date {
-    min-width: 190px;
+    flex-shrink: 0;
+
+    min-width: 205px;
+
+    padding: 22px;
+
     text-align: center;
-    padding: 20px;
-    border: 1px solid #26364d;
-    border-radius: 10px;
-    background: #071426;
+
+    border:
+        1px solid
+        #31445d;
+
+    border-radius: 12px;
+
+    background:
+        rgba(7, 20, 38, 0.75);
 }
 
 .event-date strong {
     display: block;
+
     color: #f5c542;
-    font-size: 28px;
+
+    font-size: 29px;
+
+    font-weight: 900;
+
+    line-height: 1;
+
+    margin-bottom: 8px;
 }
 
 .event-date span {
-    color: #b8c3d1;
+    color: #aeb9c8;
+
     font-size: 13px;
+
+    font-weight: bold;
+}
+
+.event-date small {
+    display: block;
+
+    color: #64758a;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    margin-top: 10px;
 }
 
 
-/* =========================
+/* =====================================================
    NOTÍCIAS
-========================= */
+===================================================== */
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
     gap: 20px;
 }
 
 .news-card {
-    background: #0d2039;
-    border: 1px solid #26364d;
-    border-radius: 12px;
-    padding: 23px;
-    transition: .2s;
+    position: relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d2039,
+            #0a192c
+        );
+
+    border:
+        1px solid
+        #26364d;
+
+    border-radius: 13px;
+
+    padding: 25px;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 .news-card:hover {
-    transform: translateY(-3px);
-    border-color: #f5c542;
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(245, 197, 66, 0.55);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.18);
 }
 
 .news-date {
     color: #f5c542;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+
+    margin-bottom: 11px;
 }
 
 .news-card h3 {
+    color: #ffffff;
+
     font-size: 20px;
-    margin: 10px 0;
+
+    line-height: 1.25;
+
+    margin-bottom: 12px;
 }
 
 .news-card p {
     color: #aeb9c8;
+
     font-size: 14px;
-    line-height: 1.5;
+
+    line-height: 1.55;
 }
 
 .news-link {
     display: inline-block;
-    margin-top: 16px;
+
+    margin-top: 18px;
+
     color: #f5c542;
-    font-size: 13px;
-    font-weight: bold;
-    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    letter-spacing: .5px;
+
+    transition:
+        color .2s ease;
 }
 
-    /* =========================
-   ÁREAS DO GRUPO
-========================= */
+.news-link:hover {
+    color: #ffd75b;
+}
+
+
+/* =====================================================
+   ÁREAS DO SÓ PODE PRO
+===================================================== */
 
 .areas {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 18px;
 }
 
 .area-card {
-    background: #0d2039;
-    border: 1px solid #26364d;
-    border-radius: 12px;
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d2039,
+            #09182a
+        );
+
+    border:
+        1px solid
+        #26364d;
+
+    border-radius: 13px;
+
     padding: 25px;
-    text-decoration: none;
-    color: white;
-    transition: .2s;
+
+    color: #ffffff;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.area-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    right: -45px;
+    top: -45px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(245, 197, 66, 0.05);
 }
 
 .area-card:hover {
-    transform: translateY(-3px);
-    border-color: #f5c542;
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(245, 197, 66, 0.55);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.18);
 }
 
 .area-card .icon {
+    position: relative;
+
     font-size: 30px;
-    margin-bottom: 15px;
+
+    line-height: 1;
+
+    margin-bottom: 17px;
 }
 
 .area-card h3 {
-    margin-bottom: 8px;
+    position: relative;
+
+    font-size: 18px;
+
+    margin-bottom: 9px;
 }
 
 .area-card p {
+    position: relative;
+
     color: #aeb9c8;
+
     font-size: 13px;
-    line-height: 1.5;
+
+    line-height: 1.55;
 }
 
 
-/* =========================
+/* =====================================================
    CAMPEÃO
-========================= */
+===================================================== */
 
 .champion {
-    background: #0d2039;
-    border: 1px solid #26364d;
-    border-radius: 14px;
-    padding: 30px;
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(245, 197, 66, 0.10),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #0d2039,
+            #09182a
+        );
+
+    border:
+        1px solid
+        #26364d;
+
+    border-radius: 15px;
+
+    padding: 32px;
+
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
+
     gap: 25px;
 }
 
 .champion-info small {
     color: #f5c542;
-    font-weight: bold;
-    letter-spacing: 1px;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.5px;
 }
 
 .champion-info h2 {
-    font-size: 28px;
-    margin: 8px 0;
+    color: #ffffff;
+
+    font-size: 29px;
+
+    margin: 9px 0;
 }
 
 .champion-info p {
     color: #aeb9c8;
+
+    font-size: 14px;
 }
 
 .champion-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 45px;
+
+    padding:
+        0
+        18px;
+
     color: #071426;
+
     background: #f5c542;
-    padding: 13px 18px;
-    border-radius: 7px;
-    text-decoration: none;
-    font-weight: bold;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+
+    font-weight: 900;
+
     white-space: nowrap;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.champion-button:hover {
+    transform: translateY(-3px);
+
+    background: #ffd75b;
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer {
     background: #050b14;
-    border-top: 1px solid #26364d;
-    padding: 30px 25px;
+
+    border-top:
+        1px solid
+        #26364d;
+
+    padding:
+        32px
+        25px;
+
     text-align: center;
+
     color: #7f8a99;
+
     font-size: 13px;
 }
 
 footer strong {
     color: #f5c542;
 }
+@media (max-width: 900px) {
 
-    /* =========================
-   RESPONSIVO
-========================= */
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding-top: 70px;
+        padding-bottom: 75px;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-description {
+        max-width: 650px;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-badge {
+        width: 210px;
+        height: 210px;
+        margin: 15px auto 0;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .section-description {
+        text-align: left;
+        max-width: 650px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .areas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .next-event {
+        grid-template-columns: 1fr;
+    }
+
+    .event-date {
+        min-height: 150px;
+    }
+
+    .champion-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .champion-info {
+        align-items: center;
+    }
+}
+
 
 @media (max-width: 800px) {
 
@@ -1525,89 +1252,228 @@ footer strong {
         display: block;
     }
 
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
     .hero {
-        padding: 70px 25px 55px;
+        min-height: auto;
+    }
+
+    .hero-inner {
+        padding: 65px 20px 70px;
+    }
+
+    .hero-tag {
+        font-size: 11px;
+        letter-spacing: 1.5px;
     }
 
     .brand-title {
-        font-size: 64px;
-        letter-spacing: -2px;
+        font-size: 72px;
+        letter-spacing: -4px;
     }
 
     .hero-subtitle {
         font-size: 23px;
+        line-height: 1.15;
     }
 
-    .next-event {
-        flex-direction: column;
-        align-items: flex-start;
+    .hero-description {
+        font-size: 15px;
+        line-height: 1.6;
     }
 
-    .event-date {
+    .hero-actions {
         width: 100%;
+        flex-direction: column;
+    }
+
+    .hero-button,
+    .hero-button-secondary {
+        width: 100%;
+        max-width: 330px;
+        text-align: center;
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .section-heading {
+        font-size: 32px;
+    }
+
+    .stats-grid {
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 22px 14px;
+    }
+
+    .stat-number {
+        font-size: 34px;
+    }
+
+    .stat-label {
+        font-size: 11px;
     }
 
     .news-grid {
         grid-template-columns: 1fr;
     }
 
-    .areas {
-        grid-template-columns: 1fr 1fr;
+    .areas-grid {
+        grid-template-columns: 1fr;
     }
 
-    .champion {
-        flex-direction: column;
-        align-items: flex-start;
+    .next-event {
+        padding: 25px;
     }
 
+    .next-event-info h2 {
+        font-size: 28px;
+    }
+
+    .event-date {
+        min-height: 135px;
+    }
+
+    .champion-card {
+        padding: 25px;
+    }
+
+    .champion-name {
+        font-size: 30px;
+    }
 }
+
 
 @media (max-width: 500px) {
 
-    .hero {
-        padding-top: 60px;
+    .navbar {
+        padding: 14px 16px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .menu-mobile {
+        font-size: 28px;
+    }
+
+    .hero-inner {
+        padding: 55px 17px 60px;
     }
 
     .brand-title {
-        font-size: 52px;
-        line-height: .9;
+        font-size: 57px;
+        letter-spacing: -3px;
     }
 
     .hero-subtitle {
         font-size: 20px;
     }
 
-    .hero p {
-        font-size: 16px;
+    .hero-description {
+        font-size: 14px;
     }
 
-    .areas {
-        grid-template-columns: 1fr;
+    .hero-badge {
+        width: 175px;
+        height: 175px;
+    }
+
+    .hero-badge-text {
+        font-size: 14px;
+        letter-spacing: 1px;
     }
 
     .section {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 50px 17px;
     }
 
-    .navbar {
-        padding-left: 20px;
-        padding-right: 20px;
+    .section-heading {
+        font-size: 28px;
     }
 
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .stat-card {
+        min-height: 120px;
+        padding: 18px 8px;
+    }
+
+    .stat-number {
+        font-size: 30px;
+    }
+
+    .stat-label {
+        font-size: 10px;
+        line-height: 1.3;
+    }
+
+    .next-event {
+        padding: 21px;
+        gap: 20px;
+    }
+
+    .next-event-info h2 {
+        font-size: 24px;
+    }
+
+    .next-event-info p {
+        font-size: 13px;
+    }
+
+    .event-date {
+        min-height: 120px;
+    }
+
+    .event-date strong {
+        font-size: 18px;
+    }
+
+    .event-date span {
+        font-size: 34px;
+    }
+
+    .event-date small {
+        font-size: 9px;
+    }
+
+    .news-card {
+        padding: 21px;
+    }
+
+    .area-card {
+        padding: 22px;
+    }
+
+    .champion-card {
+        padding: 22px;
+    }
+
+    footer {
+        padding: 35px 20px;
+        font-size: 12px;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
-
     <div class="navbar">
 
         <div class="logo">
@@ -1615,14 +1481,12 @@ footer strong {
         </div>
 
         <nav>
-
             <a href="index.html">Início</a>
             <a href="noticias.html">Notícias</a>
             <a href="olimpiadas.html">Olimpíadas</a>
             <a href="copa.html">Copa</a>
             <a href="participantes.html">Participantes</a>
             <a href="hall.html">Hall dos Campeões</a>
-
         </nav>
 
         <button
@@ -1636,71 +1500,132 @@ footer strong {
     </div>
 
     <div class="mobile-nav" id="mobileNav">
-
         <a href="index.html">Início</a>
         <a href="noticias.html">Notícias</a>
         <a href="olimpiadas.html">Olimpíadas</a>
         <a href="copa.html">Copa</a>
         <a href="participantes.html">Participantes</a>
         <a href="hall.html">Hall dos Campeões</a>
-
     </div>
-
 </header>
 
 
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero">
 
-    <div class="hero-content">
+    <div class="hero-inner">
 
-        <div class="hero-tag">
-            BEM-VINDO AO
+        <div class="hero-content">
+
+            <div class="hero-tag">
+                BEM-VINDO AO SÓ PODE PRO
+            </div>
+
+            <h1 class="brand-title">
+                SÓ PODE<br>
+                <span class="pro">PRO</span>
+            </h1>
+
+            <div class="hero-subtitle">
+                Um grupo. Vários jogos.<br>
+                Momentos inesquecíveis.
+            </div>
+
+            <p class="hero-description">
+                O Só Pode PRO é um grupo de amigos que se reúne
+                para jogar, competir e criar grandes momentos.
+                Aqui você acompanha as competições, os participantes,
+                os resultados e a história do grupo.
+            </p>
+
+            <div class="hero-actions">
+
+                <a
+                    href="participantes.html"
+                    class="hero-button"
+                >
+                    CONHEÇA OS PARTICIPANTES
+                </a>
+
+                <a
+                    href="olimpiadas.html"
+                    class="hero-button-secondary"
+                >
+                    VER OLIMPÍADAS
+                </a>
+
+            </div>
+
         </div>
 
-        <h1 class="brand-title">
-            SÓ PODE PRO
-        </h1>
 
-        <div class="hero-subtitle">
-            Um grupo. Vários jogos.<br>
-            Momentos inesquecíveis.
+        <div class="hero-badge">
+
+            <div class="hero-badge-text">
+                SÓ PODE<br>
+                PRO<br>
+                OFICIAL
+            </div>
+
         </div>
-
-        <p>
-            O Só Pode PRO é um grupo de amigos que se reúne
-            para jogar, competir e criar grandes momentos.
-            Aqui você acompanha tudo o que acontece no grupo.
-        </p>
-
-        <a
-            href="participantes.html"
-            class="hero-button"
-        >
-            CONHEÇA OS PARTICIPANTES
-        </a>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     PRÓXIMO EVENTO
-========================= -->
+<section class="section stats-section">
 
-<section class="section">
+    <div class="stats-grid">
 
-    <h2 class="section-title">
-        Próximo <span>evento</span>
-    </h2>
+        <div class="stat-card">
+            <div class="stat-number">14</div>
+            <div class="stat-label">
+                Participantes oficiais
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">8</div>
+            <div class="stat-label">
+                Modalidades das Olimpíadas
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">1</div>
+            <div class="stat-label">
+                Campeão oficial
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-number">2027</div>
+            <div class="stat-label">
+                Próxima Olimpíada
+            </div>
+        </div>
+
+    </div>
+
+</section>
+ <section class="section">
+
+    <div class="section-header">
+
+        <h2 class="section-heading">
+            Próximo <span>evento</span>
+        </h2>
+
+        <p class="section-description">
+            O próximo grande evento oficial do Só Pode PRO.
+        </p>
+
+    </div>
+
 
     <div class="next-event">
 
-        <div>
+        <div class="next-event-info">
 
             <div class="event-label">
                 PRÓXIMAS OLIMPÍADAS
@@ -1718,6 +1643,7 @@ footer strong {
 
         </div>
 
+
         <div class="event-date">
 
             <strong>
@@ -1728,6 +1654,10 @@ footer strong {
                 2027
             </span>
 
+            <small>
+                PRÓXIMA EDIÇÃO
+            </small>
+
         </div>
 
     </div>
@@ -1735,19 +1665,28 @@ footer strong {
 </section>
 
 
-<!-- =========================
-     NOTÍCIAS
-========================= -->
-
 <section class="section">
 
-    <h2 class="section-title">
-        Últimas <span>notícias</span>
-    </h2>
+    <div class="section-header">
+
+        <h2 class="section-heading">
+            Últimas <span>notícias</span>
+        </h2>
+
+        <p class="section-description">
+            As principais novidades do Só Pode PRO.
+        </p>
+
+    </div>
+
 
     <div class="news-grid">
 
-        <article class="news-card">
+
+        <a
+            href="noticias.html"
+            class="news-card"
+        >
 
             <div class="news-date">
                 15 DE SETEMBRO DE 2026
@@ -1758,22 +1697,22 @@ footer strong {
             </h3>
 
             <p>
-                O grupo agora tem um espaço oficial para
-                acompanhar notícias, competições, participantes
-                e tudo que acontece no Só Pode PRO.
+                O novo site oficial do grupo está disponível,
+                reunindo informações sobre participantes,
+                competições e a história do Só Pode PRO.
             </p>
 
-            <a
-                href="noticias.html"
-                class="news-link"
-            >
-                LER NOTÍCIAS →
-            </a>
+            <span class="news-link">
+                LER NOTÍCIA →
+            </span>
 
-        </article>
+        </a>
 
 
-        <article class="news-card">
+        <a
+            href="olimpiadas.html"
+            class="news-card"
+        >
 
             <div class="news-date">
                 SÓ PODE PRO
@@ -1784,21 +1723,22 @@ footer strong {
             </h3>
 
             <p>
-                A próxima edição das Olimpíadas do grupo
-                acontecerá em janeiro de 2027.
+                Depois da primeira edição realizada em 2026,
+                a próxima edição das Olimpíadas está prevista
+                para janeiro de 2027.
             </p>
 
-            <a
-                href="olimpiadas.html"
-                class="news-link"
-            >
+            <span class="news-link">
                 VER OLIMPÍADAS →
-            </a>
+            </span>
 
-        </article>
+        </a>
 
 
-        <article class="news-card">
+        <a
+            href="hall.html"
+            class="news-card"
+        >
 
             <div class="news-date">
                 HISTÓRIA
@@ -1809,43 +1749,48 @@ footer strong {
             </h3>
 
             <p>
-                Guga, conhecido como Guitlac, foi o campeão
-                da primeira Olimpíada do Só Pode PRO.
+                Guga, conhecido como Guitlac, conquistou o
+                título da primeira Olimpíada do Só Pode PRO
+                e entrou para o Hall dos Campeões.
             </p>
 
-            <a
-                href="hall.html"
-                class="news-link"
-            >
+            <span class="news-link">
                 VER HALL →
-            </a>
+            </span>
 
-        </article>
+        </a>
+
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     ÁREAS DO GRUPO
-========================= -->
-
 <section class="section">
 
-    <h2 class="section-title">
-        Explore o <span>Só Pode PRO</span>
-    </h2>
+    <div class="section-header">
 
-    <div class="areas">
+        <h2 class="section-heading">
+            Conheça o <span>Só Pode PRO</span>
+        </h2>
+
+        <p class="section-description">
+            Tudo o que você precisa saber sobre o grupo.
+        </p>
+
+    </div>
+
+
+    <div class="areas-grid">
+
 
         <a
             href="olimpiadas.html"
             class="area-card"
         >
 
-            <div class="icon">
-                🏅
+            <div class="area-icon">
+                🏆
             </div>
 
             <h3>
@@ -1857,6 +1802,10 @@ footer strong {
                 das Olimpíadas do grupo.
             </p>
 
+            <span class="area-link">
+                CONHECER →
+            </span>
+
         </a>
 
 
@@ -1865,8 +1814,8 @@ footer strong {
             class="area-card"
         >
 
-            <div class="icon">
-                🏆
+            <div class="area-icon">
+                🏅
             </div>
 
             <h3>
@@ -1878,6 +1827,10 @@ footer strong {
                 reúne os campeões das Olimpíadas.
             </p>
 
+            <span class="area-link">
+                CONHECER →
+            </span>
+
         </a>
 
 
@@ -1886,7 +1839,7 @@ footer strong {
             class="area-card"
         >
 
-            <div class="icon">
+            <div class="area-icon">
                 👥
             </div>
 
@@ -1899,6 +1852,10 @@ footer strong {
                 do Só Pode PRO.
             </p>
 
+            <span class="area-link">
+                VER PARTICIPANTES →
+            </span>
+
         </a>
 
 
@@ -1907,8 +1864,8 @@ footer strong {
             class="area-card"
         >
 
-            <div class="icon">
-                🏆
+            <div class="area-icon">
+                👑
             </div>
 
             <h3>
@@ -1920,52 +1877,75 @@ footer strong {
                 no Só Pode PRO.
             </p>
 
+            <span class="area-link">
+                VER HALL →
+            </span>
+
         </a>
+
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     CAMPEÃO
-========================= -->
-
 <section class="section">
 
-    <div class="champion">
+    <div class="section-header">
+
+        <h2 class="section-heading">
+            Primeiro <span>campeão</span>
+        </h2>
+
+        <p class="section-description">
+            O primeiro nome a entrar para a história do Só Pode PRO.
+        </p>
+
+    </div>
+
+
+    <div class="champion-card">
+
+        <div class="champion-badge">
+
+            <div class="champion-badge-inner">
+                1º
+            </div>
+
+        </div>
+
 
         <div class="champion-info">
 
-            <small>
+            <div class="champion-label">
                 PRIMEIRO CAMPEÃO
-            </small>
+            </div>
 
-            <h2>
-                Guga — Guitlac
+            <h2 class="champion-name">
+                Guga
             </h2>
+
+            <div class="champion-nickname">
+                Guitlac
+            </div>
 
             <p>
                 Campeão da 1ª Olimpíada do Só Pode PRO.
             </p>
 
-        </div>
+            <a
+                href="hall.html"
+                class="hero-button"
+            >
+                VER HALL DOS CAMPEÕES
+            </a>
 
-        <a
-            href="hall.html"
-            class="champion-button"
-        >
-            VER HALL DOS CAMPEÕES →
-        </a>
+        </div>
 
     </div>
 
 </section>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -1977,24 +1957,14 @@ footer strong {
 
     Grupo oficial · Site do Só Pode PRO
 
-</footer>
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
-<script>
-
+</footer>  
+    <script>
 function abrirMenu() {
-
     document
         .getElementById("mobileNav")
         .classList
         .toggle("active");
-
 }
-
 </script>
 
 </body>
