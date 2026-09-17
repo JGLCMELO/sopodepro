@@ -55,39 +55,18 @@
                 );
 
             async function verificarSessao() {
-
-    loading.textContent =
-        "PASSO 1 — ENTROU NA FUNÇÃO!";
-
     const {
         data,
         error
     } = await supabaseClient.auth.getSession();
 
-    loading.textContent =
-        "PASSO 2 — GETSESSION TERMINOU!";
-
-    if (error) {
-
-        console.error(error);
-
-        loading.textContent =
-            "PASSO 3 — ERRO NO GETSESSION!";
-
-        return;
-    }
-
-    if (!data.session) {
-
-        loading.textContent =
-            "PASSO 4 — NÃO HÁ SESSÃO!";
-
+    if (error || !data.session) {
+        window.location.href = "login.html";
         return;
     }
 
     loading.textContent =
-        "PASSO 5 — SESSÃO ENCONTRADA!";
-
+        "Login confirmado! Área liberada.";
 }
             }
 
