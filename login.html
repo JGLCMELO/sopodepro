@@ -135,13 +135,27 @@
             >
 
             <button type="submit">
-       <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    ENTRAR
+</button>
+
+</form>
+
+<div
+    class="message"
+    id="message"
+></div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 
     const SUPABASE_URL = "https://xfhkdfponsyxeccolhon.supabase.co/rest/v1/";
 
     const SUPABASE_KEY = "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
+
 
     const supabase = window.supabase.createClient(
         SUPABASE_URL,
@@ -169,15 +183,8 @@
                 "Entrando...";
 
 
-            /*
-                TEMPORARIAMENTE:
-                O Supabase Auth usa o e-mail interno
-                da conta para fazer o login.
-
-                Por enquanto estamos testando com o Guga.
-            */
-
             let email = "";
+
 
             if (usuario.toLowerCase() === "guga") {
 
@@ -220,7 +227,7 @@
         });
 
 </script>
-                
+
 
 </body>
 </html>
