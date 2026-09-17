@@ -232,33 +232,39 @@
         const loading =
             document.getElementById("loading");
 
+
         loading.textContent =
             "LENDO SESSÃO...";
 
 
-        const resultado =
+        const {
+            data,
+            error
+        } =
             await supabase.auth.getSession();
 
 
-        console.log(
-            resultado
-        );
+        if (error) {
 
-
-        if (resultado.error) {
+            console.error(error);
 
             loading.textContent =
-                "ERRO NA SESSÃO";
+                "ERRO AO LER SESSÃO";
 
             return;
 
         }
 
 
-        if (resultado.data.session) {
+        if (data.session) {
 
             loading.textContent =
                 "SESSÃO RECEBIDA!";
+
+            console.log(
+                "ID DO USUÁRIO:",
+                data.session.user.id
+            );
 
         } else {
 
