@@ -157,11 +157,11 @@
         }
 
 .modalidade-presidente {
-    background: #111f38;
+    background: #0b172a;
     border: 1px solid #26364d;
-    border-radius: 14px;
-    padding: 20px;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
 }
 
 .titulo-modalidade {
@@ -169,33 +169,46 @@
     align-items: center;
     justify-content: space-between;
     gap: 15px;
-    margin-bottom: 15px;
+
+    padding: 16px 18px;
+
+    background: #101f35;
+    border-bottom: 1px solid #26364d;
 }
 
 .titulo-modalidade h3 {
-    color: #f5c542;
-    font-size: 18px;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
 }
 
 .titulo-modalidade span {
-    color: #a78bfa;
+    color: #f5c542;
+    font-size: 13px;
     font-weight: bold;
-    font-size: 14px;
+    white-space: nowrap;
 }
 
 .lista-participantes {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
 }
 
 .participante-inscrito {
-    background: #071426;
-    border: 1px solid #3b2a82;
-    border-radius: 8px;
-    padding: 9px 12px;
+    padding: 13px 18px;
     color: #dce5f2;
     font-weight: bold;
+    border-bottom: 1px solid #17263b;
+}
+
+.participante-inscrito:last-child {
+    border-bottom: none;
+}
+
+.participante-inscrito::before {
+    content: "•";
+    color: #f5c542;
+    margin-right: 10px;
 }
         
         @media (max-width: 700px) {
