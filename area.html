@@ -1031,17 +1031,19 @@ async function carregarInscricoes() {
                 )
             ) {
 
-                checkbox.checked = true;
+          if (
+    modalidadesInscritas.has(
+        checkbox.value
+    )
+) {
 
-                checkbox.disabled = true;
+    checkbox.checked = true;
 
-                checkbox
-                    .closest(".modalidade")
-                    .style.opacity = "0.55";
+    checkbox
+        .closest(".modalidade")
+        .style.opacity = "0.65";
 
-                checkbox
-                    .closest(".modalidade")
-                    .style.cursor = "default";
+}
 
             }
 
