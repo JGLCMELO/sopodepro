@@ -1232,17 +1232,32 @@ if (
 
 
         mensagem.textContent =
-            "Notícia publicada com sucesso!";
+    noticiaEmEdicao
+        ? "Notícia atualizada com sucesso!"
+        : "Notícia publicada com sucesso!";
 
 
-        document.getElementById(
-            "tituloNoticia"
-        ).value = "";
+noticiaEmEdicao =
+    null;
 
 
-        document.getElementById(
-            "conteudoNoticia"
-        ).value = "";
+document.getElementById(
+    "botaoNoticia"
+).textContent =
+    "PUBLICAR NOTÍCIA";
+
+
+document.getElementById(
+    "tituloNoticia"
+).value = "";
+
+
+document.getElementById(
+    "conteudoNoticia"
+).value = "";
+
+
+await carregarNoticiasPresidente();
 
     };
 
