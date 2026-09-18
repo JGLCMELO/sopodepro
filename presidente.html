@@ -775,7 +775,127 @@ area.innerHTML =
 
     };
 
+async function carregarStatusInscricoes() {
 
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("configuracoes_olimpiadas")
+            .select("inscricoes_abertas")
+            .eq("id", 1)
+            .single();
+
+
+    if (error) {
+
+        console.error(error);
+
+        document.getElementById(
+            "statusInscricoes"
+        ).textContent =
+            "Erro ao carregar status.";
+
+        return;
+
+    }
+
+
+    const abertas =
+        data.inscricoes_abertas;
+
+
+    document.getElementById(
+        "statusInscricoes"
+    ).textContent =
+        abertas
+            ? "INSCRIÇÕES ABERTAS"
+            : "INSCRIÇÕES FECHADAS";
+
+
+    const botao =
+        document.getElementById(
+            "botaoInscricoes"
+        );
+
+
+    botao.textContent =
+        abertas
+            ? "FECHAR INSCRIÇÕES"
+            : "ABRIR INSCRIÇÕES";
+
+}
+
+
+window.alterarStatusInscricoes =
+    async function () {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("configuracoes_olimpiadas")
+                .select("inscricoes_abertas")
+                .eq("id", 1)
+                .single();
+
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "Não foi possível verificar o status."
+            );
+
+            return;
+
+        }
+
+
+        const novoStatus =
+            !data.inscricoes_abertas;
+
+
+        const {
+            error: updateError
+        } =
+            await supabaseClient
+                .from("configuracoes_olimpiadas")
+                .update({
+                    inscricoes_abertas:
+                        novoStatus,
+
+                    updated_at:
+                        new Date().toISOString()
+                })
+                .eq("id", 1);
+
+
+        if (updateError) {
+
+            console.error(
+                updateError
+            );
+
+            alert(
+                "Não foi possível alterar o status."
+            );
+
+            return;
+
+        }
+
+
+        await carregarStatusInscricoes();
+
+    };
+
+
+carregarStatusInscricoes();
+    
 verificarPresidente();
 
 </script>
