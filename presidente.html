@@ -1172,21 +1172,52 @@ window.publicarNoticia =
             sessionData.session.user.id;
 
 
-        const {
-            error
-        } =
-            await supabaseClient
-                .from("noticias")
-                .insert({
+        let error;
 
-                    titulo: titulo,
 
-                    conteudo: conteudo,
+if (
+    noticiaEmEdicao
+) {
 
-                    autor_id: userId
+    const resultado =
+        await supabaseClient
+            .from("noticias")
+            .update({
 
-                });
+                titulo: titulo,
 
+                conteudo: conteudo
+
+            })
+            .eq(
+                "id",
+                noticiaEmEdicao
+            );
+
+
+    error =
+        resultado.error;
+
+} else {
+
+    const resultado =
+        await supabaseClient
+            .from("noticias")
+            .insert({
+
+                titulo: titulo,
+
+                conteudo: conteudo,
+
+                autor_id: userId
+
+            });
+
+
+    error =
+        resultado.error;
+
+}
 
         if (error) {
 
