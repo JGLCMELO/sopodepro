@@ -537,6 +537,42 @@ window.carregarInscricoes =
 
         }
 
+        const totalInscricoes =
+    data.length;
+
+const totalModalidades =
+    new Set(
+        data.map(
+            inscricao =>
+                inscricao.modalidade
+        )
+    ).size;
+
+const totalParticipantes =
+    new Set(
+        data.map(
+            inscricao =>
+                inscricao.user_id
+        )
+    ).size;
+
+
+document.getElementById(
+    "totalInscricoes"
+).textContent =
+    totalInscricoes;
+
+
+document.getElementById(
+    "totalModalidades"
+).textContent =
+    totalModalidades;
+
+
+document.getElementById(
+    "totalParticipantes"
+).textContent =
+    totalParticipantes;
 
         if (!data || data.length === 0) {
 
