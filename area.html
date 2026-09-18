@@ -1120,6 +1120,78 @@ async function carregarInscricoes() {
     }
 
 }
+
+window.cancelarInscricao =
+    async function (modalidade) {
+
+        const confirmar =
+            confirm(
+                "Deseja cancelar sua inscrição em " +
+                modalidade +
+                "?"
+            );
+
+
+        if (!confirmar) {
+            return;
+        }
+
+
+        const {
+            data: sessionData,
+            error: sessionError
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if (
+            sessionError ||
+            !sessionData.session
+        ) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        const userId =
+            sessionData.session.user.id;
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("inscricoes_olimpiadas")
+                .delete()
+                .eq("user_id", userId)
+                .eq("modalidade", modalidade);
+
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "Não foi possível cancelar a inscrição."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "Inscrição cancelada com sucesso!"
+        );
+
+
+        carregarInscricoes();
+
+    };
             
 window.confirmarInscricoes = async function () {
 
