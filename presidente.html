@@ -1353,6 +1353,51 @@ window.publicarNoticia =
 
 
 carregarNoticiasPresidente();
+
+window.excluirNoticia =
+    async function (id) {
+
+        const confirmar =
+            confirm(
+                "Tem certeza que deseja excluir esta notícia?"
+            );
+
+
+        if (!confirmar) {
+            return;
+        }
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("noticias")
+                .delete()
+                .eq("id", id);
+
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "Não foi possível excluir a notícia."
+            );
+
+            return;
+
+        }
+
+
+        alert(
+            "Notícia excluída com sucesso!"
+        );
+
+
+        await carregarNoticiasPresidente();
+
+    };
     
 </script>
 
