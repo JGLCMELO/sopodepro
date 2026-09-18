@@ -236,6 +236,43 @@
 
         }
 
+.resumo-inscricoes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.resumo-item {
+    background: #101f35;
+    border: 1px solid #26364d;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+}
+
+.resumo-item strong {
+    display: block;
+    color: #f5c542;
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.resumo-item span {
+    color: #aebbd0;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+@media (max-width: 600px) {
+
+    .resumo-inscricoes {
+        grid-template-columns: 1fr;
+    }
+
+}
+        
     </style>
 
 </head>
