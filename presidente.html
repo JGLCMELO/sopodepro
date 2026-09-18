@@ -1093,6 +1093,114 @@ carregarStatusInscricoes();
     
 verificarPresidente();
 
+window.publicarNoticia =
+    async function () {
+
+        const titulo =
+            document
+                .getElementById(
+                    "tituloNoticia"
+                )
+                .value
+                .trim();
+
+
+        const conteudo =
+            document
+                .getElementById(
+                    "conteudoNoticia"
+                )
+                .value
+                .trim();
+
+
+        const mensagem =
+            document.getElementById(
+                "mensagemNoticia"
+            );
+
+
+        if (!titulo || !conteudo) {
+
+            mensagem.textContent =
+                "Preencha o título e a notícia.";
+
+            return;
+
+        }
+
+
+        mensagem.textContent =
+            "Publicando notícia...";
+
+
+        const {
+            data: sessionData,
+            error: sessionError
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if (
+            sessionError ||
+            !sessionData.session
+        ) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        const userId =
+            sessionData.session.user.id;
+
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("noticias")
+                .insert({
+
+                    titulo: titulo,
+
+                    conteudo: conteudo,
+
+                    autor_id: userId
+
+                });
+
+
+        if (error) {
+
+            console.error(error);
+
+            mensagem.textContent =
+                "Não foi possível publicar a notícia.";
+
+            return;
+
+        }
+
+
+        mensagem.textContent =
+            "Notícia publicada com sucesso!";
+
+
+        document.getElementById(
+            "tituloNoticia"
+        ).value = "";
+
+
+        document.getElementById(
+            "conteudoNoticia"
+        ).value = "";
+
+    };
+    
 </script>
 
 
