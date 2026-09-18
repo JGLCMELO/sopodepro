@@ -694,19 +694,6 @@ function abrirMenu() {
 
 }
 
-    const SUPABASE_URL =
-    "https://xfhkdfponsyxeccolhon.supabase.co";
-
-const SUPABASE_KEY =
-    "sb_publishable_mbHAOHKLz50fh_4DOeztkA_9vR_NlmV";
-
-
-const supabaseClient =
-    window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
-
     async function carregarNoticiasOficiais() {
 
     const {
@@ -745,25 +732,27 @@ const supabaseClient =
     }
 
 
-    const noticia =
+    const noticiaDestaque =
         data[0];
 
 
-    const dataNoticia =
+    const dataDestaque =
         new Date(
-            noticia.created_at
+            noticiaDestaque.created_at
         );
 
 
-    const dataFormatada =
-        dataNoticia.toLocaleDateString(
-            "pt-BR",
-            {
-                day: "2-digit",
-                month: "long",
-                year: "numeric"
-            }
-        );
+    const dataDestaqueFormatada =
+        dataDestaque
+            .toLocaleDateString(
+                "pt-BR",
+                {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                }
+            )
+            .toUpperCase();
 
 
     document.getElementById(
@@ -775,19 +764,89 @@ const supabaseClient =
         '</div>' +
 
         '<div class="featured-date">' +
-        dataFormatada.toUpperCase() +
+        dataDestaqueFormatada +
         '</div>' +
 
         '<h2>' +
-        noticia.titulo +
+        noticiaDestaque.titulo +
         '</h2>' +
 
         '<p>' +
-        noticia.conteudo +
+        noticiaDestaque.conteudo +
         '</p>';
 
-}
 
+    const container =
+        document.getElementById(
+            "noticiasOficiais"
+        );
+
+
+    container.innerHTML = "";
+
+
+    data
+        .slice(1)
+        .forEach(
+            noticia => {
+
+                const dataNoticia =
+                    new Date(
+                        noticia.created_at
+                    );
+
+
+                const dataFormatada =
+                    dataNoticia
+                        .toLocaleDateString(
+                            "pt-BR",
+                            {
+                                day: "2-digit",
+                                month: "long",
+                                year: "numeric"
+                            }
+                        )
+                        .toUpperCase();
+
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                card.className =
+                    "news-card";
+
+
+                card.innerHTML =
+
+                    '<div class="news-category">' +
+                    'NOTÍCIA OFICIAL' +
+                    '</div>' +
+
+                    '<div class="news-date">' +
+                    dataFormatada +
+                    '</div>' +
+
+                    '<h3>' +
+                    noticia.titulo +
+                    '</h3>' +
+
+                    '<p>' +
+                    noticia.conteudo +
+                    '</p>';
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
+}
+    
 carregarNoticiasOficiais();
     
 </script>
