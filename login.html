@@ -238,20 +238,22 @@
 
 
             if (
-                usuario.toLowerCase() === "guga"
-            ) {
+    usuario.toLowerCase() === "guga"
+) {
+    email =
+        "guga@sopodepro.com";
 
-                email =
-                    "guga@sopodepro.com";
+} else if (
+    usuario.toLowerCase() === "joão gabriel"
+) {
+    email =
+        "jglcmelo@gmail.com";
 
-            } else {
-
-                message.textContent =
-                    "Usuário não encontrado.";
-
-                return;
-            }
-
+} else {
+    message.textContent =
+        "Usuário não encontrado.";
+    return;
+}
 
             try {
 
