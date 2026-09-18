@@ -1210,12 +1210,48 @@ window.cancelarInscricao =
 
 
         alert(
-            "Inscrição cancelada com sucesso!"
+    "Inscrição cancelada com sucesso!"
+);
+
+
+const checkbox =
+    document.querySelector(
+        '.modalidade input[value="' +
+        modalidade +
+        '"]'
+    );
+
+
+if (checkbox) {
+
+    checkbox.checked = false;
+
+
+    const container =
+        checkbox.closest(
+            ".modalidade"
         );
 
 
-        carregarInscricoes();
+    container.style.opacity =
+        "1";
 
+
+    const botaoCancelar =
+        container.querySelector(
+            ".botao-cancelar"
+        );
+
+
+    if (botaoCancelar) {
+        botaoCancelar.remove();
+    }
+
+}
+
+
+await carregarInscricoes();
+        
     };
             
 window.confirmarInscricoes = async function () {
