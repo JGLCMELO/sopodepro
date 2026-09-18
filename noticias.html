@@ -700,6 +700,89 @@ const supabaseClient =
         SUPABASE_KEY
     );
 
+    async function carregarNoticiasOficiais() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("noticias")
+            .select(
+                "id, titulo, conteudo, created_at"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        return;
+
+    }
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        return;
+
+    }
+
+
+    const noticia =
+        data[0];
+
+
+    const dataNoticia =
+        new Date(
+            noticia.created_at
+        );
+
+
+    const dataFormatada =
+        dataNoticia.toLocaleDateString(
+            "pt-BR",
+            {
+                day: "2-digit",
+                month: "long",
+                year: "numeric"
+            }
+        );
+
+
+    document.getElementById(
+        "noticiaDestaque"
+    ).innerHTML =
+
+        '<div class="featured-label">' +
+        'DESTAQUE' +
+        '</div>' +
+
+        '<div class="featured-date">' +
+        dataFormatada.toUpperCase() +
+        '</div>' +
+
+        '<h2>' +
+        noticia.titulo +
+        '</h2>' +
+
+        '<p>' +
+        noticia.conteudo +
+        '</p>';
+
+}
+
+carregarNoticiasOficiais();
+    
 </script>
 
 </body>
