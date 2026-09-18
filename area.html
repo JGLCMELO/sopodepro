@@ -1074,6 +1074,43 @@ async function carregarInscricoes() {
             
 window.confirmarInscricoes = async function () {
 
+        const {
+        data: configuracao,
+        error: configuracaoError
+    } =
+        await supabaseClient
+            .from("configuracoes_olimpiadas")
+            .select("inscricoes_abertas")
+            .eq("id", 1)
+            .single();
+
+
+    if (
+        configuracaoError ||
+        !configuracao
+    ) {
+
+        alert(
+            "Não foi possível verificar se as inscrições estão abertas."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !configuracao.inscricoes_abertas
+    ) {
+
+        alert(
+            "As inscrições para as Olimpíadas estão fechadas."
+        );
+
+        return;
+
+    }
+
     const botao =
         document.getElementById(
             "confirmarInscricoes"
