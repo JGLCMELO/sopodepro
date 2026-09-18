@@ -1520,6 +1520,122 @@ document.getElementById(
 
 };
     
+async function carregarPedidosRecuperacao() {
+
+    const container =
+        document.getElementById(
+            "pedidosRecuperacao"
+        );
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("recuperacao_senha")
+            .select(
+                "id, nome_participante, status, created_at"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+
+    if (error) {
+
+        console.error(error);
+
+        container.innerHTML =
+            '<div class="erro">Não foi possível carregar os pedidos.</div>';
+
+        return;
+
+    }
+
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        container.innerHTML =
+            '<div class="sem-inscricao">Nenhum pedido de recuperação.</div>';
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(
+        pedido => {
+
+            const dataPedido =
+                new Date(
+                    pedido.created_at
+                );
+
+
+            const dataFormatada =
+                dataPedido
+                    .toLocaleDateString(
+                        "pt-BR",
+                        {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric"
+                        }
+                    );
+
+
+            const pedidoDiv =
+                document.createElement(
+                    "div"
+                );
+
+
+            pedidoDiv.style.cssText =
+                `
+                padding:18px;
+                margin-bottom:12px;
+                background:#071426;
+                border:1px solid #26364d;
+                border-radius:10px;
+            `;
+
+
+            pedidoDiv.innerHTML =
+
+                '<strong style="color:white;font-size:17px;">' +
+                pedido.nome_participante +
+                '</strong>' +
+
+                '<div style="margin-top:8px;color:#aeb9c8;font-size:13px;">' +
+                'Pedido em ' +
+                dataFormatada +
+                '</div>' +
+
+                '<div style="margin-top:8px;color:#f5c542;font-size:13px;font-weight:bold;">' +
+                pedido.status +
+                '</div>';
+
+
+            container.appendChild(
+                pedidoDiv
+            );
+
+        }
+    );
+
+}
+
+carregarPedidosRecuperacao();    
     
 </script>
 
