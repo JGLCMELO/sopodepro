@@ -272,6 +272,32 @@
     }
 
 }
+
+.resumo-participante {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 13px 16px;
+
+    border-bottom: 1px solid #17263b;
+}
+
+.resumo-participante:last-child {
+    border-bottom: none;
+}
+
+.resumo-participante span {
+    color: #dce5f2;
+    font-weight: bold;
+}
+
+.resumo-participante strong {
+    color: #f5c542;
+    font-size: 14px;
+    white-space: nowrap;
+}
         
     </style>
 
@@ -780,7 +806,81 @@ Object.keys(modalidades)
         }
     );
 
+const contagemParticipantes = {};
 
+data.forEach(
+    inscricao => {
+
+        if (
+            !contagemParticipantes[
+                inscricao.user_id
+            ]
+        ) {
+
+            contagemParticipantes[
+                inscricao.user_id
+            ] = 0;
+
+        }
+
+        contagemParticipantes[
+            inscricao.user_id
+        ]++;
+
+    }
+);
+
+
+let resumoHtml = "";
+
+
+participantes
+    .sort(
+        (a, b) =>
+            a.nome.localeCompare(
+                b.nome,
+                "pt-BR"
+            )
+    )
+    .forEach(
+        participante => {
+
+            const total =
+                contagemParticipantes[
+                    participante.user_id
+                ] || 0;
+
+
+            resumoHtml +=
+                '<div class="resumo-participante">';
+
+            resumoHtml +=
+                '<span>' +
+                participante.nome +
+                '</span>';
+
+            resumoHtml +=
+                '<strong>' +
+                total +
+                (
+                    total === 1
+                        ? " inscrição"
+                        : " inscrições"
+                ) +
+                '</strong>';
+
+            resumoHtml +=
+                '</div>';
+
+        }
+    );
+
+
+document.getElementById(
+    "resumoParticipantes"
+).innerHTML =
+    resumoHtml;
+        
 area.innerHTML =
     html;
 
