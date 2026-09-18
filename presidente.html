@@ -476,86 +476,111 @@ participantes.forEach(
 );
 
 
-        let html =
-            '<table class="tabela">';
+        const modalidades = {};
 
-        html +=
-            "<thead>";
+data.forEach(
+    inscricao => {
 
-        html +=
-            "<tr>";
+        if (
+            !modalidades[
+                inscricao.modalidade
+            ]
+        ) {
 
-        html +=
-            "<th>Participante</th>";
+            modalidades[
+                inscricao.modalidade
+            ] = [];
 
-        html +=
-            "<th>Modalidade</th>";
-
-        html +=
-            "<th>Data</th>";
-
-        html +=
-            "</tr>";
-
-        html +=
-            "</thead>";
-
-        html +=
-            "<tbody>";
+        }
 
 
-        data.forEach(
-            inscricao => {
-
-                const nome =
-                    nomes[
-                        inscricao.user_id
-                    ] ||
-                    "Participante";
+        const nome =
+            nomes[
+                inscricao.user_id
+            ] ||
+            "Participante";
 
 
-                const dataFormatada =
-                    new Date(
-                        inscricao.created_at
-                    ).toLocaleDateString(
-                        "pt-BR"
-                    );
+        modalidades[
+            inscricao.modalidade
+        ].push(nome);
+
+    }
+);
 
 
-                html +=
-                    "<tr>";
-
-                html +=
-                    "<td>" +
-                    nome +
-                    "</td>";
-
-                html +=
-                    "<td>" +
-                    inscricao.modalidade +
-                    "</td>";
-
-                html +=
-                    "<td>" +
-                    dataFormatada +
-                    "</td>";
-
-                html +=
-                    "</tr>";
-
-            }
-        );
+let html = "";
 
 
-        html +=
-            "</tbody>";
+Object.keys(modalidades)
+    .sort()
+    .forEach(
+        modalidade => {
 
-        html +=
-            "</table>";
+            const lista =
+                modalidades[
+                    modalidade
+                ];
 
 
-        area.innerHTML =
-            html;
+            html +=
+                '<div class="modalidade-presidente">';
+
+
+            html +=
+                '<div class="titulo-modalidade">';
+
+
+            html +=
+                '<h3>' +
+                modalidade +
+                '</h3>';
+
+
+            html +=
+                '<span>' +
+                lista.length +
+                (
+                    lista.length === 1
+                        ? " inscrito"
+                        : " inscritos"
+                ) +
+                '</span>';
+
+
+            html +=
+                '</div>';
+
+
+            html +=
+                '<div class="lista-participantes">';
+
+
+            lista.forEach(
+                nome => {
+
+                    html +=
+                        '<div class="participante-inscrito">' +
+                        nome +
+                        '</div>';
+
+                }
+            );
+
+
+            html +=
+                '</div>';
+
+
+            html +=
+                '</div>';
+
+        }
+    );
+
+
+area.innerHTML =
+    html;
 
     };
 
