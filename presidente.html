@@ -431,49 +431,49 @@ window.carregarInscricoes =
             ];
 
 
-        const {
-            data: participantes,
-            error: participantesError
-        } =
-            await supabaseClient
-                .from("participantes")
-                .select(
-                    "nome, user_id"
-                )
-                .in(
-                    "user_id",
-                    userIds
-                );
-
-
-        if (participantesError) {
-
-            console.error(
-                participantesError
-            );
-
-            area.innerHTML =
-                '<div class="erro">Não foi possível carregar os participantes.</div>';
-
-            return;
-
-        }
-
-
-        const nomes =
-            {};
-
-
-        participantes.forEach(
-            participante => {
-
-                nomes[
-                    participante.user_id
-                ] =
-                    participante.nome;
-
-            }
+const {
+    data: participantes,
+    error: participantesError
+} =
+    await supabaseClient
+        .from("participantes")
+        .select(
+            "nome, user_id"
+        )
+        .in(
+            "user_id",
+            userIds
         );
+
+
+if (participantesError) {
+
+    console.error(
+        participantesError
+    );
+
+    area.innerHTML =
+        '<div class="erro">Não foi possível carregar os participantes.</div>';
+
+    return;
+
+}
+
+
+const nomes =
+    {};
+
+
+participantes.forEach(
+    participante => {
+
+        nomes[
+            participante.user_id
+        ] =
+            participante.nome;
+
+    }
+);
 
 
         let html =
