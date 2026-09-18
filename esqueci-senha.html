@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Recuperar senha — Só Pode PRO</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071426;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 430px;
+            background: #0d2039;
+            border: 1px solid #26364d;
+            border-radius: 16px;
+            padding: 35px;
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 25px;
+            font-weight: 900;
+            margin-bottom: 30px;
+        }
+
+        .logo span {
+            color: #f5c542;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .descricao {
+            color: #aeb9c8;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #dce5f2;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        select {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            background: #071426;
+            border: 1px solid #26364d;
+            border-radius: 8px;
+            color: white;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #f5c542;
+            color: #071426;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: .9;
+        }
+
+        #mensagem {
+            margin-top: 18px;
+            text-align: center;
+            color: #f5c542;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .voltar {
+            display: block;
+            margin-top: 22px;
+            text-align: center;
+            color: #aeb9c8;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .voltar:hover {
+            color: #f5c542;
+        }
+
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="logo">
+            SÓ PODE <span>PRO</span>
+        </div>
+
+        <h1>
+            Esqueci minha senha
+        </h1>
+
+        <p class="descricao">
+            Se você esqueceu sua senha, envie um pedido
+            para o Presidente do Só Pode PRO.
+        </p>
+
+        <label for="participante">
+            Participante
+        </label>
+
+        <select id="participante">
+
+            <option value="">
+                Selecione seu nome
+            </option>
+
+            <option value="Guga">
+                Guga
+            </option>
+
+            <option value="Camargo">
+                Camargo
+            </option>
+
+            <option value="Gui">
+                Gui
+            </option>
+
+            <option value="João Pedro">
+                João Pedro
+            </option>
+
+            <option value="João Gabriel">
+                João Gabriel
+            </option>
+
+            <option value="Leo Bril">
+                Leo Bril
+            </option>
+
+            <option value="Leo Buratta">
+                Leo Buratta
+            </option>
+
+            <option value="Victer">
+                Victer
+            </option>
+
+            <option value="Xavier">
+                Xavier
+            </option>
+
+            <option value="Chico">
+                Chico
+            </option>
+
+            <option value="Muniz">
+                Muniz
+            </option>
+
+            <option value="João Guilherme">
+                João Guilherme
+            </option>
+
+            <option value="Cabral">
+                Cabral
+            </option>
+
+            <option value="Pepê">
+                Pepê
+            </option>
+
+        </select>
+
+        <button
+            type="button"
+            onclick="solicitarRecuperacao()"
+        >
+            SOLICITAR RECUPERAÇÃO
+        </button>
+
+        <p id="mensagem"></p>
+
+        <a
+            href="login.html"
+            class="voltar"
+        >
+            ← Voltar para o login
+        </a>
+
+    </div>
+
+
+<script>
+
+const SUPABASE_URL =
+    "https://xfhkdfponsyxeccolhon.supabase.co";
+
+
+const SUPABASE_KEY =
+    "SUA PUBLISHABLE KEY";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+const participantes =
+    {
+
+        "Guga": "COLOQUE-O-USER-ID-AQUI",
+
+        "Camargo": "COLOQUE-O-USER-ID-AQUI",
+
+        "Gui": "COLOQUE-O-USER-ID-AQUI",
+
+        "João Pedro": "COLOQUE-O-USER-ID-AQUI",
+
+        "João Gabriel": "COLOQUE-O-USER-ID-AQUI",
+
+        "Leo Bril": "COLOQUE-O-USER-ID-AQUI",
+
+        "Leo Buratta": "COLOQUE-O-USER-ID-AQUI",
+
+        "Victer": "COLOQUE-O-USER-ID-AQUI",
+
+        "Xavier": "COLOQUE-O-USER-ID-AQUI",
+
+        "Chico": "COLOQUE-O-USER-ID-AQUI",
+
+        "Muniz": "COLOQUE-O-USER-ID-AQUI",
+
+        "João Guilherme": "COLOQUE-O-USER-ID-AQUI",
+
+        "Cabral": "COLOQUE-O-USER-ID-AQUI",
+
+        "Pepê": "COLOQUE-O-USER-ID-AQUI"
+
+    };
+
+
+async function solicitarRecuperacao() {
+
+    const nome =
+        document
+            .getElementById(
+                "participante"
+            )
+            .value;
+
+
+    const mensagem =
+        document.getElementById(
+            "mensagem"
+        );
+
+
+    if (!nome) {
+
+        mensagem.textContent =
+            "Selecione seu nome.";
+
+        return;
+
+    }
+
+
+    mensagem.textContent =
+        "Enviando pedido...";
+
+
+    const userId =
+        participantes[nome];
+
+
+    if (
+        !userId ||
+        userId ===
+        "COLOQUE-O-USER-ID-AQUI"
+    ) {
+
+        mensagem.textContent =
+            "Este participante ainda não está configurado.";
+
+        return;
+
+    }
+
+
+    const {
+        error
+    } =
+        await supabaseClient
+            .from("recuperacao_senha")
+            .insert({
+
+                user_id: userId,
+
+                nome_participante: nome
+
+            });
+
+
+    if (error) {
+
+        console.error(error);
+
+        mensagem.textContent =
+            "Não foi possível enviar o pedido.";
+
+        return;
+
+    }
+
+
+    mensagem.textContent =
+        "Pedido enviado ao Presidente!";
+
+}
+
+</script>
+
+</body>
+
+</html>
