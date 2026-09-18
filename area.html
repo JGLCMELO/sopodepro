@@ -1330,9 +1330,55 @@ window.alterarSenha = async function () {
     ).value = "";
 
 }
+
+async function carregarStatusOlimpiadas() {
+
+    const status =
+        document.getElementById(
+            "statusOlimpiadas"
+        );
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("configuracoes_olimpiadas")
+            .select("inscricoes_abertas")
+            .eq("id", 1)
+            .single();
+
+
+    if (error) {
+
+        console.error(error);
+
+        status.textContent =
+            "Não foi possível verificar o status das inscrições.";
+
+        return;
+
+    }
+
+
+    if (data.inscricoes_abertas) {
+
+        status.textContent =
+            "INSCRIÇÕES ABERTAS";
+
+    } else {
+
+        status.textContent =
+            "INSCRIÇÕES FECHADAS";
+
+    }
+
+}
+            
             verificarSessao();
             carregarInscricoes();
-
+            carregarStatusOlimpiadas();
 
         } catch (error) {
 
