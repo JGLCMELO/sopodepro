@@ -1032,7 +1032,6 @@ async function carregarInscricoes() {
             ) {
 
           if (
-              
     modalidadesInscritas.has(
         checkbox.value
     )
@@ -1040,9 +1039,56 @@ async function carregarInscricoes() {
 
     checkbox.checked = true;
 
-    checkbox
-        .closest(".modalidade")
-        .style.opacity = "0.65";
+    const modalidade =
+        checkbox.closest(
+            ".modalidade"
+        );
+
+    modalidade.style.opacity =
+        "0.65";
+
+
+    let botaoCancelar =
+        modalidade.querySelector(
+            ".botao-cancelar"
+        );
+
+
+    if (!botaoCancelar) {
+
+        botaoCancelar =
+            document.createElement(
+                "button"
+            );
+
+        botaoCancelar.type =
+            "button";
+
+        botaoCancelar.className =
+            "botao-cancelar";
+
+        botaoCancelar.textContent =
+            "CANCELAR";
+
+
+        botaoCancelar.onclick =
+            function (event) {
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                cancelarInscricao(
+                    checkbox.value
+                );
+
+            };
+
+
+        modalidade.appendChild(
+            botaoCancelar
+        );
+
+    }
 
 }
 
