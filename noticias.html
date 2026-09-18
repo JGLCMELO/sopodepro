@@ -847,7 +847,16 @@ function abrirMenu() {
 
 }
     
-carregarNoticiasOficiais();
+carregarNoticiasOficiais().catch(
+    function (error) {
+
+        console.error(
+            "ERRO AO CARREGAR NOTÍCIAS:",
+            error
+        );
+
+    }
+);
     
 </script>
 
