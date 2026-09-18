@@ -1398,6 +1398,53 @@ window.excluirNoticia =
         await carregarNoticiasPresidente();
 
     };
+
+window.editarNoticia =
+    async function (id) {
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("noticias")
+                .select(
+                    "id, titulo, conteudo"
+                )
+                .eq("id", id)
+                .single();
+
+
+        if (error) {
+
+            console.error(error);
+
+            alert(
+                "Não foi possível carregar a notícia."
+            );
+
+            return;
+
+        }
+
+
+        document.getElementById(
+            "tituloNoticia"
+        ).value =
+            data.titulo;
+
+
+        document.getElementById(
+            "conteudoNoticia"
+        ).value =
+            data.conteudo;
+
+
+        document.getElementById(
+            "tituloNoticia"
+        ).focus();
+
+    };
     
 </script>
 
