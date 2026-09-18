@@ -249,55 +249,17 @@ const supabaseClient =
     );
 
 
-const participantes =
-    {
-
-        "Guga": "COLOQUE-O-USER-ID-AQUI",
-
-        "Camargo": "COLOQUE-O-USER-ID-AQUI",
-
-        "Gui": "COLOQUE-O-USER-ID-AQUI",
-
-        "João Pedro": "COLOQUE-O-USER-ID-AQUI",
-
-        "João Gabriel": "COLOQUE-O-USER-ID-AQUI",
-
-        "Leo Bril": "COLOQUE-O-USER-ID-AQUI",
-
-        "Leo Buratta": "COLOQUE-O-USER-ID-AQUI",
-
-        "Victer": "COLOQUE-O-USER-ID-AQUI",
-
-        "Xavier": "COLOQUE-O-USER-ID-AQUI",
-
-        "Chico": "COLOQUE-O-USER-ID-AQUI",
-
-        "Muniz": "COLOQUE-O-USER-ID-AQUI",
-
-        "João Guilherme": "COLOQUE-O-USER-ID-AQUI",
-
-        "Cabral": "COLOQUE-O-USER-ID-AQUI",
-
-        "Pepê": "COLOQUE-O-USER-ID-AQUI"
-
-    };
-
-
 async function solicitarRecuperacao() {
 
     const nome =
-        document
-            .getElementById(
-                "participante"
-            )
-            .value;
-
+        document.getElementById(
+            "participante"
+        ).value;
 
     const mensagem =
         document.getElementById(
             "mensagem"
         );
-
 
     if (!nome) {
 
@@ -308,29 +270,6 @@ async function solicitarRecuperacao() {
 
     }
 
-
-    mensagem.textContent =
-        "Enviando pedido...";
-
-
-    const userId =
-        participantes[nome];
-
-
-    if (
-        !userId ||
-        userId ===
-        "COLOQUE-O-USER-ID-AQUI"
-    ) {
-
-        mensagem.textContent =
-            "Este participante ainda não está configurado.";
-
-        return;
-
-    }
-
-
     const {
         error
     } =
@@ -338,12 +277,10 @@ async function solicitarRecuperacao() {
             .from("recuperacao_senha")
             .insert({
 
-                user_id: userId,
-
-                nome_participante: nome
+                nome_participante:
+                    nome
 
             });
-
 
     if (error) {
 
@@ -356,9 +293,8 @@ async function solicitarRecuperacao() {
 
     }
 
-
     mensagem.textContent =
-        "Pedido enviado ao Presidente!";
+        "Pedido enviado! O presidente poderá alterar sua senha.";
 
 }
 
