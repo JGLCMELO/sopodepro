@@ -1306,18 +1306,41 @@ window.publicarNoticia =
 
             noticiaDiv.innerHTML =
 
-                '<div style="color:#f5c542;font-size:12px;font-weight:bold;margin-bottom:6px;">' +
-                dataFormatada +
-                '</div>' +
+    '<div style="color:#f5c542;font-size:12px;font-weight:bold;margin-bottom:6px;">' +
+    dataFormatada +
+    '</div>' +
 
-                '<h3 style="margin:0 0 10px;color:white;">' +
-                noticia.titulo +
-                '</h3>' +
+    '<h3 style="margin:0 0 10px;color:white;">' +
+    noticia.titulo +
+    '</h3>' +
 
-                '<p style="margin:0;color:#b8c5d6;line-height:1.6;">' +
-                noticia.conteudo +
-                '</p>';
+    '<p style="margin:0;color:#b8c5d6;line-height:1.6;">' +
+    noticia.conteudo +
+    '</p>' +
 
+    '<div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;">' +
+
+    '<button ' +
+    'type="button" ' +
+    'class="botao" ' +
+    'style="margin-top:0;" ' +
+    'onclick="editarNoticia(\'' +
+    noticia.id +
+    '\')">' +
+    'EDITAR' +
+    '</button>' +
+
+    '<button ' +
+    'type="button" ' +
+    'class="botao" ' +
+    'style="margin-top:0;background:#8b2e2e;color:white;" ' +
+    'onclick="excluirNoticia(\'' +
+    noticia.id +
+    '\')">' +
+    'EXCLUIR' +
+    '</button>' +
+
+    '</div>';
 
             container.appendChild(
                 noticiaDiv
