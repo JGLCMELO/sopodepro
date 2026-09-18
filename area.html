@@ -1032,6 +1032,60 @@ async function carregarInscricoes() {
             ) {
 
           if (
+
+if (
+    modalidadesInscritas.has(
+        checkbox.value
+    )
+) {
+
+    const modalidade =
+        checkbox.closest(
+            ".modalidade"
+        );
+
+
+    let botaoCancelar =
+        modalidade.querySelector(
+            ".botao-cancelar"
+        );
+
+
+    if (!botaoCancelar) {
+
+        botaoCancelar =
+            document.createElement(
+                "button"
+            );
+
+        botaoCancelar.type =
+            "button";
+
+        botaoCancelar.className =
+            "botao-cancelar";
+
+        botaoCancelar.textContent =
+            "CANCELAR";
+
+
+        botaoCancelar.onclick =
+            function () {
+
+                cancelarInscricao(
+                    checkbox.value
+                );
+
+            };
+
+
+        modalidade.appendChild(
+            botaoCancelar
+        );
+
+    }
+
+}
+              
     modalidadesInscritas.has(
         checkbox.value
     )
