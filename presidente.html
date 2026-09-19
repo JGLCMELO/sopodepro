@@ -2071,6 +2071,10 @@ async function carregarConteudosCMS() {
             "cmsLista"
         );
 
+    container.innerHTML =
+        '<div class="sem-inscricao">Carregando conteúdos...</div>';
+
+
     const {
         data,
         error
@@ -2083,19 +2087,25 @@ async function carregarConteudosCMS() {
             .order(
                 "created_at",
                 {
-                    ascending:false
+                    ascending: false
                 }
             );
 
+
     if (error) {
 
-        console.error(error);
+        console.error(
+            "Erro ao carregar CMS:",
+            error
+        );
 
         container.innerHTML =
             '<div class="erro">Não foi possível carregar os conteúdos.</div>';
 
         return;
+
     }
+
 
     if (
         !data ||
@@ -2106,9 +2116,12 @@ async function carregarConteudosCMS() {
             '<div class="sem-inscricao">Nenhum conteúdo criado.</div>';
 
         return;
+
     }
 
+
     container.innerHTML = "";
+
 
     data.forEach(
         conteudo => {
@@ -2117,6 +2130,7 @@ async function carregarConteudosCMS() {
                 document.createElement(
                     "div"
                 );
+
 
             div.style.cssText =
                 `
@@ -2127,62 +2141,180 @@ async function carregarConteudosCMS() {
                 margin-bottom:12px;
                 `;
 
-            div.innerHTML =
-                '<strong style="color:white;font-size:17px;">' +
-                conteudo.titulo +
-                '</strong>' +
 
-                '<div style="margin-top:7px;color:#aeb9c8;font-size:13px;">' +
-                'Tipo: ' +
-                conteudo.tipo +
-                '</div>' +
+            const titulo =
+                document.createElement(
+                    "strong"
+                );
 
-                '<div style="margin-top:7px;color:' +
-                (
+            titulo.textContent =
+                conteudo.titulo;
+
+            titulo.style.cssText =
+                `
+                color:white;
+                font-size:17px;
+                `;
+
+
+            const tipo =
+                document.createElement(
+                    "div"
+                );
+
+            tipo.textContent =
+                "Tipo: " +
+                conteudo.tipo;
+
+            tipo.style.cssText =
+                `
+                margin-top:7px;
+                color:#aeb9c8;
+                font-size:13px;
+                `;
+
+
+            const status =
+                document.createElement(
+                    "div"
+                );
+
+            status.textContent =
+                conteudo.ativo
+                    ? "ATIVO"
+                    : "INATIVO";
+
+            status.style.cssText =
+                `
+                margin-top:7px;
+                color:${
                     conteudo.ativo
                         ? "#45d483"
                         : "#ff6b6b"
-                ) +
-                ';font-size:13px;font-weight:bold;">' +
-                (
-                    conteudo.ativo
-                        ? "ATIVO"
-                        : "INATIVO"
-                ) +
-                '</div>' +
+                };
+                font-size:13px;
+                font-weight:bold;
+                `;
 
-                '<div style="margin-top:12px;color:#dce3ec;white-space:pre-wrap;">' +
-                conteudo.conteudo +
-                '</div>' +
 
-                '<div style="margin-top:15px;">' +
+            const texto =
+                document.createElement(
+                    "div"
+                );
 
-                '<button ' +
-                'type="button" ' +
-                'class="botao" ' +
-                'onclick="editarConteudoCMS(\'' +
-                conteudo.id +
-                '\')">' +
-                'EDITAR' +
-                '</button>' +
+            texto.textContent =
+                conteudo.conteudo;
 
-                '<button ' +
-                'type="button" ' +
-                'class="botao" ' +
-                'style="margin-left:8px;background:#8b1e1e;" ' +
-                'onclick="excluirConteudoCMS(\'' +
-                conteudo.id +
-                '\')">' +
-                'EXCLUIR' +
-                '</button>' +
+            texto.style.cssText =
+                `
+                margin-top:12px;
+                color:#dce3ec;
+                white-space:pre-wrap;
+                `;
 
-                '</div>';
+
+            const botoes =
+                document.createElement(
+                    "div"
+                );
+
+            botoes.style.cssText =
+                `
+                margin-top:15px;
+                `;
+
+
+            const editar =
+                document.createElement(
+                    "button"
+                );
+
+            editar.type =
+                "button";
+
+            editar.className =
+                "botao";
+
+            editar.textContent =
+                "EDITAR";
+
+            editar.onclick =
+                function () {
+
+                    editarConteudoCMS(
+                        conteudo.id
+                    );
+
+                };
+
+
+            const excluir =
+                document.createElement(
+                    "button"
+                );
+
+            excluir.type =
+                "button";
+
+            excluir.className =
+                "botao";
+
+            excluir.textContent =
+                "EXCLUIR";
+
+            excluir.style.cssText =
+                `
+                margin-left:8px;
+                background:#8b1e1e;
+                `;
+
+            excluir.onclick =
+                function () {
+
+                    excluirConteudoCMS(
+                        conteudo.id
+                    );
+
+                };
+
+
+            botoes.appendChild(
+                editar
+            );
+
+            botoes.appendChild(
+                excluir
+            );
+
+
+            div.appendChild(
+                titulo
+            );
+
+            div.appendChild(
+                tipo
+            );
+
+            div.appendChild(
+                status
+            );
+
+            div.appendChild(
+                texto
+            );
+
+            div.appendChild(
+                botoes
+            );
+
 
             container.appendChild(
                 div
             );
+
         }
     );
+
 }
 
 
