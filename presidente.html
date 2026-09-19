@@ -497,6 +497,118 @@
     </div>
 
 </section>
+
+<section class="card">
+
+    <h2>
+        Gerenciar Site
+    </h2>
+
+    <p
+        style="
+            color:#aebbd0;
+            margin-bottom:20px;
+        "
+    >
+        Crie, edite e exclua conteúdos do site sem alterar o código.
+    </p>
+
+    <input
+        type="text"
+        id="cmsTitulo"
+        placeholder="Título"
+        style="
+            width:100%;
+            padding:14px;
+            background:#071426;
+            border:1px solid #26364d;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+            margin-bottom:15px;
+        "
+    >
+
+    <textarea
+        id="cmsConteudo"
+        placeholder="Conteúdo"
+        rows="7"
+        style="
+            width:100%;
+            padding:14px;
+            background:#071426;
+            border:1px solid #26364d;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+            resize:vertical;
+        "
+    ></textarea>
+
+    <select
+        id="cmsTipo"
+        style="
+            width:100%;
+            padding:14px;
+            margin-top:15px;
+            background:#071426;
+            border:1px solid #26364d;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+        "
+    >
+        <option value="bloco">Bloco</option>
+        <option value="aviso">Aviso</option>
+        <option value="destaque">Destaque</option>
+        <option value="pagina">Página</option>
+    </select>
+
+    <label
+        style="
+            display:block;
+            margin-top:15px;
+            color:#dce5f2;
+            font-weight:bold;
+        "
+    >
+        <input
+            type="checkbox"
+            id="cmsAtivo"
+            checked
+        >
+        Conteúdo ativo
+    </label>
+
+    <button
+        type="button"
+        class="botao"
+        id="cmsSalvar"
+        onclick="salvarConteudoCMS()"
+    >
+        ADICIONAR CONTEÚDO
+    </button>
+
+    <button
+        type="button"
+        class="botao"
+        id="cmsCancelar"
+        onclick="cancelarEdicaoCMS()"
+        style="
+            display:none;
+            margin-left:8px;
+        "
+    >
+        CANCELAR EDIÇÃO
+    </button>
+
+    <div
+        id="cmsLista"
+        style="margin-top:25px;"
+    >
+    </div>
+
+</section>
         
         <section class="card">
 
