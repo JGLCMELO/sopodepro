@@ -501,7 +501,7 @@
 <section class="card">
 
     <h2>
-        Gerenciar Site
+        Comando do Site
     </h2>
 
     <p
@@ -510,29 +510,13 @@
             margin-bottom:20px;
         "
     >
-        Crie, edite e exclua conteúdos do site sem alterar o código.
+        Escreva o que você quer alterar no site usando uma instrução simples.
     </p>
 
-    <input
-        type="text"
-        id="cmsTitulo"
-        placeholder="Título"
-        style="
-            width:100%;
-            padding:14px;
-            background:#071426;
-            border:1px solid #26364d;
-            border-radius:8px;
-            color:white;
-            font-size:15px;
-            margin-bottom:15px;
-        "
-    >
-
     <textarea
-        id="cmsConteudo"
-        placeholder="Conteúdo"
-        rows="7"
+        id="comandoSite"
+        placeholder="Exemplo: Atualize o campeão atual para João Pedro."
+        rows="5"
         style="
             width:100%;
             padding:14px;
@@ -545,106 +529,23 @@
         "
     ></textarea>
 
-    <select
-        id="cmsTipo"
-        style="
-            width:100%;
-            padding:14px;
-            margin-top:15px;
-            background:#071426;
-            border:1px solid #26364d;
-            border-radius:8px;
-            color:white;
-            font-size:15px;
-        "
-    >
-        <option value="bloco">Bloco</option>
-        <option value="aviso">Aviso</option>
-        <option value="destaque">Destaque</option>
-        <option value="pagina">Página</option>
-    </select>
-
-<select
-    id="cmsPosicao"
-    style="
-        width:100%;
-        padding:14px;
-        margin-top:15px;
-        background:#071426;
-        border:1px solid #26364d;
-        border-radius:8px;
-        color:white;
-        font-size:15px;
-    "
->
-    <option value="depois_hero">
-        Depois do destaque inicial
-    </option>
-
-    <option value="depois_evento">
-        Depois do próximo evento
-    </option>
-
-    <option value="depois_noticias">
-        Depois das notícias
-    </option>
-
-    <option value="depois_areas">
-        Depois das áreas do grupo
-    </option>
-
-    <option value="antes_campeao">
-        Antes do campeão
-    </option>
-
-    <option value="depois_campeao">
-        Depois do campeão
-    </option>
-</select>
-    
-    <label
-        style="
-            display:block;
-            margin-top:15px;
-            color:#dce5f2;
-            font-weight:bold;
-        "
-    >
-        <input
-            type="checkbox"
-            id="cmsAtivo"
-            checked
-        >
-        Conteúdo ativo
-    </label>
-
     <button
         type="button"
         class="botao"
-        id="cmsSalvar"
-        onclick="salvarConteudoCMS()"
+        id="botaoComandoSite"
+        onclick="executarComandoSite()"
     >
-        ADICIONAR CONTEÚDO
-    </button>
-
-    <button
-        type="button"
-        class="botao"
-        id="cmsCancelar"
-        onclick="cancelarEdicaoCMS()"
-        style="
-            display:none;
-            margin-left:8px;
-        "
-    >
-        CANCELAR EDIÇÃO
+        EXECUTAR COMANDO
     </button>
 
     <div
-        id="cmsLista"
-        style="margin-top:25px;"
-    >
-    </div>
+        id="resultadoComandoSite"
+        style="
+            margin-top:18px;
+            color:#aeb9c8;
+            line-height:1.6;
+        "
+    ></div>
 
 </section>
         
