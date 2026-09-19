@@ -1529,8 +1529,8 @@ async function carregarPedidosRecuperacao() {
 
 
     const {
-        data,
-        error
+        data: pedidos,
+        error: pedidosError
     } =
         await supabaseClient
             .from("recuperacao_senha")
@@ -1545,9 +1545,9 @@ async function carregarPedidosRecuperacao() {
             );
 
 
-    if (error) {
+    if (pedidosError) {
 
-        console.error(error);
+        console.error(pedidosError);
 
         container.innerHTML =
             '<div class="erro">Não foi possível carregar os pedidos.</div>';
@@ -1558,8 +1558,8 @@ async function carregarPedidosRecuperacao() {
 
 
     if (
-        !data ||
-        data.length === 0
+        !pedidos ||
+        pedidos.length === 0
     ) {
 
         container.innerHTML =
@@ -1570,10 +1570,51 @@ async function carregarPedidosRecuperacao() {
     }
 
 
+    const {
+        data: participantes,
+        error: participantesError
+    } =
+        await supabaseClient
+            .from("participantes")
+            .select(
+                "nome, user_id"
+            );
+
+
+    if (participantesError) {
+
+        console.error(
+            participantesError
+        );
+
+        container.innerHTML =
+            '<div class="erro">Não foi possível carregar os participantes.</div>';
+
+        return;
+
+    }
+
+
+    const usuarios =
+        {};
+
+
+    participantes.forEach(
+        participante => {
+
+            usuarios[
+                participante.nome
+            ] =
+                participante.user_id;
+
+        }
+    );
+
+
     container.innerHTML = "";
 
 
-    data.forEach(
+    pedidos.forEach(
         pedido => {
 
             const dataPedido =
@@ -1592,6 +1633,12 @@ async function carregarPedidosRecuperacao() {
                             year: "numeric"
                         }
                     );
+
+
+            const userId =
+                usuarios[
+                    pedido.nome_participante
+                ];
 
 
             const pedidoDiv =
@@ -1626,6 +1673,45 @@ async function carregarPedidosRecuperacao() {
                 '</div>';
 
 
+            if (
+                pedido.status === "PENDENTE" &&
+                userId
+            ) {
+
+                pedidoDiv.innerHTML +=
+
+                    '<input ' +
+                    'type="password" ' +
+                    'id="senha_' +
+                    pedido.id +
+                    '" ' +
+                    'placeholder="Nova senha" ' +
+                    'style="' +
+                    'width:100%;' +
+                    'margin-top:15px;' +
+                    'padding:13px;' +
+                    'background:#0d1830;' +
+                    'border:1px solid #26364d;' +
+                    'border-radius:8px;' +
+                    'color:white;' +
+                    'font-size:15px;' +
+                    '">' +
+
+                    '<button ' +
+                    'type="button" ' +
+                    'class="botao" ' +
+                    'style="margin-top:10px;" ' +
+                    'onclick="redefinirSenha(\'' +
+                    pedido.id +
+                    '\', \'' +
+                    userId +
+                    '\')">' +
+                    'REDEFINIR SENHA' +
+                    '</button>';
+
+            }
+
+
             container.appendChild(
                 pedidoDiv
             );
@@ -1635,7 +1721,7 @@ async function carregarPedidosRecuperacao() {
 
 }
 
-carregarPedidosRecuperacao();    
+carregarPedidosRecuperacao();
     
 </script>
 
