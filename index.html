@@ -913,6 +913,113 @@ function abrirMenu() {
 
 }
 
+    async function carregarConteudosCMS() {
+
+    const secao =
+        document.getElementById(
+            "conteudosCMS"
+        );
+
+    const lista =
+        document.getElementById(
+            "listaConteudosCMS"
+        );
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("conteudos_site")
+            .select(
+                "id, titulo, conteudo, tipo, ativo, created_at"
+            )
+            .eq(
+                "ativo",
+                true
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            );
+
+    if (error) {
+
+        console.error(
+            "Erro ao carregar conteúdos:",
+            error
+        );
+
+        return;
+    }
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        return;
+    }
+
+    secao.style.display =
+        "block";
+
+    lista.innerHTML = "";
+
+    data.forEach(
+        item => {
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+            card.className =
+                "news-card";
+
+            card.style.marginBottom =
+                "20px";
+
+            const titulo =
+                document.createElement(
+                    "h3"
+                );
+
+            titulo.textContent =
+                item.titulo;
+
+            const conteudo =
+                document.createElement(
+                    "p"
+                );
+
+            conteudo.textContent =
+                item.conteudo;
+
+            conteudo.style.whiteSpace =
+                "pre-wrap";
+
+            card.appendChild(
+                titulo
+            );
+
+            card.appendChild(
+                conteudo
+            );
+
+            lista.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+    carregarConteudosCMS();
+
 </script>
 
 </body>
