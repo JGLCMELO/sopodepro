@@ -1721,6 +1721,180 @@ async function carregarPedidosRecuperacao() {
 
 }
 
+    window.redefinirSenha =
+    async function (pedidoId, userId) {
+
+        const campoSenha =
+            document.getElementById(
+                "senha_" + pedidoId
+            );
+
+
+        const novaSenha =
+            campoSenha.value.trim();
+
+
+        if (!novaSenha) {
+
+            alert(
+                "Digite a nova senha."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            novaSenha.length < 6
+        ) {
+
+            alert(
+                "A senha deve ter pelo menos 6 caracteres."
+            );
+
+            return;
+
+        }
+
+
+        const confirmar =
+            confirm(
+                "Deseja realmente redefinir a senha deste participante?"
+            );
+
+
+        if (!confirmar) {
+
+            return;
+
+        }
+
+
+        const {
+            data: sessionData,
+            error: sessionError
+        } =
+            await supabaseClient.auth.getSession();
+
+
+        if (
+            sessionError ||
+            !sessionData.session
+        ) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        try {
+
+            const resposta =
+                await fetch(
+                    "https://xfhkdfponsyxeccolhon.supabase.co/functions/v1/redefinir-senha",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json",
+
+                            "Authorization":
+                                "Bearer " +
+                                sessionData.session.access_token
+                        },
+
+                        body:
+                            JSON.stringify({
+                                user_id:
+                                    userId,
+
+                                nova_senha:
+                                    novaSenha
+                            })
+                    }
+                );
+
+
+            const resultado =
+                await resposta.json();
+
+
+            if (!resposta.ok) {
+
+                console.error(
+                    resultado
+                );
+
+                alert(
+                    resultado.error ||
+                    "Não foi possível redefinir a senha."
+                );
+
+                return;
+
+            }
+
+
+            const {
+                error:
+                    atualizarError
+            } =
+                await supabaseClient
+                    .from("recuperacao_senha")
+                    .update({
+                        status:
+                            "CONCLUIDO"
+                    })
+                    .eq(
+                        "id",
+                        pedidoId
+                    );
+
+
+            if (atualizarError) {
+
+                console.error(
+                    atualizarError
+                );
+
+                alert(
+                    "A senha foi alterada, mas não foi possível atualizar o pedido."
+                );
+
+                await carregarPedidosRecuperacao();
+
+                return;
+
+            }
+
+
+            alert(
+                "Senha redefinida com sucesso!"
+            );
+
+
+            await carregarPedidosRecuperacao();
+
+
+        } catch (error) {
+
+            console.error(
+                error
+            );
+
+            alert(
+                "Não foi possível conectar ao servidor."
+            );
+
+        }
+
+    };
+
 carregarPedidosRecuperacao();
     
 </script>
