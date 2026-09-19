@@ -611,11 +611,10 @@ async function verificarPresidente() {
 
 
     const {
-        data: sessionData,
-        error: sessionError
-    } =
-        await supabaseClient.auth.getSession();
-
+    data: sessionData,
+    error: sessionError
+} =
+    await supabaseClient.auth.refreshSession();
 
     if (
         sessionError ||
