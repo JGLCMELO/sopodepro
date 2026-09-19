@@ -1899,6 +1899,48 @@ async function carregarPedidosRecuperacao() {
 
     };
 
+    window.recusarPedido =
+    async function (pedidoId) {
+
+        const confirmar =
+            confirm(
+                "Deseja realmente recusar este pedido de recuperação?"
+            );
+
+        if (!confirmar) {
+            return;
+        }
+
+        const {
+            error
+        } =
+            await supabaseClient
+                .from("recuperacao_senha")
+                .update({
+                    status: "RECUSADO"
+                })
+                .eq(
+                    "id",
+                    pedidoId
+                );
+
+        if (error) {
+            console.error(error);
+
+            alert(
+                "Não foi possível recusar o pedido."
+            );
+
+            return;
+        }
+
+        alert(
+            "Pedido recusado."
+        );
+
+        await carregarPedidosRecuperacao();
+    };
+
 carregarPedidosRecuperacao();
     
 </script>
