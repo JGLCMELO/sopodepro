@@ -992,16 +992,6 @@ function abrirMenu() {
 
    async function carregarConteudosCMS() {
 
-    const secao =
-        document.getElementById(
-            "conteudosCMS"
-        );
-
-    const lista =
-        document.getElementById(
-            "listaConteudosCMS"
-        );
-
     const {
         data,
         error
@@ -1009,7 +999,7 @@ function abrirMenu() {
         await supabaseClient
             .from("conteudos_site")
             .select(
-                "id, titulo, conteudo, tipo, ativo, created_at"
+                "id, titulo, conteudo, tipo, posicao, ativo, created_at"
             )
             .eq(
                 "ativo",
@@ -1032,21 +1022,58 @@ function abrirMenu() {
         return;
     }
 
-    if (
-        !data ||
-        data.length === 0
-    ) {
+    const pontos = {
 
+        depois_hero:
+            document.getElementById(
+                "cmsDepoisHero"
+            ),
+
+        depois_evento:
+            document.getElementById(
+                "cmsDepoisEvento"
+            ),
+
+        depois_noticias:
+            document.getElementById(
+                "cmsDepoisNoticias"
+            ),
+
+        depois_areas:
+            document.getElementById(
+                "cmsDepoisAreas"
+            ),
+
+        depois_campeao:
+            document.getElementById(
+                "cmsDepoisCampeao"
+            )
+    };
+
+    Object.values(pontos).forEach(
+        ponto => {
+
+            if (ponto) {
+                ponto.innerHTML = "";
+            }
+
+        }
+    );
+
+    if (!data) {
         return;
     }
 
-    secao.style.display =
-        "block";
-
-    lista.innerHTML = "";
-
     data.forEach(
         item => {
+
+            const container =
+                pontos[item.posicao]
+                || pontos.depois_evento;
+
+            if (!container) {
+                return;
+            }
 
             const card =
                 document.createElement(
@@ -1113,13 +1140,12 @@ function abrirMenu() {
                 conteudo
             );
 
-            lista.appendChild(
+            container.appendChild(
                 card
             );
 
         }
     );
-
 }
     carregarConteudosCMS();
 
