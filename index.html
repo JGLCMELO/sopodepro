@@ -1081,6 +1081,116 @@ antes_campeao:
 }
     carregarConteudosCMS();
 
+    async function carregarNoticiasHome() {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("noticias")
+            .select(
+                "id, titulo, conteudo, created_at"
+            )
+            .order(
+                "created_at",
+                {
+                    ascending: false
+                }
+            )
+            .limit(3);
+
+    if (error) {
+
+        console.error(
+            "Erro ao carregar notícias:",
+            error
+        );
+
+        return;
+    }
+
+    const container =
+        document.getElementById(
+            "noticiasHome"
+        );
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";
+
+    if (!data || data.length === 0) {
+
+        container.innerHTML = `
+            <p style="color:#aeb9c8;">
+                Nenhuma notícia publicada ainda.
+            </p>
+        `;
+
+        return;
+    }
+
+    data.forEach(
+        noticia => {
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+            card.className =
+                "news-card";
+
+            const dataNoticia =
+                new Date(
+                    noticia.created_at
+                );
+
+            const dataFormatada =
+                dataNoticia
+                    .toLocaleDateString(
+                        "pt-BR",
+                        {
+                            day: "2-digit",
+                            month: "long",
+                            year: "numeric"
+                        }
+                    )
+                    .toUpperCase();
+
+            card.innerHTML = `
+                <div class="news-date">
+                    ${dataFormatada}
+                </div>
+
+                <h3>
+                    ${noticia.titulo}
+                </h3>
+
+                <p>
+                    ${noticia.conteudo}
+                </p>
+
+                <a
+                    href="noticias.html"
+                    class="news-link"
+                >
+                    LER NOTÍCIAS →
+                </a>
+            `;
+
+            container.appendChild(
+                card
+            );
+
+        }
+    );
+}
+
+carregarNoticiasHome();
+
 </script>
 
 </body>
