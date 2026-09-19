@@ -2414,23 +2414,28 @@ async function salvarConteudoCMS() {
         } =
             await supabaseClient
                 .from("conteudos_site")
-                .update({
-                    titulo:
-                        titulo,
 
-                    conteudo:
-                        conteudo,
+            .update({
+    titulo:
+        titulo,
 
-                    tipo:
-                        tipo,
+    conteudo:
+        conteudo,
 
-                    ativo:
-                        ativo,
+    tipo:
+        tipo,
 
-                    updated_at:
-                        new Date()
-                            .toISOString()
-                })
+    posicao:
+        posicao,
+
+    ativo:
+        ativo,
+
+    updated_at:
+        new Date()
+            .toISOString()
+})
+
                 .eq(
                     "id",
                     cmsEditandoId
@@ -2477,23 +2482,26 @@ async function salvarConteudoCMS() {
             await supabaseClient
                 .from("conteudos_site")
                 .insert({
-                    titulo:
-                        titulo,
+    titulo:
+        titulo,
 
-                    conteudo:
-                        conteudo,
+    conteudo:
+        conteudo,
 
-                    tipo:
-                        tipo,
+    tipo:
+        tipo,
 
-                    ativo:
-                        ativo,
+    posicao:
+        posicao,
 
-                    autor_id:
-                        usuarioData
-                            .user
-                            .id
-                });
+    ativo:
+        ativo,
+
+    autor_id:
+        usuarioData
+            .user
+            .id
+})
 
         if (error) {
 
