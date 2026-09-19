@@ -971,7 +971,7 @@ function abrirMenu() {
 
 }
 
-    async function carregarConteudosCMS() {
+   async function carregarConteudosCMS() {
 
     const secao =
         document.getElementById(
@@ -1035,10 +1035,40 @@ function abrirMenu() {
                 );
 
             card.className =
-                "news-card";
+                "cms-conteudo";
 
-            card.style.marginBottom =
-                "20px";
+            if (
+                item.tipo ===
+                "aviso"
+            ) {
+
+                card.classList.add(
+                    "cms-aviso"
+                );
+
+            }
+
+            if (
+                item.tipo ===
+                "destaque"
+            ) {
+
+                card.classList.add(
+                    "cms-destaque"
+                );
+
+            }
+
+            if (
+                item.tipo ===
+                "pagina"
+            ) {
+
+                card.classList.add(
+                    "cms-pagina"
+                );
+
+            }
 
             const titulo =
                 document.createElement(
@@ -1056,9 +1086,6 @@ function abrirMenu() {
             conteudo.textContent =
                 item.conteudo;
 
-            conteudo.style.whiteSpace =
-                "pre-wrap";
-
             card.appendChild(
                 titulo
             );
@@ -1075,7 +1102,6 @@ function abrirMenu() {
     );
 
 }
-
     carregarConteudosCMS();
 
 </script>
