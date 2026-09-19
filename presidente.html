@@ -2535,9 +2535,9 @@ async function editarConteudoCMS(
     } =
         await supabaseClient
             .from("conteudos_site")
-            .select(
-                "id, titulo, conteudo, tipo, ativo"
-            )
+          .select(
+    "id, titulo, conteudo, tipo, posicao, ativo"
+)
             .eq(
                 "id",
                 id
@@ -2576,6 +2576,13 @@ async function editarConteudoCMS(
         .value =
             data.tipo;
 
+document
+    .getElementById(
+        "cmsPosicao"
+    )
+    .value =
+        data.posicao;
+    
     document
         .getElementById(
             "cmsAtivo"
