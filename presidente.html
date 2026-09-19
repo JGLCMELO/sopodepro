@@ -1696,17 +1696,27 @@ async function carregarPedidosRecuperacao() {
                     'font-size:15px;' +
                     '">' +
 
-                    '<button ' +
-                    'type="button" ' +
-                    'class="botao" ' +
-                    'style="margin-top:10px;" ' +
-                    'onclick="redefinirSenha(\'' +
-                    pedido.id +
-                    '\', \'' +
-                    userId +
-                    '\')">' +
-                    'REDEFINIR SENHA' +
-                    '</button>';
+                   '<button ' +
+'type="button" ' +
+'class="botao" ' +
+'style="margin-top:10px;" ' +
+'onclick="redefinirSenha(\'' +
+pedido.id +
+'\', \'' +
+userId +
+'\')">' +
+'REDEFINIR SENHA' +
+'</button>' +
+
+'<button ' +
+'type="button" ' +
+'class="botao" ' +
+'style="margin-top:10px; margin-left:8px; background:#8b1e1e;" ' +
+'onclick="recusarPedido(\'' +
+pedido.id +
+'\')">' +
+'RECUSAR PEDIDO' +
+'</button>';
 
             }
 
