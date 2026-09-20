@@ -553,6 +553,217 @@
 
         </section>
 
+        <section
+    class="card"
+    id="cmssection"
+>
+
+    <h2>
+        Gerenciar conteúdo do site
+    </h2>
+
+    <label
+        for="cmsTitulo"
+        style="
+            display:block;
+            margin-bottom:8px;
+            color:#dce5f2;
+            font-weight:bold;
+        "
+    >
+        Título
+    </label>
+
+    <input
+        type="text"
+        id="cmsTitulo"
+        placeholder="Título do conteúdo"
+        style="
+            width:100%;
+            box-sizing:border-box;
+            padding:14px;
+            margin-bottom:18px;
+            background:#071426;
+            border:1px solid #26364d;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+        "
+    >
+
+    <label
+        for="cmsConteudo"
+        style="
+            display:block;
+            margin-bottom:8px;
+            color:#dce5f2;
+            font-weight:bold;
+        "
+    >
+        Conteúdo
+    </label>
+
+    <textarea
+        id="cmsConteudo"
+        placeholder="Digite o conteúdo..."
+        rows="8"
+        style="
+            width:100%;
+            box-sizing:border-box;
+            padding:14px;
+            margin-bottom:18px;
+            background:#071426;
+            border:1px solid #26364d;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+            resize:vertical;
+        "
+    ></textarea>
+
+    <label
+        for="cmsTipo"
+        style="
+            display:block;
+            margin-bottom:8px;
+            color:#dce5f2;
+            font-weight:bold;
+        "
+    >
+        Tipo
+    </label>
+
+    <select
+        id="cmsTipo"
+        style="
+            width:100%;
+            box-sizing:border-box;
+            padding:14px;
+            margin-bottom:18px;
+            background:#071426;
+            border:1px solid #26364d;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+        "
+    >
+        <option value="bloco">
+            Bloco
+        </option>
+
+        <option value="destaque">
+            Destaque
+        </option>
+
+        <option value="informacao">
+            Informação
+        </option>
+    </select>
+
+    <label
+        for="cmsPosicao"
+        style="
+            display:block;
+            margin-bottom:8px;
+            color:#dce5f2;
+            font-weight:bold;
+        "
+    >
+        Posição na Home
+    </label>
+
+    <select
+        id="cmsPosicao"
+        style="
+            width:100%;
+            box-sizing:border-box;
+            padding:14px;
+            margin-bottom:18px;
+            background:#071426;
+            border:1px solid #26364d;
+            border-radius:8px;
+            color:white;
+            font-size:15px;
+        "
+    >
+        <option value="depois_hero">
+            Depois do destaque principal
+        </option>
+
+        <option value="depois_evento">
+            Depois do próximo evento
+        </option>
+
+        <option value="depois_noticias">
+            Depois das notícias
+        </option>
+
+        <option value="depois_areas">
+            Depois das áreas
+        </option>
+
+        <option value="antes_campeao">
+            Antes do campeão
+        </option>
+
+        <option value="depois_campeao">
+            Depois do campeão
+        </option>
+    </select>
+
+    <label
+        style="
+            display:flex;
+            align-items:center;
+            gap:10px;
+            margin-bottom:18px;
+            color:#dce5f2;
+            font-weight:bold;
+        "
+    >
+
+        <input
+            type="checkbox"
+            id="cmsAtivo"
+            checked
+        >
+
+        Conteúdo ativo
+
+    </label>
+
+    <button
+        type="button"
+        class="botao"
+        id="cmsSalvar"
+        onclick="salvarConteudoCMS()"
+    >
+        ADICIONAR CONTEÚDO
+    </button>
+
+    <button
+        type="button"
+        class="botao"
+        id="cmsCancelar"
+        onclick="cancelarEdicaoCMS()"
+        style="
+            display:none;
+            margin-left:8px;
+        "
+    >
+        CANCELAR
+    </button>
+
+    <div
+        id="cmsLista"
+        style="
+            margin-top:30px;
+        "
+    >
+        Carregando conteúdos...
+    </div>
+
+</section>
 
     </div>
 
