@@ -2682,7 +2682,7 @@ async function executarComandoSite() {
             error
         } =
             await supabaseClient.functions.invoke(
-                "site-comando",
+                "site-comando-",
                 {
                     body: {
                         comando:
