@@ -2691,27 +2691,20 @@ async function executarComandoSite() {
             return;
         }
 
-        const headers =
-            new Headers();
-
-        headers.set(
-            "Content-Type",
-            "application/json"
-        );
-
-        headers.set(
-            "Authorization",
-            "Bearer " + token
-        );
+ const authorization =
+    "Bearer " + String(token);
 
         const resposta =
             await fetch(
                 "https://xfhkdfponsyxeccolhon.supabase.co/functions/v1/smooth-action",
                 {
                     method: "POST",
-
-                    headers:
-                        headers,
+headers: {
+    "Content-Type":
+        "application/json",
+    "Authorization":
+        authorization
+},
 
                     body:
                         JSON.stringify({
