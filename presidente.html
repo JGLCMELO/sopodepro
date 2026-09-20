@@ -2677,66 +2677,36 @@ async function executarComandoSite() {
             return;
         }
 
- const {
-    data,
-    error
-} =
-    await supabaseClient.functions.invoke(
-        "smooth-action",
-        {
-            body: {
-                comando:
-                    comando
-            }
-        }
-    );
-
-if (error) {
-
-    console.error(
-        "Erro na Edge Function:",
-        error
-    );
-
-    resultado.innerText =
-        error.message ||
-        "Não foi possível executar o comando.";
-
-    return;
-}
-
-const dados =
-    data;
-
-resultado.innerText =
-    dados.mensagem ||
-    "Comando executado com sucesso.";
-
-campo.value = "";
-
-                    body:
-                        JSON.stringify({
-                            comando:
-                                comando
-                        })
+        const {
+            data,
+            error
+        } =
+            await supabaseClient.functions.invoke(
+                "smooth-action",
+                {
+                    body: {
+                        comando:
+                            comando
+                    }
                 }
             );
 
-        const dados =
-            await resposta.json();
+        if (error) {
 
-        if (!resposta.ok) {
+            console.error(
+                "Erro na Edge Function:",
+                error
+            );
 
             resultado.innerText =
-                dados.erro ||
-                dados.mensagem ||
+                error.message ||
                 "Não foi possível executar o comando.";
 
             return;
         }
 
         resultado.innerText =
-            dados.mensagem ||
+            data?.mensagem ||
             "Comando executado com sucesso.";
 
         campo.value = "";
