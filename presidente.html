@@ -2682,19 +2682,41 @@ async function executarComandoSite() {
 const token =
     String(session.access_token);
 
+const token =
+    session?.access_token;
+
+if (
+    typeof token !== "string" ||
+    token.length === 0
+) {
+
+    resultado.innerText =
+        "Sua sessão não possui um token válido. Faça login novamente.";
+
+    return;
+}
+
+const headers =
+    new Headers();
+
+headers.set(
+    "Content-Type",
+    "application/json"
+);
+
+headers.set(
+    "Authorization",
+    "Bearer " + token
+);
+
 const resposta =
     await fetch(
         "https://xfhkdfponsyxeccolhon.supabase.co/functions/v1/smooth-action",
         {
             method: "POST",
 
-            headers: {
-                "Content-Type":
-                    "application/json",
-
-                "Authorization":
-                    "Bearer " + token
-            },
+            headers:
+                headers,
 
             body:
                 JSON.stringify({
