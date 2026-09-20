@@ -2679,24 +2679,30 @@ async function executarComandoSite() {
             return;
         }
 
-        const resposta =
-     await fetch(
-    "https://xfhkdfponsyxeccolhon.supabase.co/functions/v1/smooth-action",
-    {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization":
-                `Bearer ${session.access_token}`
-        },
-        body:
-            JSON.stringify({
-                comando:
-                    comando
-            })
-    }
-);
+const token =
+    String(session.access_token);
 
+const resposta =
+    await fetch(
+        "https://xfhkdfponsyxeccolhon.supabase.co/functions/v1/smooth-action",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type":
+                    "application/json",
+
+                "Authorization":
+                    "Bearer " + token
+            },
+
+            body:
+                JSON.stringify({
+                    comando:
+                        comando
+                })
+        }
+    );
         const dados =
             await resposta.json();
 
