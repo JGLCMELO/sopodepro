@@ -2709,20 +2709,40 @@ headers.set(
     "Bearer " + token
 );
 
+const token =
+    session.access_token;
+
+if (
+    typeof token !== "string" ||
+    token.trim() === ""
+) {
+
+    resultado.innerText =
+        "Sua sessão não possui um token válido. Faça login novamente.";
+
+    return;
+}
+
 const resposta =
     await fetch(
         "https://xfhkdfponsyxeccolhon.supabase.co/functions/v1/smooth-action",
         {
             method: "POST",
 
-            headers:
-                headers,
+            headers: new Headers([
+                [
+                    "Content-Type",
+                    "application/json"
+                ],
+                [
+                    "Authorization",
+                    "Bearer " + token
+                ]
+            ]),
 
-            body:
-                JSON.stringify({
-                    comando:
-                        comando
-                })
+            body: JSON.stringify({
+                comando: comando
+            })
         }
     );
         const dados =
