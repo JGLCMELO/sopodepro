@@ -1,0 +1,40 @@
+{
+  "rewrites": [
+    {
+      "source": "/noticias",
+      "destination": "/noticias.html"
+    },
+    {
+      "source": "/olimpiadas",
+      "destination": "/olimpiadas.html"
+    },
+    {
+      "source": "/copa",
+      "destination": "/copa.html"
+    },
+    {
+      "source": "/participantes",
+      "destination": "/participantes.html"
+    },
+    {
+      "source": "/hall",
+      "destination": "/hall.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/login.html"
+    },
+    {
+      "source": "/area",
+      "destination": "/area.html"
+    },
+    {
+      "source": "/presidente",
+      "destination": "/presidente.html"
+    },
+    {
+      "source": "/esqueci-senha",
+      "destination": "/esqueci-senha.html"
+    }
+  ]
+}
