@@ -1565,6 +1565,16 @@ async function carregarStatusOlimpiadas() {
             "statusOlimpiadas"
         );
 
+    const botao =
+        document.getElementById(
+            "confirmarInscricoes"
+        );
+
+    const checkboxes =
+        document.querySelectorAll(
+            '.modalidade input[type="checkbox"]'
+        );
+
 
     const {
         data,
@@ -1594,9 +1604,87 @@ async function carregarStatusOlimpiadas() {
         status.textContent =
             "INSCRIÇÕES ABERTAS";
 
+        status.style.color =
+            "#f5c542";
+
+
+        checkboxes.forEach(
+            checkbox => {
+
+                checkbox.disabled =
+                    false;
+
+                checkbox.style.cursor =
+                    "pointer";
+
+                const modalidade =
+                    checkbox.closest(
+                        ".modalidade"
+                    );
+
+                modalidade.style.opacity =
+                    "1";
+
+                modalidade.style.cursor =
+                    "pointer";
+
+            }
+        );
+
+
+        botao.disabled =
+            false;
+
+        botao.style.opacity =
+            "1";
+
+        botao.style.cursor =
+            "pointer";
+
+
     } else {
 
         status.textContent =
+            "INSCRIÇÕES FECHADAS";
+
+        status.style.color =
+            "#ff8d8d";
+
+
+        checkboxes.forEach(
+            checkbox => {
+
+                checkbox.disabled =
+                    true;
+
+                checkbox.style.cursor =
+                    "not-allowed";
+
+                const modalidade =
+                    checkbox.closest(
+                        ".modalidade"
+                    );
+
+                modalidade.style.opacity =
+                    "0.45";
+
+                modalidade.style.cursor =
+                    "not-allowed";
+
+            }
+        );
+
+
+        botao.disabled =
+            true;
+
+        botao.style.opacity =
+            "0.45";
+
+        botao.style.cursor =
+            "not-allowed";
+
+        botao.textContent =
             "INSCRIÇÕES FECHADAS";
 
     }
